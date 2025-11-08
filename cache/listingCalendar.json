@@ -1,0 +1,246 @@
+{
+  "entries": [
+    {
+      "symbol": "MMT",
+      "name": "Momentum",
+      "koreanName": "모멘텀",
+      "market": "KRW-MMT",
+      "listingDate": "2025-11-05",
+      "isRecent": true
+    },
+    {
+      "symbol": "TRUST",
+      "name": "Intuition",
+      "koreanName": "인튜이션",
+      "market": "KRW-TRUST",
+      "listingDate": "2025-11-05",
+      "isRecent": true
+    },
+    {
+      "symbol": "KITE",
+      "name": "Kite",
+      "koreanName": "카이트",
+      "market": "KRW-KITE",
+      "listingDate": "2025-11-03",
+      "isRecent": true
+    },
+    {
+      "symbol": "XPL",
+      "name": "Plasma",
+      "koreanName": "플라즈마",
+      "market": "KRW-XPL",
+      "listingDate": "2025-09-25",
+      "isRecent": true
+    },
+    {
+      "symbol": "0G",
+      "name": "0G",
+      "koreanName": "제로지",
+      "market": "KRW-0G",
+      "listingDate": "2025-09-22",
+      "isRecent": true
+    },
+    {
+      "symbol": "AVNT",
+      "name": "Avantis",
+      "koreanName": "아반티스",
+      "market": "KRW-AVNT",
+      "listingDate": "2025-09-15",
+      "isRecent": true
+    },
+    {
+      "symbol": "ENA",
+      "name": "Ethena",
+      "koreanName": "에테나",
+      "market": "KRW-ENA",
+      "listingDate": "2025-07-11",
+      "isRecent": true
+    },
+    {
+      "symbol": "XRP",
+      "name": "XRP",
+      "koreanName": "엑스알피(리플)",
+      "market": "KRW-XRP",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "FIL",
+      "name": "Filecoin",
+      "koreanName": "파일코인",
+      "market": "KRW-FIL",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "koreanName": "비트코인",
+      "market": "KRW-BTC",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "koreanName": "이더리움",
+      "market": "KRW-ETH",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "USDT",
+      "name": "Tether",
+      "koreanName": "테더",
+      "market": "KRW-USDT",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "SOL",
+      "name": "Solana",
+      "koreanName": "솔라나",
+      "market": "KRW-SOL",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "VIRTUAL",
+      "name": "Virtuals Protocol",
+      "koreanName": "버추얼프로토콜",
+      "market": "KRW-VIRTUAL",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "DOGE",
+      "name": "Dogecoin",
+      "koreanName": "도지코인",
+      "market": "KRW-DOGE",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "NEAR",
+      "name": "NEAR Protocol",
+      "koreanName": "니어프로토콜",
+      "market": "KRW-NEAR",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ETC",
+      "name": "Ethereum Classic",
+      "koreanName": "이더리움클래식",
+      "market": "KRW-ETC",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "MINA",
+      "name": "Mina",
+      "koreanName": "미나",
+      "market": "KRW-MINA",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ADA",
+      "name": "Ada",
+      "koreanName": "에이다",
+      "market": "KRW-ADA",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "STORJ",
+      "name": "Storj",
+      "koreanName": "스토리지",
+      "market": "KRW-STORJ",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "APT",
+      "name": "Aptos",
+      "koreanName": "앱토스",
+      "market": "KRW-APT",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "TRUMP",
+      "name": "Official Trump",
+      "koreanName": "오피셜트럼프",
+      "market": "KRW-TRUMP",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ONDO",
+      "name": "Ondo Finance",
+      "koreanName": "온도파이낸스",
+      "market": "KRW-ONDO",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "SUI",
+      "name": "Sui",
+      "koreanName": "수이",
+      "market": "KRW-SUI",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "LINK",
+      "name": "Chainlink",
+      "koreanName": "체인링크",
+      "market": "KRW-LINK",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "RENDER",
+      "name": "Render Token",
+      "koreanName": "렌더토큰",
+      "market": "KRW-RENDER",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "XLM",
+      "name": "Lumen",
+      "koreanName": "스텔라루멘",
+      "market": "KRW-XLM",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "XTZ",
+      "name": "Tezos",
+      "koreanName": "테조스",
+      "market": "KRW-XTZ",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ENS",
+      "name": "Ethereum Name Service",
+      "koreanName": "이더리움네임서비스",
+      "market": "KRW-ENS",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "HBAR",
+      "name": "Hedera",
+      "koreanName": "헤데라",
+      "market": "KRW-HBAR",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    }
+  ],
+  "recentCount": 7,
+  "lastUpdated": "2025-11-07T23:18:51.012Z"
+}

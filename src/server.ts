@@ -1,0 +1,415 @@
+import express, { Request, Response, NextFunction } from 'express';
+import cors, { CorsOptions } from 'cors';
+import path from 'path';
+import axios from 'axios';
+import fs from 'fs/promises';
+import rateLimit from 'express-rate-limit';
+import { DataManager } from './services/dataManager';
+import { ListingStrategyScheduler } from './services/listingStrategyScheduler';
+import { ListingCalendarScheduler } from './services/listingCalendarScheduler';
+import { securityConfig } from './config';
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+const allowedOrigins = securityConfig.allowedOrigins;
+const corsOptions: CorsOptions = allowedOrigins.length
+  ? {
+      origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      },
+      credentials: true
+    }
+  : {};
+
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, '../public')));
+
+const requireApiKey = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  if (!securityConfig.apiKey) return next();
+  const providedKey = req.header('x-api-key');
+  if (providedKey && providedKey === securityConfig.apiKey) {
+    return next();
+  }
+  return res.status(401).json({ error: 'Unauthorized' });
+};
+
+const apiLimiter = rateLimit({
+  windowMs: securityConfig.rateLimitWindowMs,
+  max: securityConfig.rateLimitMax,
+  standardHeaders: true,
+  legacyHeaders: false
+});
+app.use('/api', requireApiKey, apiLimiter);
+
+const dataManager = new DataManager();
+const CACHE_DIR = path.join(__dirname, '../cache');
+const STRATEGY_CACHE_PATH = path.join(CACHE_DIR, 'listingStrategyReport.json');
+const CALENDAR_CACHE_PATH = path.join(CACHE_DIR, 'listingCalendar.json');
+
+let listingStrategyScheduler: ListingStrategyScheduler | null = null;
+let listingCalendarScheduler: ListingCalendarScheduler | null = null;
+
+// API 엔드포인트
+app.get('/api/coins', async (req, res) => {
+  try {
+    const coins = dataManager.getSupportedCoins();
+    res.json(coins);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch coins' });
+  }
+});
+
+app.get('/api/data/:coin/latest', async (req, res) => {
+  try {
+    const coin = req.params.coin.toUpperCase();
+    const days = req.query.days ? parseInt(req.query.days as string) : 30;
+    const data = await dataManager.getLatestData(coin, days);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch data' });
+  }
+});
+
+app.get('/api/data/:coin/range', async (req, res) => {
+  try {
+    const coin = req.params.coin.toUpperCase();
+    const { start, end } = req.query;
+    if (!start) {
+      return res.status(400).json({ error: 'Start date is required' });
+    }
+    const data = await dataManager.getDataRange(coin, start as string, end as string);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch data' });
+  }
+});
+
+app.get('/api/data/:coin/statistics', async (req, res) => {
+  try {
+    const coin = req.params.coin.toUpperCase();
+    const stats = await dataManager.getStatistics(coin);
+    res.json(stats);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch statistics' });
+  }
+});
+
+type TickerCacheEntry = {
+  data: any;
+  fetchedAt: number;
+};
+
+const tickerCache: { all?: TickerCacheEntry; [key: string]: TickerCacheEntry | undefined } = {};
+const TICKER_TTL_MS = 60 * 1000; // 1 minute
+const TICKER_CACHE_FILE = path.join(CACHE_DIR, 'ticker-cache.json');
+const marketDataCache: Record<string, { payload: any; mtimeMs: number }> = {};
+const COIN_SYMBOL_REGEX = /^[A-Z0-9]{1,10}$/;
+const MAX_TICKER_SYMBOLS = 50;
+
+async function fetchUpbitTicker(markets: string): Promise<any> {
+  const response = await axios.get(`https://api.upbit.com/v1/ticker?markets=${markets}`);
+  return response.data;
+}
+
+function getCacheKey(markets: string): string {
+  return markets.split(',').sort().join(',');
+}
+
+function getCachedTicker(key: string): any | null {
+  const entry = tickerCache[key];
+  if (!entry) return null;
+  if (Date.now() - entry.fetchedAt > TICKER_TTL_MS) {
+    delete tickerCache[key];
+    return null;
+  }
+  return entry.data;
+}
+
+function setCachedTicker(key: string, data: any) {
+  tickerCache[key] = { data, fetchedAt: Date.now() };
+}
+
+async function loadTickerCacheFromDisk() {
+  try {
+    const raw = await fs.readFile(TICKER_CACHE_FILE, 'utf-8');
+    const parsed = JSON.parse(raw) as Record<string, TickerCacheEntry>;
+    Object.assign(tickerCache, parsed);
+    console.log('Ticker cache loaded from disk');
+  } catch (error) {
+    console.warn('No ticker cache found on disk, will start fresh.');
+  }
+}
+
+async function persistTickerCache() {
+  try {
+    await fs.mkdir(CACHE_DIR, { recursive: true, mode: 0o700 });
+    await fs.writeFile(TICKER_CACHE_FILE, JSON.stringify(tickerCache, null, 2));
+  } catch (error) {
+    console.error('Failed to persist ticker cache:', error);
+  }
+}
+
+app.get('/api/ticker', async (req, res) => {
+  try {
+    const markets = dataManager.getSupportedCoins().map(c => c.market).join(',');
+    const cacheKey = getCacheKey(markets);
+    const cached = getCachedTicker(cacheKey);
+    if (cached) {
+      return res.json(cached);
+    }
+
+    const data = await fetchUpbitTicker(markets);
+    setCachedTicker(cacheKey, data);
+    await persistTickerCache();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch ticker data' });
+  }
+});
+
+app.get('/api/ticker/:coins', async (req, res) => {
+  try {
+    const coins = req.params.coins
+      .split(',')
+      .map(c => c.trim().toUpperCase())
+      .filter(Boolean);
+
+    if (coins.length === 0 || coins.length > MAX_TICKER_SYMBOLS) {
+      return res.status(400).json({
+        error: `You must request between 1 and ${MAX_TICKER_SYMBOLS} symbols.`
+      });
+    }
+
+    for (const symbol of coins) {
+      if (!COIN_SYMBOL_REGEX.test(symbol)) {
+        return res.status(400).json({ error: `Invalid symbol: ${symbol}` });
+      }
+    }
+
+    const markets = coins.map(c => `KRW-${c}`).join(',');
+    const cacheKey = getCacheKey(markets);
+    const cached = getCachedTicker(cacheKey);
+    if (cached) {
+      return res.json(cached);
+    }
+
+    const data = await fetchUpbitTicker(markets);
+    setCachedTicker(cacheKey, data);
+    await persistTickerCache();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch ticker data' });
+  }
+});
+
+// 새로운 API: saved_data에서 시장 데이터 가져오기
+app.get('/api/market-data/:coin', async (req, res) => {
+  try {
+    const coin = req.params.coin.toUpperCase();
+    if (!COIN_SYMBOL_REGEX.test(coin)) {
+      return res.status(400).json({ hasMarketData: false, error: 'Invalid coin symbol.' });
+    }
+    const savedDataDir = path.join(__dirname, '../saved_data');
+
+    // saved_data 디렉토리에서 해당 코인 파일 찾기
+    const files = await fs.readdir(savedDataDir);
+    const coinFiles = files.filter(f => f.startsWith(`${coin}_`) && f.endsWith('.json'));
+
+    if (coinFiles.length === 0) {
+      return res.json({ hasMarketData: false });
+    }
+
+    // 가장 최신 파일 선택 (파일명에 날짜가 포함되어 있으므로 정렬)
+    coinFiles.sort().reverse();
+    const latestFile = coinFiles[0];
+
+    // 파일 읽기
+    const filePath = path.join(savedDataDir, latestFile);
+    const stats = await fs.stat(filePath);
+    const cacheKey = `${coin}:${filePath}`;
+    const cached = marketDataCache[cacheKey];
+    if (cached && cached.mtimeMs === stats.mtimeMs) {
+      return res.json(cached.payload);
+    }
+
+    const fileContent = await fs.readFile(filePath, 'utf-8');
+    const marketData = JSON.parse(fileContent);
+
+    // 데이터 가공 - 일별 거래대금 데이터 추출
+    // CoinGecko 데이터는 USD 기반이므로 KRW로 변환 (환율 약 1,330원 적용)
+    const USD_TO_KRW = 1330;
+    const processedData = marketData.map((item: any) => ({
+      date: item.candle_date_time_kst.substring(0, 10),
+      tradingValue: item.candle_acc_trade_price * USD_TO_KRW, // USD를 KRW로 변환
+      volume: item.candle_acc_trade_volume,
+      price: item.trade_price * USD_TO_KRW // 가격도 USD이므로 변환
+    }));
+
+    // 일별 데이터로 집계 (같은 날짜의 데이터 합치기)
+    const dailyData = new Map();
+    processedData.forEach((item: any) => {
+      if (!dailyData.has(item.date)) {
+        dailyData.set(item.date, {
+          date: item.date,
+          tradingValue: item.tradingValue,
+          volume: item.volume,
+          price: item.price
+        });
+      } else {
+        const existing = dailyData.get(item.date);
+        existing.tradingValue += item.tradingValue;
+        existing.volume += item.volume;
+        // 가격은 마지막 값 사용
+        existing.price = item.price;
+      }
+    });
+
+    // 마지막 날짜 제거 (24시간이 완료되지 않은 불완전한 데이터)
+    const sortedDates = Array.from(dailyData.keys()).sort();
+    if (sortedDates.length > 0) {
+      const lastDate = sortedDates[sortedDates.length - 1];
+      dailyData.delete(lastDate);
+    }
+
+    const sortedData = Array.from(dailyData.values()).sort((a, b) => a.date.localeCompare(b.date));
+
+    // 거래대금 통계 계산 (0원 제외)
+    const nonZeroTradingValues = sortedData.filter(d => d.tradingValue > 0);
+    let highestTrading = null;
+    let lowestTrading = null;
+
+    if (nonZeroTradingValues.length > 0) {
+      highestTrading = nonZeroTradingValues.reduce((max, curr) =>
+        curr.tradingValue > max.tradingValue ? curr : max
+      );
+      lowestTrading = nonZeroTradingValues.reduce((min, curr) =>
+        curr.tradingValue < min.tradingValue ? curr : min
+      );
+    }
+
+    const payload = {
+      hasMarketData: true,
+      coin,
+      data: sortedData,
+      statistics: {
+        highest: highestTrading ? { value: highestTrading.tradingValue, date: highestTrading.date } : null,
+        lowest: lowestTrading ? { value: lowestTrading.tradingValue, date: lowestTrading.date } : null
+      }
+    };
+
+    marketDataCache[cacheKey] = { payload, mtimeMs: stats.mtimeMs };
+    res.json(payload);
+  } catch (error) {
+    console.error('Failed to fetch market data:', error);
+    res.json({ hasMarketData: false });
+  }
+});
+
+// 코인 상장일 확인 API
+app.get('/api/coins/listing-dates', (req, res) => {
+  if (!listingCalendarScheduler) {
+    return res.status(503).json({ error: 'Listing calendar scheduler is not initialized.' });
+  }
+
+  const snapshot = listingCalendarScheduler.getSnapshot();
+  if (snapshot.entries.length === 0) {
+    return res.status(503).json({
+      status: snapshot.status,
+      lastUpdated: snapshot.lastUpdated?.toISOString() ?? null,
+      nextUpdateAt: snapshot.nextRunAt?.toISOString() ?? null,
+      error: snapshot.error || 'Listing calendar is being prepared.'
+    });
+  }
+
+  res.json({
+    status: snapshot.status,
+    lastUpdated: snapshot.lastUpdated?.toISOString() ?? null,
+    nextUpdateAt: snapshot.nextRunAt?.toISOString() ?? null,
+    total: snapshot.entries.length,
+    recentCount: snapshot.recentCount,
+    coins: snapshot.entries
+  });
+});
+
+app.get('/api/coins/listing-strategies', async (req, res) => {
+  if (!listingStrategyScheduler) {
+    return res.status(503).json({ error: 'Listing strategy scheduler is not initialized.' });
+  }
+
+  const snapshot = listingStrategyScheduler.getSnapshot();
+
+  if (!snapshot.report) {
+    return res.status(503).json({
+      status: snapshot.status,
+      lastUpdated: snapshot.lastUpdated?.toISOString() ?? null,
+      nextUpdateAt: snapshot.nextRunAt?.toISOString() ?? null,
+      error: snapshot.error || 'Listing strategy analysis in progress.'
+    });
+  }
+
+  res.json({
+    ...snapshot.report,
+    status: snapshot.status,
+    lastUpdated: snapshot.lastUpdated?.toISOString() ?? null,
+    nextUpdateAt: snapshot.nextRunAt?.toISOString() ?? null
+  });
+});
+
+// 수동 업데이트 제거 - 자동 업데이트만 사용
+
+// 서버 시작
+async function start() {
+  try {
+    await dataManager.initialize();
+    await fs.mkdir(CACHE_DIR, { recursive: true, mode: 0o700 });
+    await loadTickerCacheFromDisk();
+    listingStrategyScheduler = new ListingStrategyScheduler(dataManager, {
+      persistPath: STRATEGY_CACHE_PATH
+    });
+    await listingStrategyScheduler.start();
+    listingCalendarScheduler = new ListingCalendarScheduler(dataManager, {
+      persistPath: CALENDAR_CACHE_PATH
+    });
+    await listingCalendarScheduler.start();
+
+    app.listen(PORT, () => {
+      console.log(`🚀 서버가 http://localhost:${PORT} 에서 실행중입니다.`);
+
+      const markets = dataManager.getSupportedCoins();
+      console.log(`📊 총 ${markets.length}개 KRW 마켓 지원`);
+      console.log(`📈 상위 5개 코인: ${markets.slice(0, 5).map(m => m.symbol).join(', ')}`);
+    });
+
+    // 매일 자정(0시 5분)에 자동 업데이트
+    const scheduleUpdate = () => {
+      const now = new Date();
+      const tomorrow = new Date(now);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      tomorrow.setHours(0, 5, 0, 0); // 다음날 0시 5분
+
+      const msUntilUpdate = tomorrow.getTime() - now.getTime();
+
+      setTimeout(async () => {
+        console.log('🔄 자동 데이터 업데이트 실행 (매일 0시 5분)');
+        await dataManager.updateAllLoadedCoins(); // 로드된 코인만 업데이트
+        scheduleUpdate(); // 다음 업데이트 스케줄
+      }, msUntilUpdate);
+
+      console.log(`⏰ 다음 자동 업데이트: ${tomorrow.toLocaleString('ko-KR')}`);
+    };
+
+    scheduleUpdate();
+
+  } catch (error) {
+    console.error('❌ 서버 시작 실패:', error);
+    process.exit(1);
+  }
+}
+
+start();
