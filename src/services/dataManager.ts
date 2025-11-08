@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { format, startOfDay, differenceInDays } from 'date-fns';
 import { MarketService, CoinInfo } from './marketService';
+import { runWithUpbitRateLimit } from '../utils/upbitRateLimiter';
 
 interface Candle {
   market: string;
@@ -112,7 +113,7 @@ export class DataManager {
     }
 
     try {
-      const response = await axios.get<Candle[]>(url, { params });
+      const response = await runWithUpbitRateLimit(() => axios.get<Candle[]>(url, { params }));
       return response.data;
     } catch (error) {
       console.error(`❌ Upbit API 오류 (${market}):`, error);

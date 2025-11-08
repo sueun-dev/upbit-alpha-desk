@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/index.min.js"></script>
     <style>
         :root {
@@ -946,10 +946,8 @@
 
         async function loadRecentListings() {
             const statusEl = document.getElementById('recentListingsStatus');
-            const toggleBtn = document.querySelector('[data-sidebar="recentPanel"]');
-            const recentSection = document.getElementById('recentPanel');
             const toggleBtn = document.getElementById('toggleRecentBtn');
-            const recentSection = document.getElementById('recentListings');
+            const recentPanel = document.getElementById('recentPanel');
 
             try {
                 const response = await fetch('/api/coins/listing-dates');
@@ -970,8 +968,8 @@
                 const recentCoins = data.coins.filter(c => c.isRecent);
 
                 if (recentCoins.length > 0) {
-                    if (recentSection) {
-                        recentSection.dataset.ready = 'true';
+                    if (recentPanel) {
+                        recentPanel.dataset.ready = 'true';
                     }
                     if (toggleBtn) {
                         toggleBtn.disabled = false;
@@ -1015,8 +1013,6 @@
                         `;
                         recentList.appendChild(coinCard);
                     });
-
-                    setRecentSectionState(true);
                 }
             } catch (error) {
                 console.error('Failed to load recent listings:', error);
@@ -1025,6 +1021,9 @@
                 }
                 if (toggleBtn) {
                     toggleBtn.disabled = true;
+                }
+                if (recentPanel) {
+                    recentPanel.dataset.ready = 'false';
                 }
             }
         }
@@ -1140,9 +1139,9 @@
         function scrollToRecentListings() {
             setSidebarTab('recentPanel');
             loadRecentListings();
-            const recentListings = document.getElementById('recentListings');
-            if (recentListings) {
-                recentListings.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const recentPanel = document.getElementById('recentPanel');
+            if (recentPanel) {
+                recentPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 

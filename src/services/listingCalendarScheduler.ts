@@ -3,6 +3,8 @@ import fs from 'fs/promises';
 import path from 'path';
 import { DataManager } from './dataManager';
 import { CoinInfo } from './marketService';
+import { getRedisClient } from '../clients/redisClient';
+import { runWithUpbitRateLimit, sleep } from '../utils/upbitRateLimiter';
 
 export interface ListingCalendarEntry {
   symbol: string;
@@ -11,6 +13,12 @@ export interface ListingCalendarEntry {
   market: string;
   listingDate: string;
   isRecent: boolean;
+}
+
+function adjustListingDate(kstTimestamp: string): string {
+  const base = new Date(`${kstTimestamp}+09:00`);
+  base.setDate(base.getDate() - 1);
+  return base.toISOString().substring(0, 10);
 }
 
 export interface ListingCalendarSnapshot {
@@ -22,7 +30,7 @@ export interface ListingCalendarSnapshot {
   error?: string;
 }
 
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+const LISTING_CALENDAR_REDIS_KEY = 'listing-calendar:snapshot';
 
 export class ListingCalendarScheduler {
   private status: ListingCalendarSnapshot['status'] = 'idle';
@@ -48,7 +56,8 @@ export class ListingCalendarScheduler {
   }
 
   async start() {
-    if (this.persistPath) {
+    const warmed = await this.loadFromRedis();
+    if (!warmed && this.persistPath) {
       await this.loadFromDisk();
     }
     void this.triggerRun();
@@ -100,6 +109,7 @@ export class ListingCalendarScheduler {
       this.recentCount = entries.filter(entry => entry.isRecent).length;
       this.lastUpdated = new Date();
       await this.saveToDisk();
+      await this.saveToRedis();
       this.status = 'idle';
     } catch (error: any) {
       console.error('ListingCalendarScheduler failed:', error);
@@ -111,7 +121,7 @@ export class ListingCalendarScheduler {
   private async computeListingDates(coins: CoinInfo[]): Promise<ListingCalendarEntry[]> {
     const sixMonthsAgo = new Date();
     sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - (this.options.months ?? 6));
-    const maxCoins = this.options.maxCoins ?? 30;
+    const maxCoins = this.options.maxCoins ?? 120;
     const results: ListingCalendarEntry[] = [];
 
     for (const coin of coins.slice(0, maxCoins)) {
@@ -144,17 +154,19 @@ export class ListingCalendarScheduler {
     let currentDate = new Date();
 
     while (attempts < maxAttempts && !oldestDate) {
-      const response = await axios.get('https://api.upbit.com/v1/candles/days', {
-        params: {
-          market: coin.market,
-          count: 200,
-          to: currentDate.toISOString()
-        }
-      });
+      const response = await runWithUpbitRateLimit(() =>
+        axios.get('https://api.upbit.com/v1/candles/days', {
+          params: {
+            market: coin.market,
+            count: 200,
+            to: currentDate.toISOString()
+          }
+        })
+      );
 
       if (response.data && response.data.length > 0) {
         const oldestCandle = response.data[response.data.length - 1];
-        oldestDate = oldestCandle.candle_date_time_kst.substring(0, 10);
+        oldestDate = adjustListingDate(oldestCandle.candle_date_time_kst);
 
         if (response.data.length === 200) {
           currentDate = new Date(oldestCandle.candle_date_time_utc);
@@ -205,6 +217,45 @@ export class ListingCalendarScheduler {
       );
     } catch (error) {
       console.error('ListingCalendarScheduler: failed to persist calendar', error);
+    }
+  }
+
+  private async loadFromRedis(): Promise<boolean> {
+    const client = getRedisClient();
+    if (!client) return false;
+    try {
+      const raw = await client.get(LISTING_CALENDAR_REDIS_KEY);
+      if (!raw) return false;
+      const parsed = JSON.parse(raw) as {
+        entries: ListingCalendarEntry[];
+        recentCount: number;
+        lastUpdated?: string;
+      };
+      this.entries = parsed.entries || [];
+      this.recentCount = parsed.recentCount || 0;
+      this.lastUpdated = parsed.lastUpdated ? new Date(parsed.lastUpdated) : null;
+      console.log('ListingCalendarScheduler: loaded snapshot from Redis');
+      return true;
+    } catch (error) {
+      console.warn('ListingCalendarScheduler: failed to load Redis snapshot', error);
+      return false;
+    }
+  }
+
+  private async saveToRedis() {
+    const client = getRedisClient();
+    if (!client) return;
+    try {
+      await client.set(
+        LISTING_CALENDAR_REDIS_KEY,
+        JSON.stringify({
+          entries: this.entries,
+          recentCount: this.recentCount,
+          lastUpdated: this.lastUpdated?.toISOString() ?? null
+        })
+      );
+    } catch (error) {
+      console.warn('ListingCalendarScheduler: failed to persist snapshot to Redis', error);
     }
   }
 }

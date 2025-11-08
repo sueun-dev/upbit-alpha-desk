@@ -16,3 +16,6 @@ export const securityConfig = {
   rateLimitMax: process.env.RATE_LIMIT_MAX ? parseInt(process.env.RATE_LIMIT_MAX, 10) : 120
 };
 
+export const appConfig = {
+  redisUrl: process.env.REDIS_URL || null
+};

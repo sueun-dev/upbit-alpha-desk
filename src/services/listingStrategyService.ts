@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { CoinInfo } from './marketService';
 import { fetchBybitHourlyKlines } from '../clients/bybitClient';
+import { runWithUpbitRateLimit, sleep } from '../utils/upbitRateLimiter';
 
 interface UpbitDailyCandle {
   candle_date_time_kst: string;
@@ -67,14 +68,13 @@ export const LISTING_SCENARIOS: ListingScenarioDefinition[] = [
 const HOLD_HOURS = 24;
 const MS_PER_HOUR = 60 * 60 * 1000;
 const MAX_ENTRY_HOURS = Math.max(...LISTING_SCENARIOS.map(s => s.entryHours));
-const DEFAULT_MAX_COINS = 60;
-
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+const DEFAULT_MAX_COINS = 150;
 
 async function fetchUpbitDailyCandles(coin: CoinInfo): Promise<UpbitDailyCandle[]> {
-  const response = await axios.get<UpbitDailyCandle[]>(
-    'https://api.upbit.com/v1/candles/days',
-    { params: { market: coin.market, count: 200 } }
+  const response = await runWithUpbitRateLimit(() =>
+    axios.get<UpbitDailyCandle[]>('https://api.upbit.com/v1/candles/days', {
+      params: { market: coin.market, count: 200 }
+    })
   );
   return response.data;
 }
@@ -108,7 +108,7 @@ export async function buildListingStrategyReport(
       );
 
       const earliest = orderedCandles[0];
-      const listingDate = earliest.candle_date_time_kst.substring(0, 10);
+      const listingDate = adjustListingDate(earliest.candle_date_time_kst);
 
       if (!isRecentListing(listingDate, sixMonthsAgo)) {
         continue;
@@ -207,3 +207,8 @@ export async function buildListingStrategyReport(
   };
 }
 
+function adjustListingDate(kstTimestamp: string): string {
+  const base = new Date(`${kstTimestamp}+09:00`);
+  base.setDate(base.getDate() - 1);
+  return base.toISOString().substring(0, 10);
+}

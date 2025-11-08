@@ -3,11 +3,15 @@ import cors, { CorsOptions } from 'cors';
 import path from 'path';
 import axios from 'axios';
 import fs from 'fs/promises';
+import fsSync from 'fs';
+import compression from 'compression';
+import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import { DataManager } from './services/dataManager';
 import { ListingStrategyScheduler } from './services/listingStrategyScheduler';
 import { ListingCalendarScheduler } from './services/listingCalendarScheduler';
 import { securityConfig } from './config';
+import { initRedisClient, getRedisClient } from './clients/redisClient';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -25,10 +29,24 @@ const corsOptions: CorsOptions = allowedOrigins.length
       credentials: true
     }
   : {};
+const PUBLIC_DIR = path.join(__dirname, '../public');
+const FRONTEND_DIST = path.join(__dirname, '../frontend/dist');
+const serveFrontend = process.env.SERVE_FRONTEND !== 'false';
 
+app.disable('x-powered-by');
+app.use(
+  helmet({
+    contentSecurityPolicy: false
+  })
+);
 app.use(cors(corsOptions));
-app.use(express.json());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(compression());
+app.use(express.json({ limit: '1mb' }));
+app.use(express.static(PUBLIC_DIR));
+const hasFrontendBuild = serveFrontend && fsSync.existsSync(FRONTEND_DIST);
+if (hasFrontendBuild) {
+  app.use(express.static(FRONTEND_DIST));
+}
 
 const requireApiKey = (req: express.Request, res: express.Response, next: express.NextFunction) => {
   if (!securityConfig.apiKey) return next();
@@ -49,6 +67,7 @@ app.use('/api', requireApiKey, apiLimiter);
 
 const dataManager = new DataManager();
 const CACHE_DIR = path.join(__dirname, '../cache');
+const SAVED_DATA_DIR = path.join(__dirname, '../saved_data');
 const STRATEGY_CACHE_PATH = path.join(CACHE_DIR, 'listingStrategyReport.json');
 const CALENDAR_CACHE_PATH = path.join(CACHE_DIR, 'listingCalendar.json');
 
@@ -108,9 +127,136 @@ type TickerCacheEntry = {
 const tickerCache: { all?: TickerCacheEntry; [key: string]: TickerCacheEntry | undefined } = {};
 const TICKER_TTL_MS = 60 * 1000; // 1 minute
 const TICKER_CACHE_FILE = path.join(CACHE_DIR, 'ticker-cache.json');
-const marketDataCache: Record<string, { payload: any; mtimeMs: number }> = {};
+const marketDataCache: Record<string, { payload: MarketDataPayload; mtimeMs: number }> = {};
 const COIN_SYMBOL_REGEX = /^[A-Z0-9]{1,10}$/;
 const MAX_TICKER_SYMBOLS = 50;
+const MARKET_DATA_REDIS_PREFIX = 'market-data:';
+const MARKET_DATA_REDIS_TTL_SECONDS = 60 * 60 * 6; // 6 hours
+
+async function getMarketDataFromRedis(coin: string): Promise<MarketDataPayload | null> {
+  const client = getRedisClient();
+  if (!client) return null;
+  try {
+    const raw = await client.get(`${MARKET_DATA_REDIS_PREFIX}${coin}`);
+    return raw ? (JSON.parse(raw) as MarketDataPayload) : null;
+  } catch (error) {
+    console.error(`Failed to read market data for ${coin} from Redis:`, error);
+    return null;
+  }
+}
+
+async function cacheMarketDataInRedis(coin: string, payload: MarketDataPayload): Promise<void> {
+  const client = getRedisClient();
+  if (!client) return;
+  try {
+    await client.set(`${MARKET_DATA_REDIS_PREFIX}${coin}`, JSON.stringify(payload), {
+      EX: MARKET_DATA_REDIS_TTL_SECONDS
+    });
+  } catch (error) {
+    console.error(`Failed to cache market data for ${coin} in Redis:`, error);
+  }
+}
+
+async function loadMarketDataFromFilesystem(coin: string): Promise<MarketDataPayload | null> {
+  const files = await fs.readdir(SAVED_DATA_DIR);
+  const coinFiles = files.filter(f => f.startsWith(`${coin}_`) && f.endsWith('.json'));
+
+  if (coinFiles.length === 0) {
+    return null;
+  }
+
+  coinFiles.sort().reverse();
+  const latestFile = coinFiles[0];
+  const filePath = path.join(SAVED_DATA_DIR, latestFile);
+  const stats = await fs.stat(filePath);
+  const cacheKey = `${coin}:${filePath}`;
+  const cached = marketDataCache[cacheKey];
+
+  if (cached && cached.mtimeMs === stats.mtimeMs) {
+    return cached.payload;
+  }
+
+  const fileContent = await fs.readFile(filePath, 'utf-8');
+  const marketData = JSON.parse(fileContent);
+
+  const USD_TO_KRW = 1330;
+  const processedData: DailyMarketDataPoint[] = marketData.map((item: any) => ({
+    date: item.candle_date_time_kst.substring(0, 10),
+    tradingValue: item.candle_acc_trade_price * USD_TO_KRW,
+    volume: item.candle_acc_trade_volume,
+    price: item.trade_price * USD_TO_KRW
+  }));
+
+  const dailyData = new Map<string, DailyMarketDataPoint>();
+  processedData.forEach(item => {
+    if (!dailyData.has(item.date)) {
+      dailyData.set(item.date, {
+        date: item.date,
+        tradingValue: item.tradingValue,
+        volume: item.volume,
+        price: item.price
+      });
+    } else {
+      const existing = dailyData.get(item.date)!;
+      existing.tradingValue += item.tradingValue;
+      existing.volume += item.volume;
+      existing.price = item.price;
+    }
+  });
+
+  const sortedDates = Array.from(dailyData.keys()).sort();
+  if (sortedDates.length > 0) {
+    const lastDate = sortedDates[sortedDates.length - 1];
+    dailyData.delete(lastDate);
+  }
+
+  const sortedData = Array.from(dailyData.values()).sort((a, b) => a.date.localeCompare(b.date));
+  const nonZeroTradingValues = sortedData.filter(d => d.tradingValue > 0);
+  let highestTradingEntry: DailyMarketDataPoint | null = null;
+  let lowestTradingEntry: DailyMarketDataPoint | null = null;
+
+  if (nonZeroTradingValues.length > 0) {
+    highestTradingEntry = nonZeroTradingValues.reduce((max, curr) =>
+      curr.tradingValue > max.tradingValue ? curr : max
+    );
+    lowestTradingEntry = nonZeroTradingValues.reduce((min, curr) =>
+      curr.tradingValue < min.tradingValue ? curr : min
+    );
+  }
+
+  const payload: MarketDataPayload = {
+    hasMarketData: true,
+    coin,
+    data: sortedData,
+    statistics: {
+      highest: highestTradingEntry
+        ? { value: highestTradingEntry.tradingValue, date: highestTradingEntry.date }
+        : null,
+      lowest: lowestTradingEntry
+        ? { value: lowestTradingEntry.tradingValue, date: lowestTradingEntry.date }
+        : null
+    }
+  };
+
+  marketDataCache[cacheKey] = { payload, mtimeMs: stats.mtimeMs };
+  return payload;
+}
+type DailyMarketDataPoint = {
+  date: string;
+  tradingValue: number;
+  volume: number;
+  price: number;
+};
+
+type MarketDataPayload = {
+  hasMarketData: boolean;
+  coin: string;
+  data: DailyMarketDataPoint[];
+  statistics: {
+    highest: { value: number; date: string } | null;
+    lowest: { value: number; date: string } | null;
+  };
+};
 
 async function fetchUpbitTicker(markets: string): Promise<any> {
   const response = await axios.get(`https://api.upbit.com/v1/ticker?markets=${markets}`);
@@ -215,95 +361,17 @@ app.get('/api/market-data/:coin', async (req, res) => {
     if (!COIN_SYMBOL_REGEX.test(coin)) {
       return res.status(400).json({ hasMarketData: false, error: 'Invalid coin symbol.' });
     }
-    const savedDataDir = path.join(__dirname, '../saved_data');
+    const redisPayload = await getMarketDataFromRedis(coin);
+    if (redisPayload) {
+      return res.json(redisPayload);
+    }
 
-    // saved_data 디렉토리에서 해당 코인 파일 찾기
-    const files = await fs.readdir(savedDataDir);
-    const coinFiles = files.filter(f => f.startsWith(`${coin}_`) && f.endsWith('.json'));
-
-    if (coinFiles.length === 0) {
+    const payload = await loadMarketDataFromFilesystem(coin);
+    if (!payload) {
       return res.json({ hasMarketData: false });
     }
 
-    // 가장 최신 파일 선택 (파일명에 날짜가 포함되어 있으므로 정렬)
-    coinFiles.sort().reverse();
-    const latestFile = coinFiles[0];
-
-    // 파일 읽기
-    const filePath = path.join(savedDataDir, latestFile);
-    const stats = await fs.stat(filePath);
-    const cacheKey = `${coin}:${filePath}`;
-    const cached = marketDataCache[cacheKey];
-    if (cached && cached.mtimeMs === stats.mtimeMs) {
-      return res.json(cached.payload);
-    }
-
-    const fileContent = await fs.readFile(filePath, 'utf-8');
-    const marketData = JSON.parse(fileContent);
-
-    // 데이터 가공 - 일별 거래대금 데이터 추출
-    // CoinGecko 데이터는 USD 기반이므로 KRW로 변환 (환율 약 1,330원 적용)
-    const USD_TO_KRW = 1330;
-    const processedData = marketData.map((item: any) => ({
-      date: item.candle_date_time_kst.substring(0, 10),
-      tradingValue: item.candle_acc_trade_price * USD_TO_KRW, // USD를 KRW로 변환
-      volume: item.candle_acc_trade_volume,
-      price: item.trade_price * USD_TO_KRW // 가격도 USD이므로 변환
-    }));
-
-    // 일별 데이터로 집계 (같은 날짜의 데이터 합치기)
-    const dailyData = new Map();
-    processedData.forEach((item: any) => {
-      if (!dailyData.has(item.date)) {
-        dailyData.set(item.date, {
-          date: item.date,
-          tradingValue: item.tradingValue,
-          volume: item.volume,
-          price: item.price
-        });
-      } else {
-        const existing = dailyData.get(item.date);
-        existing.tradingValue += item.tradingValue;
-        existing.volume += item.volume;
-        // 가격은 마지막 값 사용
-        existing.price = item.price;
-      }
-    });
-
-    // 마지막 날짜 제거 (24시간이 완료되지 않은 불완전한 데이터)
-    const sortedDates = Array.from(dailyData.keys()).sort();
-    if (sortedDates.length > 0) {
-      const lastDate = sortedDates[sortedDates.length - 1];
-      dailyData.delete(lastDate);
-    }
-
-    const sortedData = Array.from(dailyData.values()).sort((a, b) => a.date.localeCompare(b.date));
-
-    // 거래대금 통계 계산 (0원 제외)
-    const nonZeroTradingValues = sortedData.filter(d => d.tradingValue > 0);
-    let highestTrading = null;
-    let lowestTrading = null;
-
-    if (nonZeroTradingValues.length > 0) {
-      highestTrading = nonZeroTradingValues.reduce((max, curr) =>
-        curr.tradingValue > max.tradingValue ? curr : max
-      );
-      lowestTrading = nonZeroTradingValues.reduce((min, curr) =>
-        curr.tradingValue < min.tradingValue ? curr : min
-      );
-    }
-
-    const payload = {
-      hasMarketData: true,
-      coin,
-      data: sortedData,
-      statistics: {
-        highest: highestTrading ? { value: highestTrading.tradingValue, date: highestTrading.date } : null,
-        lowest: lowestTrading ? { value: lowestTrading.tradingValue, date: lowestTrading.date } : null
-      }
-    };
-
-    marketDataCache[cacheKey] = { payload, mtimeMs: stats.mtimeMs };
+    await cacheMarketDataInRedis(coin, payload);
     res.json(payload);
   } catch (error) {
     console.error('Failed to fetch market data:', error);
@@ -361,20 +429,35 @@ app.get('/api/coins/listing-strategies', async (req, res) => {
   });
 });
 
-// 수동 업데이트 제거 - 자동 업데이트만 사용
+// React SPA fallback
+if (hasFrontendBuild) {
+  app.get(/^\/(?!api).*$/, (req, res, next) => {
+    if (req.method !== 'GET') {
+      return next();
+    }
+    res.sendFile(path.join(FRONTEND_DIST, 'index.html'));
+  });
+}
 
 // 서버 시작
 async function start() {
   try {
     await dataManager.initialize();
+    try {
+      await initRedisClient();
+    } catch (redisError) {
+      console.warn('Redis initialization failed. Falling back to filesystem cache only.', redisError);
+    }
     await fs.mkdir(CACHE_DIR, { recursive: true, mode: 0o700 });
     await loadTickerCacheFromDisk();
     listingStrategyScheduler = new ListingStrategyScheduler(dataManager, {
-      persistPath: STRATEGY_CACHE_PATH
+      persistPath: STRATEGY_CACHE_PATH,
+      maxCoins: 200
     });
     await listingStrategyScheduler.start();
     listingCalendarScheduler = new ListingCalendarScheduler(dataManager, {
-      persistPath: CALENDAR_CACHE_PATH
+      persistPath: CALENDAR_CACHE_PATH,
+      maxCoins: 150
     });
     await listingCalendarScheduler.start();
 

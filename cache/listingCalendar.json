@@ -5,7 +5,7 @@
       "name": "Momentum",
       "koreanName": "모멘텀",
       "market": "KRW-MMT",
-      "listingDate": "2025-11-05",
+      "listingDate": "2025-11-04",
       "isRecent": true
     },
     {
@@ -13,7 +13,7 @@
       "name": "Intuition",
       "koreanName": "인튜이션",
       "market": "KRW-TRUST",
-      "listingDate": "2025-11-05",
+      "listingDate": "2025-11-04",
       "isRecent": true
     },
     {
@@ -21,7 +21,95 @@
       "name": "Kite",
       "koreanName": "카이트",
       "market": "KRW-KITE",
-      "listingDate": "2025-11-03",
+      "listingDate": "2025-11-01",
+      "isRecent": true
+    },
+    {
+      "symbol": "ENSO",
+      "name": "Enso",
+      "koreanName": "엔소",
+      "market": "KRW-ENSO",
+      "listingDate": "2025-10-28",
+      "isRecent": true
+    },
+    {
+      "symbol": "KERNEL",
+      "name": "KernelDAO",
+      "koreanName": "커널다오",
+      "market": "KRW-KERNEL",
+      "listingDate": "2025-10-27",
+      "isRecent": true
+    },
+    {
+      "symbol": "CPOOL",
+      "name": "Clearpool",
+      "koreanName": "클리어풀",
+      "market": "KRW-CPOOL",
+      "listingDate": "2025-10-21",
+      "isRecent": true
+    },
+    {
+      "symbol": "F",
+      "name": "SynFutures",
+      "koreanName": "신퓨처스",
+      "market": "KRW-F",
+      "listingDate": "2025-10-20",
+      "isRecent": true
+    },
+    {
+      "symbol": "BIO",
+      "name": "Bio Protocol",
+      "koreanName": "바이오프로토콜",
+      "market": "KRW-BIO",
+      "listingDate": "2025-10-19",
+      "isRecent": true
+    },
+    {
+      "symbol": "ZBT",
+      "name": "ZEROBASE",
+      "koreanName": "제로베이스",
+      "market": "KRW-ZBT",
+      "listingDate": "2025-10-16",
+      "isRecent": true
+    },
+    {
+      "symbol": "IN",
+      "name": "Infinit",
+      "koreanName": "인피닛",
+      "market": "KRW-IN",
+      "listingDate": "2025-10-09",
+      "isRecent": true
+    },
+    {
+      "symbol": "DOOD",
+      "name": "Doodles",
+      "koreanName": "두들즈",
+      "market": "KRW-DOOD",
+      "listingDate": "2025-10-06",
+      "isRecent": true
+    },
+    {
+      "symbol": "2Z",
+      "name": "DoubleZero",
+      "koreanName": "더블제로",
+      "market": "KRW-2Z",
+      "listingDate": "2025-10-01",
+      "isRecent": true
+    },
+    {
+      "symbol": "FF",
+      "name": "Falcon Finance",
+      "koreanName": "팔콘파이낸스",
+      "market": "KRW-FF",
+      "listingDate": "2025-09-28",
+      "isRecent": true
+    },
+    {
+      "symbol": "MIRA",
+      "name": "Mira Network",
+      "koreanName": "미라네트워크",
+      "market": "KRW-MIRA",
+      "listingDate": "2025-09-25",
       "isRecent": true
     },
     {
@@ -29,7 +117,7 @@
       "name": "Plasma",
       "koreanName": "플라즈마",
       "market": "KRW-XPL",
-      "listingDate": "2025-09-25",
+      "listingDate": "2025-09-24",
       "isRecent": true
     },
     {
@@ -37,7 +125,31 @@
       "name": "0G",
       "koreanName": "제로지",
       "market": "KRW-0G",
-      "listingDate": "2025-09-22",
+      "listingDate": "2025-09-21",
+      "isRecent": true
+    },
+    {
+      "symbol": "LA",
+      "name": "Lagrange",
+      "koreanName": "라그랑주",
+      "market": "KRW-LA",
+      "listingDate": "2025-09-17",
+      "isRecent": true
+    },
+    {
+      "symbol": "BARD",
+      "name": "Lombard",
+      "koreanName": "롬바드",
+      "market": "KRW-BARD",
+      "listingDate": "2025-09-17",
+      "isRecent": true
+    },
+    {
+      "symbol": "TOSHI",
+      "name": "Toshi",
+      "koreanName": "토시",
+      "market": "KRW-TOSHI",
+      "listingDate": "2025-09-16",
       "isRecent": true
     },
     {
@@ -45,7 +157,119 @@
       "name": "Avantis",
       "koreanName": "아반티스",
       "market": "KRW-AVNT",
-      "listingDate": "2025-09-15",
+      "listingDate": "2025-09-14",
+      "isRecent": true
+    },
+    {
+      "symbol": "ZKC",
+      "name": "Boundless",
+      "koreanName": "바운드리스",
+      "market": "KRW-ZKC",
+      "listingDate": "2025-09-14",
+      "isRecent": true
+    },
+    {
+      "symbol": "PUMP",
+      "name": "Pump.fun",
+      "koreanName": "펌프펀",
+      "market": "KRW-PUMP",
+      "listingDate": "2025-09-10",
+      "isRecent": true
+    },
+    {
+      "symbol": "HOLO",
+      "name": "Holoworld AI",
+      "koreanName": "홀로월드에이아이",
+      "market": "KRW-HOLO",
+      "listingDate": "2025-09-10",
+      "isRecent": true
+    },
+    {
+      "symbol": "OPEN",
+      "name": "OpenLedger",
+      "koreanName": "오픈렛저",
+      "market": "KRW-OPEN",
+      "listingDate": "2025-09-09",
+      "isRecent": true
+    },
+    {
+      "symbol": "LINEA",
+      "name": "Linea",
+      "koreanName": "리네아",
+      "market": "KRW-LINEA",
+      "listingDate": "2025-09-09",
+      "isRecent": true
+    },
+    {
+      "symbol": "WLD",
+      "name": "Worldcoin",
+      "koreanName": "월드코인",
+      "market": "KRW-WLD",
+      "listingDate": "2025-09-08",
+      "isRecent": true
+    },
+    {
+      "symbol": "FLOCK",
+      "name": "FLock.io",
+      "koreanName": "플록",
+      "market": "KRW-FLOCK",
+      "listingDate": "2025-09-08",
+      "isRecent": true
+    },
+    {
+      "symbol": "WLFI",
+      "name": "World Liberty Financial",
+      "koreanName": "월드리버티파이낸셜",
+      "market": "KRW-WLFI",
+      "listingDate": "2025-08-31",
+      "isRecent": true
+    },
+    {
+      "symbol": "TREE",
+      "name": "Treehouse",
+      "koreanName": "트리하우스",
+      "market": "KRW-TREE",
+      "listingDate": "2025-08-27",
+      "isRecent": true
+    },
+    {
+      "symbol": "IP",
+      "name": "Story",
+      "koreanName": "스토리",
+      "market": "KRW-IP",
+      "listingDate": "2025-08-07",
+      "isRecent": true
+    },
+    {
+      "symbol": "PROVE",
+      "name": "Succinct",
+      "koreanName": "서싱트",
+      "market": "KRW-PROVE",
+      "listingDate": "2025-08-05",
+      "isRecent": true
+    },
+    {
+      "symbol": "NOM",
+      "name": "Nomina",
+      "koreanName": "노미나",
+      "market": "KRW-NOM",
+      "listingDate": "2025-07-28",
+      "isRecent": true
+    },
+    {
+      "symbol": "SYRUP",
+      "name": "Maple Finance",
+      "koreanName": "메이플파이낸스",
+      "market": "KRW-SYRUP",
+      "listingDate": "2025-07-24",
+      "isRecent": true
+    },
+    {
+      "symbol": "ERA",
+      "name": "Caldera",
+      "koreanName": "칼데라",
+      "market": "KRW-ERA",
+      "listingDate": "2025-07-16",
       "isRecent": true
     },
     {
@@ -53,15 +277,95 @@
       "name": "Ethena",
       "koreanName": "에테나",
       "market": "KRW-ENA",
-      "listingDate": "2025-07-11",
+      "listingDate": "2025-07-10",
       "isRecent": true
     },
     {
-      "symbol": "XRP",
-      "name": "XRP",
-      "koreanName": "엑스알피(리플)",
-      "market": "KRW-XRP",
-      "listingDate": "2025-04-22",
+      "symbol": "MOODENG",
+      "name": "Moo Deng",
+      "koreanName": "무뎅",
+      "market": "KRW-MOODENG",
+      "listingDate": "2025-07-02",
+      "isRecent": true
+    },
+    {
+      "symbol": "SAHARA",
+      "name": "Sahara AI",
+      "koreanName": "사하라에이아이",
+      "market": "KRW-SAHARA",
+      "listingDate": "2025-06-25",
+      "isRecent": true
+    },
+    {
+      "symbol": "NEWT",
+      "name": "Newton Protocol",
+      "koreanName": "뉴턴프로토콜",
+      "market": "KRW-NEWT",
+      "listingDate": "2025-06-23",
+      "isRecent": true
+    },
+    {
+      "symbol": "RVN",
+      "name": "Ravencoin",
+      "koreanName": "레이븐코인",
+      "market": "KRW-RVN",
+      "listingDate": "2025-06-04",
+      "isRecent": true
+    },
+    {
+      "symbol": "LPT",
+      "name": "Livepeer",
+      "koreanName": "라이브피어",
+      "market": "KRW-LPT",
+      "listingDate": "2025-05-29",
+      "isRecent": true
+    },
+    {
+      "symbol": "POKT",
+      "name": "Pocket Network",
+      "koreanName": "포켓네트워크",
+      "market": "KRW-POKT",
+      "listingDate": "2025-05-29",
+      "isRecent": true
+    },
+    {
+      "symbol": "OM",
+      "name": "MANTRA",
+      "koreanName": "만트라",
+      "market": "KRW-OM",
+      "listingDate": "2025-05-20",
+      "isRecent": true
+    },
+    {
+      "symbol": "NXPC",
+      "name": "Nexpace",
+      "koreanName": "넥스페이스",
+      "market": "KRW-NXPC",
+      "listingDate": "2025-05-14",
+      "isRecent": true
+    },
+    {
+      "symbol": "PENGU",
+      "name": "Pudgy Penguins",
+      "koreanName": "펏지펭귄",
+      "market": "KRW-PENGU",
+      "listingDate": "2025-05-08",
+      "isRecent": false
+    },
+    {
+      "symbol": "TIA",
+      "name": "Celestia",
+      "koreanName": "셀레스티아",
+      "market": "KRW-TIA",
+      "listingDate": "2025-05-07",
+      "isRecent": false
+    },
+    {
+      "symbol": "SIGN",
+      "name": "Sign",
+      "koreanName": "사인",
+      "market": "KRW-SIGN",
+      "listingDate": "2025-04-28",
       "isRecent": false
     },
     {
@@ -69,6 +373,14 @@
       "name": "Filecoin",
       "koreanName": "파일코인",
       "market": "KRW-FIL",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "XRP",
+      "name": "XRP",
+      "koreanName": "엑스알피(리플)",
+      "market": "KRW-XRP",
       "listingDate": "2025-04-22",
       "isRecent": false
     },
@@ -129,14 +441,6 @@
       "isRecent": false
     },
     {
-      "symbol": "ETC",
-      "name": "Ethereum Classic",
-      "koreanName": "이더리움클래식",
-      "market": "KRW-ETC",
-      "listingDate": "2025-04-22",
-      "isRecent": false
-    },
-    {
       "symbol": "MINA",
       "name": "Mina",
       "koreanName": "미나",
@@ -149,22 +453,6 @@
       "name": "Ada",
       "koreanName": "에이다",
       "market": "KRW-ADA",
-      "listingDate": "2025-04-22",
-      "isRecent": false
-    },
-    {
-      "symbol": "STORJ",
-      "name": "Storj",
-      "koreanName": "스토리지",
-      "market": "KRW-STORJ",
-      "listingDate": "2025-04-22",
-      "isRecent": false
-    },
-    {
-      "symbol": "APT",
-      "name": "Aptos",
-      "koreanName": "앱토스",
-      "market": "KRW-APT",
       "listingDate": "2025-04-22",
       "isRecent": false
     },
@@ -193,10 +481,26 @@
       "isRecent": false
     },
     {
+      "symbol": "STORJ",
+      "name": "Storj",
+      "koreanName": "스토리지",
+      "market": "KRW-STORJ",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
       "symbol": "LINK",
       "name": "Chainlink",
       "koreanName": "체인링크",
       "market": "KRW-LINK",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "APT",
+      "name": "Aptos",
+      "koreanName": "앱토스",
+      "market": "KRW-APT",
       "listingDate": "2025-04-22",
       "isRecent": false
     },
@@ -217,10 +521,10 @@
       "isRecent": false
     },
     {
-      "symbol": "XTZ",
-      "name": "Tezos",
-      "koreanName": "테조스",
-      "market": "KRW-XTZ",
+      "symbol": "DOT",
+      "name": "Polkadot",
+      "koreanName": "폴카닷",
+      "market": "KRW-DOT",
       "listingDate": "2025-04-22",
       "isRecent": false
     },
@@ -233,14 +537,646 @@
       "isRecent": false
     },
     {
+      "symbol": "SHIB",
+      "name": "Shiba Inu",
+      "koreanName": "시바이누",
+      "market": "KRW-SHIB",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "XTZ",
+      "name": "Tezos",
+      "koreanName": "테조스",
+      "market": "KRW-XTZ",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "WAL",
+      "name": "Walrus",
+      "koreanName": "월러스",
+      "market": "KRW-WAL",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
       "symbol": "HBAR",
       "name": "Hedera",
       "koreanName": "헤데라",
       "market": "KRW-HBAR",
       "listingDate": "2025-04-22",
       "isRecent": false
+    },
+    {
+      "symbol": "SEI",
+      "name": "Sei",
+      "koreanName": "세이",
+      "market": "KRW-SEI",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "AVAX",
+      "name": "Avalanche",
+      "koreanName": "아발란체",
+      "market": "KRW-AVAX",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "STX",
+      "name": "Stacks",
+      "koreanName": "스택스",
+      "market": "KRW-STX",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "INJ",
+      "name": "Injective",
+      "koreanName": "인젝티브",
+      "market": "KRW-INJ",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ARB",
+      "name": "Arbitrum",
+      "koreanName": "아비트럼",
+      "market": "KRW-ARB",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "BCH",
+      "name": "Bitcoin Cash",
+      "koreanName": "비트코인캐시",
+      "market": "KRW-BCH",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "NEO",
+      "name": "NEO",
+      "koreanName": "네오",
+      "market": "KRW-NEO",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "BAT",
+      "name": "Basic Attention Token",
+      "koreanName": "베이직어텐션토큰",
+      "market": "KRW-BAT",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "SAND",
+      "name": "The Sandbox",
+      "koreanName": "샌드박스",
+      "market": "KRW-SAND",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ZRO",
+      "name": "LayerZero",
+      "koreanName": "레이어제로",
+      "market": "KRW-ZRO",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "MNT",
+      "name": "Mantle",
+      "koreanName": "맨틀",
+      "market": "KRW-MNT",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ARDR",
+      "name": "Ardor",
+      "koreanName": "아더",
+      "market": "KRW-ARDR",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "1INCH",
+      "name": "1inch Network",
+      "koreanName": "1인치네트워크",
+      "market": "KRW-1INCH",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ALGO",
+      "name": "Algorand",
+      "koreanName": "알고랜드",
+      "market": "KRW-ALGO",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "GRT",
+      "name": "The Graph",
+      "koreanName": "더그래프",
+      "market": "KRW-GRT",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "MOVE",
+      "name": "Movement",
+      "koreanName": "무브먼트",
+      "market": "KRW-MOVE",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "PEPE",
+      "name": "Pepe",
+      "koreanName": "페페",
+      "market": "KRW-PEPE",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "SC",
+      "name": "Siacoin",
+      "koreanName": "시아코인",
+      "market": "KRW-SC",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "MOCA",
+      "name": "Moca Network",
+      "koreanName": "모카네트워크",
+      "market": "KRW-MOCA",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "A",
+      "name": "Vaulta",
+      "koreanName": "볼타",
+      "market": "KRW-A",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "BONK",
+      "name": "Bonk",
+      "koreanName": "봉크",
+      "market": "KRW-BONK",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "AAVE",
+      "name": "Aave",
+      "koreanName": "에이브",
+      "market": "KRW-AAVE",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ATH",
+      "name": "Aethir",
+      "koreanName": "에이셔",
+      "market": "KRW-ATH",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "W",
+      "name": "Wormhole",
+      "koreanName": "웜홀",
+      "market": "KRW-W",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "VET",
+      "name": "VeChain",
+      "koreanName": "비체인",
+      "market": "KRW-VET",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "MANA",
+      "name": "Decentraland",
+      "koreanName": "디센트럴랜드",
+      "market": "KRW-MANA",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "POL",
+      "name": "Polygon Ecosystem Token",
+      "koreanName": "폴리곤에코시스템토큰",
+      "market": "KRW-POL",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "AUCTION",
+      "name": "Bounce",
+      "koreanName": "바운스토큰",
+      "market": "KRW-AUCTION",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "JUP",
+      "name": "Jupiter",
+      "koreanName": "주피터",
+      "market": "KRW-JUP",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "WCT",
+      "name": "WalletConnect",
+      "koreanName": "월렛커넥트",
+      "market": "KRW-WCT",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ARK",
+      "name": "Ark",
+      "koreanName": "아크",
+      "market": "KRW-ARK",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "CELO",
+      "name": "Celo",
+      "koreanName": "셀로",
+      "market": "KRW-CELO",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "AXS",
+      "name": "Axie Infinity",
+      "koreanName": "엑시인피니티",
+      "market": "KRW-AXS",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "GRS",
+      "name": "Groestlcoin",
+      "koreanName": "그로스톨코인",
+      "market": "KRW-GRS",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "BERA",
+      "name": "Berachain",
+      "koreanName": "베라체인",
+      "market": "KRW-BERA",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "VANA",
+      "name": "Vana",
+      "koreanName": "바나",
+      "market": "KRW-VANA",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "QTUM",
+      "name": "Qtum",
+      "koreanName": "퀀텀",
+      "market": "KRW-QTUM",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "IMX",
+      "name": "Immutable X",
+      "koreanName": "이뮤터블엑스",
+      "market": "KRW-IMX",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "PYTH",
+      "name": "Pyth Network",
+      "koreanName": "피스네트워크",
+      "market": "KRW-PYTH",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "STG",
+      "name": "Stargate Finance",
+      "koreanName": "스타게이트파이낸스",
+      "market": "KRW-STG",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "FLOW",
+      "name": "Flow",
+      "koreanName": "플로우",
+      "market": "KRW-FLOW",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "UNI",
+      "name": "Uniswap",
+      "koreanName": "유니스왑",
+      "market": "KRW-UNI",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "THETA",
+      "name": "Theta Token",
+      "koreanName": "쎄타토큰",
+      "market": "KRW-THETA",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "AKT",
+      "name": "Akash Network",
+      "koreanName": "아카시네트워크",
+      "market": "KRW-AKT",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "LAYER",
+      "name": "Solayer",
+      "koreanName": "솔레이어",
+      "market": "KRW-LAYER",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "CRO",
+      "name": "Cronos",
+      "koreanName": "크로노스",
+      "market": "KRW-CRO",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "KAVA",
+      "name": "Kava",
+      "koreanName": "카바",
+      "market": "KRW-KAVA",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ATOM",
+      "name": "Cosmos",
+      "koreanName": "코스모스",
+      "market": "KRW-ATOM",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "DRIFT",
+      "name": "Drift",
+      "koreanName": "드리프트",
+      "market": "KRW-DRIFT",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ME",
+      "name": "Magic Eden",
+      "koreanName": "매직에덴",
+      "market": "KRW-ME",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "GAS",
+      "name": "GAS",
+      "koreanName": "가스",
+      "market": "KRW-GAS",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "GLM",
+      "name": "Golem",
+      "koreanName": "골렘",
+      "market": "KRW-GLM",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "BLUR",
+      "name": "Blur",
+      "koreanName": "블러",
+      "market": "KRW-BLUR",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ZRX",
+      "name": "0x Protocol",
+      "koreanName": "제로엑스",
+      "market": "KRW-ZRX",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "DEEP",
+      "name": "DeepBook",
+      "koreanName": "딥북",
+      "market": "KRW-DEEP",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "MEW",
+      "name": "cat in a dogs world",
+      "koreanName": "캣인어독스월드",
+      "market": "KRW-MEW",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "EGLD",
+      "name": "MultiversX",
+      "koreanName": "멀티버스엑스",
+      "market": "KRW-EGLD",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "CHZ",
+      "name": "Chiliz",
+      "koreanName": "칠리즈",
+      "market": "KRW-CHZ",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "GMT",
+      "name": "Stepn",
+      "koreanName": "스테픈",
+      "market": "KRW-GMT",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ARKM",
+      "name": "Arkham",
+      "koreanName": "아캄",
+      "market": "KRW-ARKM",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "BTT",
+      "name": "BitTorrent",
+      "koreanName": "비트토렌트",
+      "market": "KRW-BTT",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "IOTA",
+      "name": "IOTA",
+      "koreanName": "아이오타",
+      "market": "KRW-IOTA",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "CTC",
+      "name": "Creditcoin",
+      "koreanName": "크레딧코인",
+      "market": "KRW-CTC",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "KAITO",
+      "name": "KAITO",
+      "koreanName": "카이토",
+      "market": "KRW-KAITO",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "GAME2",
+      "name": "GameBuild",
+      "koreanName": "게임빌드",
+      "market": "KRW-GAME2",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "BEAM",
+      "name": "Beam",
+      "koreanName": "빔",
+      "market": "KRW-BEAM",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "AERGO",
+      "name": "Aergo",
+      "koreanName": "아르고",
+      "market": "KRW-AERGO",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "CARV",
+      "name": "CARV",
+      "koreanName": "카브",
+      "market": "KRW-CARV",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ONT",
+      "name": "Ontology",
+      "koreanName": "온톨로지",
+      "market": "KRW-ONT",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "JTO",
+      "name": "Jito",
+      "koreanName": "지토",
+      "market": "KRW-JTO",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "IQ",
+      "name": "IQ.wiki",
+      "koreanName": "아이큐",
+      "market": "KRW-IQ",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "PENDLE",
+      "name": "Pendle",
+      "koreanName": "펜들",
+      "market": "KRW-PENDLE",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "BIGTIME",
+      "name": "Big Time",
+      "koreanName": "빅타임",
+      "market": "KRW-BIGTIME",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "PUNDIX",
+      "name": "Pundi X",
+      "koreanName": "펀디엑스",
+      "market": "KRW-PUNDIX",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "T",
+      "name": "Threshold",
+      "koreanName": "쓰레스홀드",
+      "market": "KRW-T",
+      "listingDate": "2025-04-22",
+      "isRecent": false
+    },
+    {
+      "symbol": "ANIME",
+      "name": "Animecoin",
+      "koreanName": "애니메코인",
+      "market": "KRW-ANIME",
+      "listingDate": "2025-04-22",
+      "isRecent": false
     }
   ],
-  "recentCount": 7,
-  "lastUpdated": "2025-11-07T23:18:51.012Z"
+  "recentCount": 43,
+  "lastUpdated": "2025-11-08T03:10:07.194Z"
 }

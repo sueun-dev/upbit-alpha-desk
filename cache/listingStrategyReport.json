@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2025-11-07T23:19:07.809Z",
+  "generatedAt": "2025-11-08T03:10:27.879Z",
   "months": 6,
-  "coinsAnalyzed": 14,
+  "coinsAnalyzed": 50,
   "scenarioDefinitions": [
     {
       "id": "D0_OPEN",
@@ -40,45 +40,45 @@
       "label": "상장 직후 숏",
       "description": "상장 순간에 진입 후 24시간 보유",
       "entryHours": 0,
-      "sampleSize": 14,
-      "averageReturn": -19.43,
-      "successRate": 21.4
+      "sampleSize": 50,
+      "averageReturn": -2.89,
+      "successRate": 52
     },
     {
       "scenarioId": "D0_12H",
       "label": "상장 +12시간 숏",
       "description": "상장 12시간 뒤 진입 후 24시간 보유",
       "entryHours": 12,
-      "sampleSize": 14,
-      "averageReturn": -6.5,
-      "successRate": 50
+      "sampleSize": 50,
+      "averageReturn": -17.54,
+      "successRate": 40
     },
     {
       "scenarioId": "D1_OPEN",
       "label": "상장 +1일 숏",
       "description": "상장 다음날 진입 후 24시간 보유",
       "entryHours": 24,
-      "sampleSize": 14,
-      "averageReturn": 12.83,
-      "successRate": 78.6
+      "sampleSize": 50,
+      "averageReturn": -30.1,
+      "successRate": 22
     },
     {
       "scenarioId": "D3_OPEN",
       "label": "상장 +3일 숏",
       "description": "상장 3일 뒤 진입 후 24시간 보유",
       "entryHours": 72,
-      "sampleSize": 13,
-      "averageReturn": 6.18,
-      "successRate": 84.6
+      "sampleSize": 50,
+      "averageReturn": 3.08,
+      "successRate": 68
     },
     {
       "scenarioId": "D5_OPEN",
       "label": "상장 +5일 숏",
       "description": "상장 5일 뒤 진입 후 24시간 보유",
       "entryHours": 120,
-      "sampleSize": 12,
-      "averageReturn": -2.92,
-      "successRate": 25
+      "sampleSize": 49,
+      "averageReturn": 3.22,
+      "successRate": 73.5
     }
   ],
   "coins": [
@@ -87,34 +87,43 @@
       "market": "KRW-MMT",
       "name": "Momentum",
       "koreanName": "모멘텀",
-      "listingDate": "2025-11-05",
+      "listingDate": "2025-11-04",
       "scenarios": [
         {
           "scenarioId": "D0_OPEN",
           "label": "상장 직후 숏",
-          "date": "2025-11-04",
+          "date": "2025-11-03",
           "entryHours": 0,
+          "entryPrice": 0.5375,
+          "exitPrice": 0.75558,
+          "returnPct": -40.57
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-11-04",
+          "entryHours": 12,
+          "entryPrice": 0.4561,
+          "exitPrice": 1.78931,
+          "returnPct": -292.31
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-11-04",
+          "entryHours": 24,
           "entryPrice": 0.67124,
           "exitPrice": 1.0999,
           "returnPct": -63.86
         },
         {
-          "scenarioId": "D0_12H",
-          "label": "상장 +12시간 숏",
-          "date": "2025-11-05",
-          "entryHours": 12,
-          "entryPrice": 2.06228,
-          "exitPrice": 0.6938,
-          "returnPct": 66.36
-        },
-        {
-          "scenarioId": "D1_OPEN",
-          "label": "상장 +1일 숏",
-          "date": "2025-11-05",
-          "entryHours": 24,
-          "entryPrice": 1.00408,
-          "exitPrice": 0.5194,
-          "returnPct": 48.27
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-11-06",
+          "entryHours": 72,
+          "entryPrice": 0.5463,
+          "exitPrice": 0.5534,
+          "returnPct": -1.3
         }
       ]
     },
@@ -123,205 +132,52 @@
       "market": "KRW-XPL",
       "name": "Plasma",
       "koreanName": "플라즈마",
-      "listingDate": "2025-09-25",
+      "listingDate": "2025-09-24",
       "scenarios": [
         {
           "scenarioId": "D0_OPEN",
           "label": "상장 직후 숏",
-          "date": "2025-09-24",
+          "date": "2025-09-23",
           "entryHours": 0,
+          "entryPrice": 0.758,
+          "exitPrice": 0.6926,
+          "returnPct": 8.63
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-09-24",
+          "entryHours": 12,
+          "entryPrice": 0.6851,
+          "exitPrice": 0.7493,
+          "returnPct": -9.37
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-09-24",
+          "entryHours": 24,
           "entryPrice": 0.6949,
           "exitPrice": 0.8854,
           "returnPct": -27.41
         },
         {
-          "scenarioId": "D0_12H",
-          "label": "상장 +12시간 숏",
-          "date": "2025-09-25",
-          "entryHours": 12,
-          "entryPrice": 0.7562,
-          "exitPrice": 1.2708,
-          "returnPct": -68.05
-        },
-        {
-          "scenarioId": "D1_OPEN",
-          "label": "상장 +1일 숏",
-          "date": "2025-09-25",
-          "entryHours": 24,
-          "entryPrice": 0.9285,
-          "exitPrice": 1.2286,
-          "returnPct": -32.32
-        },
-        {
           "scenarioId": "D3_OPEN",
           "label": "상장 +3일 숏",
-          "date": "2025-09-27",
+          "date": "2025-09-26",
           "entryHours": 72,
-          "entryPrice": 1.4862,
-          "exitPrice": 1.4347,
-          "returnPct": 3.47
+          "entryPrice": 1.2169,
+          "exitPrice": 1.485,
+          "returnPct": -22.03
         },
         {
           "scenarioId": "D5_OPEN",
           "label": "상장 +5일 숏",
-          "date": "2025-09-29",
+          "date": "2025-09-28",
           "entryHours": 120,
-          "entryPrice": 1.3213,
-          "exitPrice": 0.9871,
-          "returnPct": 25.29
-        }
-      ]
-    },
-    {
-      "symbol": "KITE",
-      "market": "KRW-KITE",
-      "name": "Kite",
-      "koreanName": "카이트",
-      "listingDate": "2025-11-03",
-      "scenarios": [
-        {
-          "scenarioId": "D0_OPEN",
-          "label": "상장 직후 숏",
-          "date": "2025-11-02",
-          "entryHours": 0,
-          "entryPrice": 0.1424,
-          "exitPrice": 0.07639,
-          "returnPct": 46.36
-        },
-        {
-          "scenarioId": "D0_12H",
-          "label": "상장 +12시간 숏",
-          "date": "2025-11-03",
-          "entryHours": 12,
-          "entryPrice": 0.13882,
-          "exitPrice": 0.07227,
-          "returnPct": 47.94
-        },
-        {
-          "scenarioId": "D1_OPEN",
-          "label": "상장 +1일 숏",
-          "date": "2025-11-03",
-          "entryHours": 24,
-          "entryPrice": 0.08276,
-          "exitPrice": 0.0701,
-          "returnPct": 15.3
-        },
-        {
-          "scenarioId": "D3_OPEN",
-          "label": "상장 +3일 숏",
-          "date": "2025-11-05",
-          "entryHours": 72,
-          "entryPrice": 0.08578,
-          "exitPrice": 0.06994,
-          "returnPct": 18.47
-        }
-      ]
-    },
-    {
-      "symbol": "ENA",
-      "market": "KRW-ENA",
-      "name": "Ethena",
-      "koreanName": "에테나",
-      "listingDate": "2025-07-11",
-      "scenarios": [
-        {
-          "scenarioId": "D0_OPEN",
-          "label": "상장 직후 숏",
-          "date": "2025-07-10",
-          "entryHours": 0,
-          "entryPrice": 0.2914,
-          "exitPrice": 0.3413,
-          "returnPct": -17.12
-        },
-        {
-          "scenarioId": "D0_12H",
-          "label": "상장 +12시간 숏",
-          "date": "2025-07-11",
-          "entryHours": 12,
-          "entryPrice": 0.3255,
-          "exitPrice": 0.3361,
-          "returnPct": -3.26
-        },
-        {
-          "scenarioId": "D1_OPEN",
-          "label": "상장 +1일 숏",
-          "date": "2025-07-11",
-          "entryHours": 24,
-          "entryPrice": 0.3513,
-          "exitPrice": 0.3156,
-          "returnPct": 10.16
-        },
-        {
-          "scenarioId": "D3_OPEN",
-          "label": "상장 +3일 숏",
-          "date": "2025-07-13",
-          "entryHours": 72,
-          "entryPrice": 0.345,
-          "exitPrice": 0.3426,
-          "returnPct": 0.7
-        },
-        {
-          "scenarioId": "D5_OPEN",
-          "label": "상장 +5일 숏",
-          "date": "2025-07-15",
-          "entryHours": 120,
-          "entryPrice": 0.3364,
-          "exitPrice": 0.3663,
-          "returnPct": -8.89
-        }
-      ]
-    },
-    {
-      "symbol": "AVNT",
-      "market": "KRW-AVNT",
-      "name": "Avantis",
-      "koreanName": "아반티스",
-      "listingDate": "2025-09-15",
-      "scenarios": [
-        {
-          "scenarioId": "D0_OPEN",
-          "label": "상장 직후 숏",
-          "date": "2025-09-14",
-          "entryHours": 0,
-          "entryPrice": 0.8499,
-          "exitPrice": 1.1011,
-          "returnPct": -29.56
-        },
-        {
-          "scenarioId": "D0_12H",
-          "label": "상장 +12시간 숏",
-          "date": "2025-09-15",
-          "entryHours": 12,
-          "entryPrice": 0.9036,
-          "exitPrice": 1.1112,
-          "returnPct": -22.97
-        },
-        {
-          "scenarioId": "D1_OPEN",
-          "label": "상장 +1일 숏",
-          "date": "2025-09-15",
-          "entryHours": 24,
-          "entryPrice": 1.0896,
-          "exitPrice": 0.9722,
-          "returnPct": 10.77
-        },
-        {
-          "scenarioId": "D3_OPEN",
-          "label": "상장 +3일 숏",
-          "date": "2025-09-17",
-          "entryHours": 72,
-          "entryPrice": 0.9701,
-          "exitPrice": 1.0673,
-          "returnPct": -10.02
-        },
-        {
-          "scenarioId": "D5_OPEN",
-          "label": "상장 +5일 숏",
-          "date": "2025-09-19",
-          "entryHours": 120,
-          "entryPrice": 1.0787,
-          "exitPrice": 1.4615,
-          "returnPct": -35.49
+          "entryPrice": 1.4747,
+          "exitPrice": 1.255,
+          "returnPct": 14.9
         }
       ]
     },
@@ -330,106 +186,268 @@
       "market": "KRW-0G",
       "name": "0G",
       "koreanName": "제로지",
-      "listingDate": "2025-09-22",
+      "listingDate": "2025-09-21",
       "scenarios": [
         {
           "scenarioId": "D0_OPEN",
           "label": "상장 직후 숏",
-          "date": "2025-09-21",
+          "date": "2025-09-20",
           "entryHours": 0,
+          "entryPrice": 2.7722,
+          "exitPrice": 3.3,
+          "returnPct": -19.04
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-09-21",
+          "entryHours": 12,
+          "entryPrice": 2.5944,
+          "exitPrice": 3.6046,
+          "returnPct": -38.94
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-09-21",
+          "entryHours": 24,
           "entryPrice": 3.3526,
           "exitPrice": 4.9812,
           "returnPct": -48.58
         },
         {
-          "scenarioId": "D0_12H",
-          "label": "상장 +12시간 숏",
-          "date": "2025-09-22",
-          "entryHours": 12,
-          "entryPrice": 3.3422,
-          "exitPrice": 6.0552,
-          "returnPct": -81.17
-        },
-        {
-          "scenarioId": "D1_OPEN",
-          "label": "상장 +1일 숏",
-          "date": "2025-09-22",
-          "entryHours": 24,
-          "entryPrice": 4.8781,
-          "exitPrice": 5.2299,
-          "returnPct": -7.21
-        },
-        {
           "scenarioId": "D3_OPEN",
           "label": "상장 +3일 숏",
-          "date": "2025-09-24",
+          "date": "2025-09-23",
           "entryHours": 72,
-          "entryPrice": 4.9342,
-          "exitPrice": 3.7706,
-          "returnPct": 23.58
+          "entryPrice": 5.3993,
+          "exitPrice": 5.0081,
+          "returnPct": 7.25
         },
         {
           "scenarioId": "D5_OPEN",
           "label": "상장 +5일 숏",
-          "date": "2025-09-26",
+          "date": "2025-09-25",
           "entryHours": 120,
-          "entryPrice": 3.3894,
-          "exitPrice": 3.5904,
-          "returnPct": -5.93
+          "entryPrice": 3.6954,
+          "exitPrice": 3.4206,
+          "returnPct": 7.44
         }
       ]
     },
     {
-      "symbol": "PENGU",
-      "market": "KRW-PENGU",
-      "name": "Pudgy Penguins",
-      "koreanName": "펏지펭귄",
-      "listingDate": "2025-05-09",
+      "symbol": "AVNT",
+      "market": "KRW-AVNT",
+      "name": "Avantis",
+      "koreanName": "아반티스",
+      "listingDate": "2025-09-14",
       "scenarios": [
         {
           "scenarioId": "D0_OPEN",
           "label": "상장 직후 숏",
-          "date": "2025-05-08",
+          "date": "2025-09-13",
           "entryHours": 0,
-          "entryPrice": 0.013643,
-          "exitPrice": 0.014499,
-          "returnPct": -6.27
+          "entryPrice": 0.4297,
+          "exitPrice": 0.8241,
+          "returnPct": -91.78
         },
         {
           "scenarioId": "D0_12H",
           "label": "상장 +12시간 숏",
-          "date": "2025-05-09",
+          "date": "2025-09-14",
           "entryHours": 12,
-          "entryPrice": 0.014016,
-          "exitPrice": 0.013663,
-          "returnPct": 2.52
+          "entryPrice": 0.7246,
+          "exitPrice": 0.8783,
+          "returnPct": -21.21
         },
         {
           "scenarioId": "D1_OPEN",
           "label": "상장 +1일 숏",
-          "date": "2025-05-09",
+          "date": "2025-09-14",
           "entryHours": 24,
-          "entryPrice": 0.014827,
-          "exitPrice": 0.013615,
-          "returnPct": 8.17
+          "entryPrice": 0.8499,
+          "exitPrice": 1.1011,
+          "returnPct": -29.56
         },
         {
           "scenarioId": "D3_OPEN",
           "label": "상장 +3일 숏",
-          "date": "2025-05-11",
+          "date": "2025-09-16",
           "entryHours": 72,
-          "entryPrice": 0.013848,
-          "exitPrice": 0.013374,
-          "returnPct": 3.42
+          "entryPrice": 0.9806,
+          "exitPrice": 1.0205,
+          "returnPct": -4.07
         },
         {
           "scenarioId": "D5_OPEN",
           "label": "상장 +5일 숏",
-          "date": "2025-05-13",
+          "date": "2025-09-18",
           "entryHours": 120,
-          "entryPrice": 0.013766,
-          "exitPrice": 0.015358,
-          "returnPct": -11.56
+          "entryPrice": 1.1141,
+          "exitPrice": 1.0849,
+          "returnPct": 2.62
+        }
+      ]
+    },
+    {
+      "symbol": "ENA",
+      "market": "KRW-ENA",
+      "name": "Ethena",
+      "koreanName": "에테나",
+      "listingDate": "2025-07-10",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-07-09",
+          "entryHours": 0,
+          "entryPrice": 0.2692,
+          "exitPrice": 0.291,
+          "returnPct": -8.1
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-07-10",
+          "entryHours": 12,
+          "entryPrice": 0.2907,
+          "exitPrice": 0.3281,
+          "returnPct": -12.87
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-07-10",
+          "entryHours": 24,
+          "entryPrice": 0.2914,
+          "exitPrice": 0.3413,
+          "returnPct": -17.12
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-07-12",
+          "entryHours": 72,
+          "entryPrice": 0.321,
+          "exitPrice": 0.3442,
+          "returnPct": -7.23
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-07-14",
+          "entryHours": 120,
+          "entryPrice": 0.3471,
+          "exitPrice": 0.3466,
+          "returnPct": 0.14
+        }
+      ]
+    },
+    {
+      "symbol": "KITE",
+      "market": "KRW-KITE",
+      "name": "Kite",
+      "koreanName": "카이트",
+      "listingDate": "2025-11-01",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-10-31",
+          "entryHours": 0,
+          "entryPrice": 0.14544,
+          "exitPrice": 0.13275,
+          "returnPct": 8.73
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-11-01",
+          "entryHours": 12,
+          "entryPrice": 0.14782,
+          "exitPrice": 0.13472,
+          "returnPct": 8.86
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-11-01",
+          "entryHours": 24,
+          "entryPrice": 0.13388,
+          "exitPrice": 0.1441,
+          "returnPct": -7.63
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-11-03",
+          "entryHours": 72,
+          "entryPrice": 0.08276,
+          "exitPrice": 0.0701,
+          "returnPct": 15.3
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-11-05",
+          "entryHours": 120,
+          "entryPrice": 0.08578,
+          "exitPrice": 0.06994,
+          "returnPct": 18.47
+        }
+      ]
+    },
+    {
+      "symbol": "OPEN",
+      "market": "KRW-OPEN",
+      "name": "OpenLedger",
+      "koreanName": "오픈렛저",
+      "listingDate": "2025-09-09",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-09-08",
+          "entryHours": 0,
+          "entryPrice": 1.5038,
+          "exitPrice": 1.0998,
+          "returnPct": 26.87
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-09-09",
+          "entryHours": 12,
+          "entryPrice": 1.3717,
+          "exitPrice": 1.1928,
+          "returnPct": 13.04
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-09-09",
+          "entryHours": 24,
+          "entryPrice": 1.1188,
+          "exitPrice": 0.9964,
+          "returnPct": 10.94
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-09-11",
+          "entryHours": 72,
+          "entryPrice": 0.8876,
+          "exitPrice": 0.9256,
+          "returnPct": -4.28
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-09-13",
+          "entryHours": 120,
+          "entryPrice": 0.9668,
+          "exitPrice": 0.9802,
+          "returnPct": -1.39
         }
       ]
     },
@@ -438,52 +456,52 @@
       "market": "KRW-WLFI",
       "name": "World Liberty Financial",
       "koreanName": "월드리버티파이낸셜",
-      "listingDate": "2025-09-01",
+      "listingDate": "2025-08-31",
       "scenarios": [
         {
           "scenarioId": "D0_OPEN",
           "label": "상장 직후 숏",
-          "date": "2025-08-31",
+          "date": "2025-08-30",
           "entryHours": 0,
+          "entryPrice": 0.2779,
+          "exitPrice": 0.3308,
+          "returnPct": -19.04
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-08-31",
+          "entryHours": 12,
+          "entryPrice": 0.3012,
+          "exitPrice": 0.3697,
+          "returnPct": -22.74
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-08-31",
+          "entryHours": 24,
           "entryPrice": 0.3313,
           "exitPrice": 0.2542,
           "returnPct": 23.27
         },
         {
-          "scenarioId": "D0_12H",
-          "label": "상장 +12시간 숏",
-          "date": "2025-09-01",
-          "entryHours": 12,
-          "entryPrice": 0.3571,
-          "exitPrice": 0.2295,
-          "returnPct": 35.73
-        },
-        {
-          "scenarioId": "D1_OPEN",
-          "label": "상장 +1일 숏",
-          "date": "2025-09-01",
-          "entryHours": 24,
-          "entryPrice": 0.2595,
-          "exitPrice": 0.2213,
-          "returnPct": 14.72
-        },
-        {
           "scenarioId": "D3_OPEN",
           "label": "상장 +3일 숏",
-          "date": "2025-09-03",
+          "date": "2025-09-02",
           "entryHours": 72,
-          "entryPrice": 0.2209,
-          "exitPrice": 0.1752,
-          "returnPct": 20.69
+          "entryPrice": 0.2184,
+          "exitPrice": 0.2186,
+          "returnPct": -0.09
         },
         {
           "scenarioId": "D5_OPEN",
           "label": "상장 +5일 숏",
-          "date": "2025-09-05",
+          "date": "2025-09-04",
           "entryHours": 120,
-          "entryPrice": 0.1846,
-          "exitPrice": 0.1924,
-          "returnPct": -4.23
+          "entryPrice": 0.1661,
+          "exitPrice": 0.1808,
+          "returnPct": -8.85
         }
       ]
     },
@@ -492,52 +510,52 @@
       "market": "KRW-WLD",
       "name": "Worldcoin",
       "koreanName": "월드코인",
-      "listingDate": "2025-09-09",
+      "listingDate": "2025-09-08",
       "scenarios": [
         {
           "scenarioId": "D0_OPEN",
           "label": "상장 직후 숏",
-          "date": "2025-09-08",
+          "date": "2025-09-07",
           "entryHours": 0,
+          "entryPrice": 1.0635,
+          "exitPrice": 1.5096,
+          "returnPct": -41.95
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-09-08",
+          "entryHours": 12,
+          "entryPrice": 1.1718,
+          "exitPrice": 1.8705,
+          "returnPct": -59.63
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-09-08",
+          "entryHours": 24,
           "entryPrice": 1.4951,
           "exitPrice": 1.8191,
           "returnPct": -21.67
         },
         {
-          "scenarioId": "D0_12H",
-          "label": "상장 +12시간 숏",
-          "date": "2025-09-09",
-          "entryHours": 12,
-          "entryPrice": 1.7214,
-          "exitPrice": 1.9313,
-          "returnPct": -12.19
-        },
-        {
-          "scenarioId": "D1_OPEN",
-          "label": "상장 +1일 숏",
-          "date": "2025-09-09",
-          "entryHours": 24,
-          "entryPrice": 1.8396,
-          "exitPrice": 1.8574,
-          "returnPct": -0.97
-        },
-        {
           "scenarioId": "D3_OPEN",
           "label": "상장 +3일 숏",
-          "date": "2025-09-11",
+          "date": "2025-09-10",
           "entryHours": 72,
-          "entryPrice": 1.6182,
-          "exitPrice": 1.5671,
-          "returnPct": 3.16
+          "entryPrice": 1.8748,
+          "exitPrice": 1.6096,
+          "returnPct": 14.15
         },
         {
           "scenarioId": "D5_OPEN",
           "label": "상장 +5일 숏",
-          "date": "2025-09-13",
+          "date": "2025-09-12",
           "entryHours": 120,
-          "entryPrice": 1.6142,
-          "exitPrice": 1.6005,
-          "returnPct": 0.85
+          "entryPrice": 1.5986,
+          "exitPrice": 1.5983,
+          "returnPct": 0.02
         }
       ]
     },
@@ -546,106 +564,52 @@
       "market": "KRW-IP",
       "name": "Story",
       "koreanName": "스토리",
-      "listingDate": "2025-08-08",
+      "listingDate": "2025-08-07",
       "scenarios": [
         {
           "scenarioId": "D0_OPEN",
           "label": "상장 직후 숏",
-          "date": "2025-08-07",
+          "date": "2025-08-06",
           "entryHours": 0,
+          "entryPrice": 5.7268,
+          "exitPrice": 6.1249,
+          "returnPct": -6.95
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-08-07",
+          "entryHours": 12,
+          "entryPrice": 5.901,
+          "exitPrice": 6.8741,
+          "returnPct": -16.49
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-08-07",
+          "entryHours": 24,
           "entryPrice": 6.1887,
           "exitPrice": 6.5256,
           "returnPct": -5.44
         },
         {
-          "scenarioId": "D0_12H",
-          "label": "상장 +12시간 숏",
-          "date": "2025-08-08",
-          "entryHours": 12,
-          "entryPrice": 6.7474,
-          "exitPrice": 6.4227,
-          "returnPct": 4.81
-        },
-        {
-          "scenarioId": "D1_OPEN",
-          "label": "상장 +1일 숏",
-          "date": "2025-08-08",
-          "entryHours": 24,
-          "entryPrice": 6.4951,
-          "exitPrice": 6.4065,
-          "returnPct": 1.36
-        },
-        {
           "scenarioId": "D3_OPEN",
           "label": "상장 +3일 숏",
-          "date": "2025-08-10",
+          "date": "2025-08-09",
           "entryHours": 72,
-          "entryPrice": 6.5919,
-          "exitPrice": 6.4845,
-          "returnPct": 1.63
+          "entryPrice": 6.468,
+          "exitPrice": 6.6879,
+          "returnPct": -3.4
         },
         {
           "scenarioId": "D5_OPEN",
           "label": "상장 +5일 숏",
-          "date": "2025-08-12",
+          "date": "2025-08-11",
           "entryHours": 120,
-          "entryPrice": 5.7644,
-          "exitPrice": 5.8365,
-          "returnPct": -1.25
-        }
-      ]
-    },
-    {
-      "symbol": "ENSO",
-      "market": "KRW-ENSO",
-      "name": "Enso",
-      "koreanName": "엔소",
-      "listingDate": "2025-10-29",
-      "scenarios": [
-        {
-          "scenarioId": "D0_OPEN",
-          "label": "상장 직후 숏",
-          "date": "2025-10-28",
-          "entryHours": 0,
-          "entryPrice": 1.672,
-          "exitPrice": 1.805,
-          "returnPct": -7.95
-        },
-        {
-          "scenarioId": "D0_12H",
-          "label": "상장 +12시간 숏",
-          "date": "2025-10-29",
-          "entryHours": 12,
-          "entryPrice": 1.68,
-          "exitPrice": 1.597,
-          "returnPct": 4.94
-        },
-        {
-          "scenarioId": "D1_OPEN",
-          "label": "상장 +1일 숏",
-          "date": "2025-10-29",
-          "entryHours": 24,
-          "entryPrice": 1.9,
-          "exitPrice": 1.449,
-          "returnPct": 23.74
-        },
-        {
-          "scenarioId": "D3_OPEN",
-          "label": "상장 +3일 숏",
-          "date": "2025-10-31",
-          "entryHours": 72,
-          "entryPrice": 1.389,
-          "exitPrice": 1.362,
-          "returnPct": 1.94
-        },
-        {
-          "scenarioId": "D5_OPEN",
-          "label": "상장 +5일 숏",
-          "date": "2025-11-02",
-          "entryHours": 120,
-          "entryPrice": 1.269,
-          "exitPrice": 1.086,
-          "returnPct": 14.42
+          "entryPrice": 6.4949,
+          "exitPrice": 5.8093,
+          "returnPct": 10.56
         }
       ]
     },
@@ -654,52 +618,106 @@
       "market": "KRW-LA",
       "name": "Lagrange",
       "koreanName": "라그랑주",
-      "listingDate": "2025-09-18",
+      "listingDate": "2025-09-17",
       "scenarios": [
         {
           "scenarioId": "D0_OPEN",
           "label": "상장 직후 숏",
-          "date": "2025-09-17",
+          "date": "2025-09-16",
           "entryHours": 0,
+          "entryPrice": 0.3675,
+          "exitPrice": 0.364,
+          "returnPct": 0.95
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-09-17",
+          "entryHours": 12,
+          "entryPrice": 0.3684,
+          "exitPrice": 0.3768,
+          "returnPct": -2.28
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-09-17",
+          "entryHours": 24,
           "entryPrice": 0.3668,
           "exitPrice": 0.4108,
           "returnPct": -12
         },
         {
-          "scenarioId": "D0_12H",
-          "label": "상장 +12시간 숏",
-          "date": "2025-09-18",
-          "entryHours": 12,
-          "entryPrice": 0.3773,
-          "exitPrice": 0.38,
-          "returnPct": -0.72
-        },
-        {
-          "scenarioId": "D1_OPEN",
-          "label": "상장 +1일 숏",
-          "date": "2025-09-18",
-          "entryHours": 24,
-          "entryPrice": 0.4117,
-          "exitPrice": 0.3788,
-          "returnPct": 7.99
-        },
-        {
           "scenarioId": "D3_OPEN",
           "label": "상장 +3일 숏",
-          "date": "2025-09-20",
+          "date": "2025-09-19",
           "entryHours": 72,
-          "entryPrice": 0.3655,
-          "exitPrice": 0.3872,
-          "returnPct": -5.94
+          "entryPrice": 0.375,
+          "exitPrice": 0.3667,
+          "returnPct": 2.21
         },
         {
           "scenarioId": "D5_OPEN",
           "label": "상장 +5일 숏",
-          "date": "2025-09-22",
+          "date": "2025-09-21",
           "entryHours": 120,
-          "entryPrice": 0.3604,
-          "exitPrice": 0.3733,
-          "returnPct": -3.58
+          "entryPrice": 0.3877,
+          "exitPrice": 0.3496,
+          "returnPct": 9.83
+        }
+      ]
+    },
+    {
+      "symbol": "ENSO",
+      "market": "KRW-ENSO",
+      "name": "Enso",
+      "koreanName": "엔소",
+      "listingDate": "2025-10-28",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-10-27",
+          "entryHours": 0,
+          "entryPrice": 1.975,
+          "exitPrice": 1.684,
+          "returnPct": 14.73
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-10-28",
+          "entryHours": 12,
+          "entryPrice": 1.798,
+          "exitPrice": 1.698,
+          "returnPct": 5.56
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-10-28",
+          "entryHours": 24,
+          "entryPrice": 1.672,
+          "exitPrice": 1.805,
+          "returnPct": -7.95
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-10-30",
+          "entryHours": 72,
+          "entryPrice": 1.519,
+          "exitPrice": 1.344,
+          "returnPct": 11.52
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-11-01",
+          "entryHours": 120,
+          "entryPrice": 1.329,
+          "exitPrice": 1.277,
+          "returnPct": 3.91
         }
       ]
     },
@@ -708,52 +726,160 @@
       "market": "KRW-FF",
       "name": "Falcon Finance",
       "koreanName": "팔콘파이낸스",
-      "listingDate": "2025-09-29",
+      "listingDate": "2025-09-28",
       "scenarios": [
         {
           "scenarioId": "D0_OPEN",
           "label": "상장 직후 숏",
-          "date": "2025-09-28",
+          "date": "2025-09-27",
           "entryHours": 0,
+          "entryPrice": 0.3989,
+          "exitPrice": 0.3176,
+          "returnPct": 20.38
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-09-28",
+          "entryHours": 12,
+          "entryPrice": 0.3989,
+          "exitPrice": 0.3176,
+          "returnPct": 20.38
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-09-28",
+          "entryHours": 24,
           "entryPrice": 0.3989,
           "exitPrice": 0.3524,
           "returnPct": 11.66
         },
         {
-          "scenarioId": "D0_12H",
-          "label": "상장 +12시간 숏",
-          "date": "2025-09-29",
-          "entryHours": 12,
-          "entryPrice": 0.3989,
-          "exitPrice": 0.2141,
-          "returnPct": 46.33
-        },
-        {
-          "scenarioId": "D1_OPEN",
-          "label": "상장 +1일 숏",
-          "date": "2025-09-29",
-          "entryHours": 24,
-          "entryPrice": 0.3176,
-          "exitPrice": 0.1623,
-          "returnPct": 48.9
-        },
-        {
           "scenarioId": "D3_OPEN",
           "label": "상장 +3일 숏",
-          "date": "2025-10-01",
+          "date": "2025-09-30",
           "entryHours": 72,
-          "entryPrice": 0.2035,
-          "exitPrice": 0.1812,
-          "returnPct": 10.96
+          "entryPrice": 0.1825,
+          "exitPrice": 0.2125,
+          "returnPct": -16.44
         },
         {
           "scenarioId": "D5_OPEN",
           "label": "상장 +5일 숏",
-          "date": "2025-10-03",
+          "date": "2025-10-02",
           "entryHours": 120,
-          "entryPrice": 0.1787,
-          "exitPrice": 0.1817,
-          "returnPct": -1.68
+          "entryPrice": 0.1795,
+          "exitPrice": 0.1881,
+          "returnPct": -4.79
+        }
+      ]
+    },
+    {
+      "symbol": "ZKC",
+      "market": "KRW-ZKC",
+      "name": "Boundless",
+      "koreanName": "바운드리스",
+      "listingDate": "2025-09-14",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-09-13",
+          "entryHours": 0,
+          "entryPrice": 1.4188,
+          "exitPrice": 1.1852,
+          "returnPct": 16.46
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-09-14",
+          "entryHours": 12,
+          "entryPrice": 1.4188,
+          "exitPrice": 1.1852,
+          "returnPct": 16.46
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-09-14",
+          "entryHours": 24,
+          "entryPrice": 1.4188,
+          "exitPrice": 1.0469,
+          "returnPct": 26.21
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-09-16",
+          "entryHours": 72,
+          "entryPrice": 0.8053,
+          "exitPrice": 0.7468,
+          "returnPct": 7.26
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-09-18",
+          "entryHours": 120,
+          "entryPrice": 0.7487,
+          "exitPrice": 0.7232,
+          "returnPct": 3.41
+        }
+      ]
+    },
+    {
+      "symbol": "ERA",
+      "market": "KRW-ERA",
+      "name": "Caldera",
+      "koreanName": "칼데라",
+      "listingDate": "2025-07-16",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-07-15",
+          "entryHours": 0,
+          "entryPrice": 1.3164,
+          "exitPrice": 1.5979,
+          "returnPct": -21.38
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-07-16",
+          "entryHours": 12,
+          "entryPrice": 1.3164,
+          "exitPrice": 1.5979,
+          "returnPct": -21.38
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-07-16",
+          "entryHours": 24,
+          "entryPrice": 1.3164,
+          "exitPrice": 1.5979,
+          "returnPct": -21.38
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-07-18",
+          "entryHours": 72,
+          "entryPrice": 1.442,
+          "exitPrice": 1.2315,
+          "returnPct": 14.6
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-07-20",
+          "entryHours": 120,
+          "entryPrice": 1.2459,
+          "exitPrice": 1.2932,
+          "returnPct": -3.8
         }
       ]
     },
@@ -762,52 +888,1888 @@
       "market": "KRW-LPT",
       "name": "Livepeer",
       "koreanName": "라이브피어",
-      "listingDate": "2025-05-30",
+      "listingDate": "2025-05-29",
       "scenarios": [
         {
           "scenarioId": "D0_OPEN",
           "label": "상장 직후 숏",
-          "date": "2025-05-29",
+          "date": "2025-05-28",
           "entryHours": 0,
+          "entryPrice": 5.448,
+          "exitPrice": 5.485,
+          "returnPct": -0.68
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-05-29",
+          "entryHours": 12,
+          "entryPrice": 5.755,
+          "exitPrice": 6.734,
+          "returnPct": -17.01
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-05-29",
+          "entryHours": 24,
           "entryPrice": 5.517,
           "exitPrice": 11.776,
           "returnPct": -113.45
         },
         {
-          "scenarioId": "D0_12H",
-          "label": "상장 +12시간 숏",
-          "date": "2025-05-30",
-          "entryHours": 12,
-          "entryPrice": 5.298,
-          "exitPrice": 11.19,
-          "returnPct": -111.21
-        },
-        {
-          "scenarioId": "D1_OPEN",
-          "label": "상장 +1일 숏",
-          "date": "2025-05-30",
-          "entryHours": 24,
-          "entryPrice": 12.903,
-          "exitPrice": 8.929,
-          "returnPct": 30.8
-        },
-        {
           "scenarioId": "D3_OPEN",
           "label": "상장 +3일 숏",
-          "date": "2025-06-01",
+          "date": "2025-05-31",
           "entryHours": 72,
-          "entryPrice": 9.046,
-          "exitPrice": 8.291,
-          "returnPct": 8.35
+          "entryPrice": 9.06,
+          "exitPrice": 9.237,
+          "returnPct": -1.95
         },
         {
           "scenarioId": "D5_OPEN",
           "label": "상장 +5일 숏",
-          "date": "2025-06-03",
+          "date": "2025-06-02",
           "entryHours": 120,
-          "entryPrice": 8.167,
-          "exitPrice": 8.413,
-          "returnPct": -3.01
+          "entryPrice": 8.189,
+          "exitPrice": 8.035,
+          "returnPct": 1.88
+        }
+      ]
+    },
+    {
+      "symbol": "F",
+      "market": "KRW-F",
+      "name": "SynFutures",
+      "koreanName": "신퓨처스",
+      "listingDate": "2025-10-20",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-10-19",
+          "entryHours": 0,
+          "entryPrice": 0.00979,
+          "exitPrice": 0.00941,
+          "returnPct": 3.88
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-10-20",
+          "entryHours": 12,
+          "entryPrice": 0.00959,
+          "exitPrice": 0.00909,
+          "returnPct": 5.21
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-10-20",
+          "entryHours": 24,
+          "entryPrice": 0.00947,
+          "exitPrice": 0.012395,
+          "returnPct": -30.89
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-10-22",
+          "entryHours": 72,
+          "entryPrice": 0.012479,
+          "exitPrice": 0.014448,
+          "returnPct": -15.78
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-10-24",
+          "entryHours": 120,
+          "entryPrice": 0.024824,
+          "exitPrice": 0.023119,
+          "returnPct": 6.87
+        }
+      ]
+    },
+    {
+      "symbol": "PROVE",
+      "market": "KRW-PROVE",
+      "name": "Succinct",
+      "koreanName": "서싱트",
+      "listingDate": "2025-08-05",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-08-04",
+          "entryHours": 0,
+          "entryPrice": 0.5938,
+          "exitPrice": 0.6642,
+          "returnPct": -11.86
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-08-05",
+          "entryHours": 12,
+          "entryPrice": 0.5938,
+          "exitPrice": 1.2696,
+          "returnPct": -113.81
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-08-05",
+          "entryHours": 24,
+          "entryPrice": 0.5938,
+          "exitPrice": 1.1659,
+          "returnPct": -96.35
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-08-07",
+          "entryHours": 72,
+          "entryPrice": 1.0162,
+          "exitPrice": 0.997,
+          "returnPct": 1.89
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-08-09",
+          "entryHours": 120,
+          "entryPrice": 1.0928,
+          "exitPrice": 1.4363,
+          "returnPct": -31.43
+        }
+      ]
+    },
+    {
+      "symbol": "MIRA",
+      "market": "KRW-MIRA",
+      "name": "Mira Network",
+      "koreanName": "미라네트워크",
+      "listingDate": "2025-09-25",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-09-24",
+          "entryHours": 0,
+          "entryPrice": 1.5875,
+          "exitPrice": 1.468,
+          "returnPct": 7.53
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-09-25",
+          "entryHours": 12,
+          "entryPrice": 1.5875,
+          "exitPrice": 1.468,
+          "returnPct": 7.53
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-09-25",
+          "entryHours": 24,
+          "entryPrice": 1.5875,
+          "exitPrice": 1.5296,
+          "returnPct": 3.65
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-09-27",
+          "entryHours": 72,
+          "entryPrice": 1.371,
+          "exitPrice": 1.068,
+          "returnPct": 22.1
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-09-29",
+          "entryHours": 120,
+          "entryPrice": 0.8761,
+          "exitPrice": 0.5748,
+          "returnPct": 34.39
+        }
+      ]
+    },
+    {
+      "symbol": "SAHARA",
+      "market": "KRW-SAHARA",
+      "name": "Sahara AI",
+      "koreanName": "사하라에이아이",
+      "listingDate": "2025-06-25",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-06-24",
+          "entryHours": 0,
+          "entryPrice": 0.1327,
+          "exitPrice": 0.1249,
+          "returnPct": 5.88
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-06-25",
+          "entryHours": 12,
+          "entryPrice": 0.1265,
+          "exitPrice": 0.148,
+          "returnPct": -17
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-06-25",
+          "entryHours": 24,
+          "entryPrice": 0.1256,
+          "exitPrice": 0.09295,
+          "returnPct": 26
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-06-27",
+          "entryHours": 72,
+          "entryPrice": 0.08188,
+          "exitPrice": 0.08597,
+          "returnPct": -5
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-06-29",
+          "entryHours": 120,
+          "entryPrice": 0.10758,
+          "exitPrice": 0.0888,
+          "returnPct": 17.46
+        }
+      ]
+    },
+    {
+      "symbol": "ZBT",
+      "market": "KRW-ZBT",
+      "name": "ZEROBASE",
+      "koreanName": "제로베이스",
+      "listingDate": "2025-10-16",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-10-15",
+          "entryHours": 0,
+          "entryPrice": 0.5781,
+          "exitPrice": 0.5505,
+          "returnPct": 4.77
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-10-16",
+          "entryHours": 12,
+          "entryPrice": 0.5781,
+          "exitPrice": 0.5505,
+          "returnPct": 4.77
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-10-16",
+          "entryHours": 24,
+          "entryPrice": 0.5781,
+          "exitPrice": 0.5034,
+          "returnPct": 12.92
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-10-18",
+          "entryHours": 72,
+          "entryPrice": 0.3592,
+          "exitPrice": 0.3326,
+          "returnPct": 7.41
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-10-20",
+          "entryHours": 120,
+          "entryPrice": 0.3257,
+          "exitPrice": 0.3012,
+          "returnPct": 7.52
+        }
+      ]
+    },
+    {
+      "symbol": "FLOCK",
+      "market": "KRW-FLOCK",
+      "name": "FLock.io",
+      "koreanName": "플록",
+      "listingDate": "2025-09-08",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-09-07",
+          "entryHours": 0,
+          "entryPrice": 0.27295,
+          "exitPrice": 0.25755,
+          "returnPct": 5.64
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-09-08",
+          "entryHours": 12,
+          "entryPrice": 0.26802,
+          "exitPrice": 0.45297,
+          "returnPct": -69.01
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-09-08",
+          "entryHours": 24,
+          "entryPrice": 0.2649,
+          "exitPrice": 0.41146,
+          "returnPct": -55.33
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-09-10",
+          "entryHours": 72,
+          "entryPrice": 0.37826,
+          "exitPrice": 0.34506,
+          "returnPct": 8.78
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-09-12",
+          "entryHours": 120,
+          "entryPrice": 0.37908,
+          "exitPrice": 0.37374,
+          "returnPct": 1.41
+        }
+      ]
+    },
+    {
+      "symbol": "2Z",
+      "market": "KRW-2Z",
+      "name": "DoubleZero",
+      "koreanName": "더블제로",
+      "listingDate": "2025-10-01",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-09-30",
+          "entryHours": 0,
+          "entryPrice": 0.4999,
+          "exitPrice": 0.4944,
+          "returnPct": 1.1
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-10-01",
+          "entryHours": 12,
+          "entryPrice": 0.4999,
+          "exitPrice": 0.4944,
+          "returnPct": 1.1
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-10-01",
+          "entryHours": 24,
+          "entryPrice": 0.4999,
+          "exitPrice": 0.5673,
+          "returnPct": -13.48
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-10-03",
+          "entryHours": 72,
+          "entryPrice": 0.5265,
+          "exitPrice": 0.4958,
+          "returnPct": 5.83
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-10-05",
+          "entryHours": 120,
+          "entryPrice": 0.5015,
+          "exitPrice": 0.4833,
+          "returnPct": 3.63
+        }
+      ]
+    },
+    {
+      "symbol": "RVN",
+      "market": "KRW-RVN",
+      "name": "Ravencoin",
+      "koreanName": "레이븐코인",
+      "listingDate": "2025-06-04",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-06-03",
+          "entryHours": 0,
+          "entryPrice": 0.01139,
+          "exitPrice": 0.01115,
+          "returnPct": 2.11
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-06-04",
+          "entryHours": 12,
+          "entryPrice": 0.0112,
+          "exitPrice": 0.01093,
+          "returnPct": 2.41
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-06-04",
+          "entryHours": 24,
+          "entryPrice": 0.01105,
+          "exitPrice": 0.01618,
+          "returnPct": -46.43
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-06-06",
+          "entryHours": 72,
+          "entryPrice": 0.01458,
+          "exitPrice": 0.01359,
+          "returnPct": 6.79
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-06-08",
+          "entryHours": 120,
+          "entryPrice": 0.01541,
+          "exitPrice": 0.01687,
+          "returnPct": -9.47
+        }
+      ]
+    },
+    {
+      "symbol": "LINEA",
+      "market": "KRW-LINEA",
+      "name": "Linea",
+      "koreanName": "리네아",
+      "listingDate": "2025-09-09",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-09-08",
+          "entryHours": 0,
+          "entryPrice": 0.02943,
+          "exitPrice": 0.02685,
+          "returnPct": 8.77
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-09-09",
+          "entryHours": 12,
+          "entryPrice": 0.02862,
+          "exitPrice": 0.02883,
+          "returnPct": -0.73
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-09-09",
+          "entryHours": 24,
+          "entryPrice": 0.02733,
+          "exitPrice": 0.02842,
+          "returnPct": -3.99
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-09-11",
+          "entryHours": 72,
+          "entryPrice": 0.02326,
+          "exitPrice": 0.02229,
+          "returnPct": 4.17
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-09-13",
+          "entryHours": 120,
+          "entryPrice": 0.02605,
+          "exitPrice": 0.02982,
+          "returnPct": -14.47
+        }
+      ]
+    },
+    {
+      "symbol": "DOOD",
+      "market": "KRW-DOOD",
+      "name": "Doodles",
+      "koreanName": "두들즈",
+      "listingDate": "2025-10-06",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-10-05",
+          "entryHours": 0,
+          "entryPrice": 0.007188,
+          "exitPrice": 0.006907,
+          "returnPct": 3.91
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-10-06",
+          "entryHours": 12,
+          "entryPrice": 0.007003,
+          "exitPrice": 0.00677,
+          "returnPct": 3.33
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-10-06",
+          "entryHours": 24,
+          "entryPrice": 0.006813,
+          "exitPrice": 0.011992,
+          "returnPct": -76.02
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-10-08",
+          "entryHours": 72,
+          "entryPrice": 0.00994,
+          "exitPrice": 0.01158,
+          "returnPct": -16.5
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-10-10",
+          "entryHours": 120,
+          "entryPrice": 0.010468,
+          "exitPrice": 0.00769,
+          "returnPct": 26.54
+        }
+      ]
+    },
+    {
+      "symbol": "HOLO",
+      "market": "KRW-HOLO",
+      "name": "Holoworld AI",
+      "koreanName": "홀로월드에이아이",
+      "listingDate": "2025-09-10",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-09-09",
+          "entryHours": 0,
+          "entryPrice": 0.5691,
+          "exitPrice": 0.4877,
+          "returnPct": 14.3
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-09-10",
+          "entryHours": 12,
+          "entryPrice": 0.5691,
+          "exitPrice": 0.4877,
+          "returnPct": 14.3
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-09-10",
+          "entryHours": 24,
+          "entryPrice": 0.5691,
+          "exitPrice": 0.4788,
+          "returnPct": 15.87
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-09-12",
+          "entryHours": 72,
+          "entryPrice": 0.4347,
+          "exitPrice": 0.4295,
+          "returnPct": 1.2
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-09-14",
+          "entryHours": 120,
+          "entryPrice": 0.4203,
+          "exitPrice": 0.3938,
+          "returnPct": 6.31
+        }
+      ]
+    },
+    {
+      "symbol": "IN",
+      "market": "KRW-IN",
+      "name": "Infinit",
+      "koreanName": "인피닛",
+      "listingDate": "2025-10-09",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-10-08",
+          "entryHours": 0,
+          "entryPrice": 0.12761,
+          "exitPrice": 0.1126,
+          "returnPct": 11.76
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-10-09",
+          "entryHours": 12,
+          "entryPrice": 0.12676,
+          "exitPrice": 0.11713,
+          "returnPct": 7.6
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-10-09",
+          "entryHours": 24,
+          "entryPrice": 0.11295,
+          "exitPrice": 0.22866,
+          "returnPct": -102.44
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-10-11",
+          "entryHours": 72,
+          "entryPrice": 0.19208,
+          "exitPrice": 0.16242,
+          "returnPct": 15.44
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-10-13",
+          "entryHours": 120,
+          "entryPrice": 0.18213,
+          "exitPrice": 0.17364,
+          "returnPct": 4.66
+        }
+      ]
+    },
+    {
+      "symbol": "OM",
+      "market": "KRW-OM",
+      "name": "MANTRA",
+      "koreanName": "만트라",
+      "listingDate": "2025-05-20",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-05-19",
+          "entryHours": 0,
+          "entryPrice": 0.3817,
+          "exitPrice": 0.3832,
+          "returnPct": -0.39
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-05-20",
+          "entryHours": 12,
+          "entryPrice": 0.3897,
+          "exitPrice": 0.445,
+          "returnPct": -14.19
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-05-20",
+          "entryHours": 24,
+          "entryPrice": 0.379,
+          "exitPrice": 0.4183,
+          "returnPct": -10.37
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-05-22",
+          "entryHours": 72,
+          "entryPrice": 0.4175,
+          "exitPrice": 0.3965,
+          "returnPct": 5.03
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-05-24",
+          "entryHours": 120,
+          "entryPrice": 0.4116,
+          "exitPrice": 0.3902,
+          "returnPct": 5.2
+        }
+      ]
+    },
+    {
+      "symbol": "MOODENG",
+      "market": "KRW-MOODENG",
+      "name": "Moo Deng",
+      "koreanName": "무뎅",
+      "listingDate": "2025-07-02",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-07-01",
+          "entryHours": 0,
+          "entryPrice": 0.13752,
+          "exitPrice": 0.15005,
+          "returnPct": -9.11
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-07-02",
+          "entryHours": 12,
+          "entryPrice": 0.13687,
+          "exitPrice": 0.16948,
+          "returnPct": -23.83
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-07-02",
+          "entryHours": 24,
+          "entryPrice": 0.14368,
+          "exitPrice": 0.1811,
+          "returnPct": -26.04
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-07-04",
+          "entryHours": 72,
+          "entryPrice": 0.17785,
+          "exitPrice": 0.17723,
+          "returnPct": 0.35
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-07-06",
+          "entryHours": 120,
+          "entryPrice": 0.18688,
+          "exitPrice": 0.17861,
+          "returnPct": 4.43
+        }
+      ]
+    },
+    {
+      "symbol": "KERNEL",
+      "market": "KRW-KERNEL",
+      "name": "KernelDAO",
+      "koreanName": "커널다오",
+      "listingDate": "2025-10-27",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-10-26",
+          "entryHours": 0,
+          "entryPrice": 0.1703,
+          "exitPrice": 0.1656,
+          "returnPct": 2.76
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-10-27",
+          "entryHours": 12,
+          "entryPrice": 0.176,
+          "exitPrice": 0.1634,
+          "returnPct": 7.16
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-10-27",
+          "entryHours": 24,
+          "entryPrice": 0.166,
+          "exitPrice": 0.1866,
+          "returnPct": -12.41
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-10-29",
+          "entryHours": 72,
+          "entryPrice": 0.156,
+          "exitPrice": 0.1302,
+          "returnPct": 16.54
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-10-31",
+          "entryHours": 120,
+          "entryPrice": 0.1351,
+          "exitPrice": 0.1301,
+          "returnPct": 3.7
+        }
+      ]
+    },
+    {
+      "symbol": "BARD",
+      "market": "KRW-BARD",
+      "name": "Lombard",
+      "koreanName": "롬바드",
+      "listingDate": "2025-09-17",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-09-16",
+          "entryHours": 0,
+          "entryPrice": 1.052,
+          "exitPrice": 1.094,
+          "returnPct": -3.99
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-09-17",
+          "entryHours": 12,
+          "entryPrice": 1.0963,
+          "exitPrice": 1.1777,
+          "returnPct": -7.42
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-09-17",
+          "entryHours": 24,
+          "entryPrice": 1.0928,
+          "exitPrice": 1.05436,
+          "returnPct": 3.52
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-09-19",
+          "entryHours": 72,
+          "entryPrice": 0.94428,
+          "exitPrice": 0.99679,
+          "returnPct": -5.56
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-09-21",
+          "entryHours": 120,
+          "entryPrice": 1.0407,
+          "exitPrice": 0.94896,
+          "returnPct": 8.82
+        }
+      ]
+    },
+    {
+      "symbol": "BIO",
+      "market": "KRW-BIO",
+      "name": "Bio Protocol",
+      "koreanName": "바이오프로토콜",
+      "listingDate": "2025-10-19",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-10-18",
+          "entryHours": 0,
+          "entryPrice": 0.08154,
+          "exitPrice": 0.08226,
+          "returnPct": -0.88
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-10-19",
+          "entryHours": 12,
+          "entryPrice": 0.07936,
+          "exitPrice": 0.08458,
+          "returnPct": -6.58
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-10-19",
+          "entryHours": 24,
+          "entryPrice": 0.08291,
+          "exitPrice": 0.10725,
+          "returnPct": -29.36
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-10-21",
+          "entryHours": 72,
+          "entryPrice": 0.09338,
+          "exitPrice": 0.08617,
+          "returnPct": 7.72
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-10-23",
+          "entryHours": 120,
+          "entryPrice": 0.08395,
+          "exitPrice": 0.08598,
+          "returnPct": -2.42
+        }
+      ]
+    },
+    {
+      "symbol": "NEWT",
+      "market": "KRW-NEWT",
+      "name": "Newton Protocol",
+      "koreanName": "뉴턴프로토콜",
+      "listingDate": "2025-06-23",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-06-22",
+          "entryHours": 0,
+          "entryPrice": 0.2792,
+          "exitPrice": 0.2845,
+          "returnPct": -1.9
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-06-23",
+          "entryHours": 12,
+          "entryPrice": 0.3292,
+          "exitPrice": 0.3142,
+          "returnPct": 4.56
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-06-23",
+          "entryHours": 24,
+          "entryPrice": 0.3097,
+          "exitPrice": 0.5908,
+          "returnPct": -90.77
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-06-25",
+          "entryHours": 72,
+          "entryPrice": 0.4756,
+          "exitPrice": 0.369,
+          "returnPct": 22.41
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-06-27",
+          "entryHours": 120,
+          "entryPrice": 0.3719,
+          "exitPrice": 0.3805,
+          "returnPct": -2.31
+        }
+      ]
+    },
+    {
+      "symbol": "NXPC",
+      "market": "KRW-NXPC",
+      "name": "Nexpace",
+      "koreanName": "넥스페이스",
+      "listingDate": "2025-05-14",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-05-13",
+          "entryHours": 0,
+          "entryPrice": 2.4186,
+          "exitPrice": 2.7955,
+          "returnPct": -15.58
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-05-14",
+          "entryHours": 12,
+          "entryPrice": 2.4186,
+          "exitPrice": 2.7955,
+          "returnPct": -15.58
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-05-14",
+          "entryHours": 24,
+          "entryPrice": 2.4186,
+          "exitPrice": 2.4192,
+          "returnPct": -0.02
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-05-16",
+          "entryHours": 72,
+          "entryPrice": 2.6818,
+          "exitPrice": 2.223,
+          "returnPct": 17.11
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-05-18",
+          "entryHours": 120,
+          "entryPrice": 2.2685,
+          "exitPrice": 1.9301,
+          "returnPct": 14.92
+        }
+      ]
+    },
+    {
+      "symbol": "TREE",
+      "market": "KRW-TREE",
+      "name": "Treehouse",
+      "koreanName": "트리하우스",
+      "listingDate": "2025-08-27",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-08-26",
+          "entryHours": 0,
+          "entryPrice": 0.29809,
+          "exitPrice": 0.30989,
+          "returnPct": -3.96
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-08-27",
+          "entryHours": 12,
+          "entryPrice": 0.3019,
+          "exitPrice": 0.31316,
+          "returnPct": -3.73
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-08-27",
+          "entryHours": 24,
+          "entryPrice": 0.31024,
+          "exitPrice": 0.39826,
+          "returnPct": -28.37
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-08-29",
+          "entryHours": 72,
+          "entryPrice": 0.37331,
+          "exitPrice": 0.34807,
+          "returnPct": 6.76
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-08-31",
+          "entryHours": 120,
+          "entryPrice": 0.334,
+          "exitPrice": 0.31535,
+          "returnPct": 5.58
+        }
+      ]
+    },
+    {
+      "symbol": "SYRUP",
+      "market": "KRW-SYRUP",
+      "name": "Maple Finance",
+      "koreanName": "메이플파이낸스",
+      "listingDate": "2025-07-24",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-07-23",
+          "entryHours": 0,
+          "entryPrice": 0.4402,
+          "exitPrice": 0.50616,
+          "returnPct": -14.98
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-07-24",
+          "entryHours": 12,
+          "entryPrice": 0.46566,
+          "exitPrice": 0.58086,
+          "returnPct": -24.74
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-07-24",
+          "entryHours": 24,
+          "entryPrice": 0.52398,
+          "exitPrice": 0.55584,
+          "returnPct": -6.08
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-07-26",
+          "entryHours": 72,
+          "entryPrice": 0.55939,
+          "exitPrice": 0.54756,
+          "returnPct": 2.11
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-07-28",
+          "entryHours": 120,
+          "entryPrice": 0.51345,
+          "exitPrice": 0.46332,
+          "returnPct": 9.76
+        }
+      ]
+    },
+    {
+      "symbol": "ALT",
+      "market": "KRW-ALT",
+      "name": "Altlayer",
+      "koreanName": "알트레이어",
+      "listingDate": "2025-06-15",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-06-14",
+          "entryHours": 0,
+          "entryPrice": 0.02505,
+          "exitPrice": 0.02504,
+          "returnPct": 0.04
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-06-15",
+          "entryHours": 12,
+          "entryPrice": 0.02492,
+          "exitPrice": 0.0252,
+          "returnPct": -1.12
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-06-15",
+          "entryHours": 24,
+          "entryPrice": 0.02529,
+          "exitPrice": 0.03555,
+          "returnPct": -40.57
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-06-17",
+          "entryHours": 72,
+          "entryPrice": 0.03488,
+          "exitPrice": 0.0373,
+          "returnPct": -6.94
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-06-19",
+          "entryHours": 120,
+          "entryPrice": 0.03466,
+          "exitPrice": 0.03269,
+          "returnPct": 5.68
+        }
+      ]
+    },
+    {
+      "symbol": "SOPH",
+      "market": "KRW-SOPH",
+      "name": "Sophon",
+      "koreanName": "소폰",
+      "listingDate": "2025-05-27",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-05-26",
+          "entryHours": 0,
+          "entryPrice": 0.07286,
+          "exitPrice": 0.07106,
+          "returnPct": 2.47
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-05-27",
+          "entryHours": 12,
+          "entryPrice": 0.07286,
+          "exitPrice": 0.07106,
+          "returnPct": 2.47
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-05-27",
+          "entryHours": 24,
+          "entryPrice": 0.07286,
+          "exitPrice": 0.06367,
+          "returnPct": 12.61
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-05-29",
+          "entryHours": 72,
+          "entryPrice": 0.06198,
+          "exitPrice": 0.05762,
+          "returnPct": 7.03
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-05-31",
+          "entryHours": 120,
+          "entryPrice": 0.05091,
+          "exitPrice": 0.05202,
+          "returnPct": -2.18
+        }
+      ]
+    },
+    {
+      "symbol": "ORDER",
+      "market": "KRW-ORDER",
+      "name": "Orderly",
+      "koreanName": "오덜리",
+      "listingDate": "2025-10-23",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-10-22",
+          "entryHours": 0,
+          "entryPrice": 0.2153,
+          "exitPrice": 0.2112,
+          "returnPct": 1.9
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-10-23",
+          "entryHours": 12,
+          "entryPrice": 0.2063,
+          "exitPrice": 0.225,
+          "returnPct": -9.06
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-10-23",
+          "entryHours": 24,
+          "entryPrice": 0.2084,
+          "exitPrice": 0.3027,
+          "returnPct": -45.25
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-10-25",
+          "entryHours": 72,
+          "entryPrice": 0.282,
+          "exitPrice": 0.281,
+          "returnPct": 0.35
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-10-27",
+          "entryHours": 120,
+          "entryPrice": 0.2524,
+          "exitPrice": 0.2462,
+          "returnPct": 2.46
+        }
+      ]
+    },
+    {
+      "symbol": "USD1",
+      "market": "KRW-USD1",
+      "name": "World Liberty Financial USD",
+      "koreanName": "월드리버티파이낸셜유에스디",
+      "listingDate": "2025-08-31",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-08-30",
+          "entryHours": 0,
+          "entryPrice": 0.9997,
+          "exitPrice": 1.0002,
+          "returnPct": -0.05
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-08-31",
+          "entryHours": 12,
+          "entryPrice": 1.0013,
+          "exitPrice": 1.0002,
+          "returnPct": 0.11
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-08-31",
+          "entryHours": 24,
+          "entryPrice": 1.0001,
+          "exitPrice": 0.9991,
+          "returnPct": 0.1
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-09-02",
+          "entryHours": 72,
+          "entryPrice": 0.9988,
+          "exitPrice": 0.9987,
+          "returnPct": 0.01
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-09-04",
+          "entryHours": 120,
+          "entryPrice": 0.9984,
+          "exitPrice": 0.9985,
+          "returnPct": -0.01
+        }
+      ]
+    },
+    {
+      "symbol": "SOMI",
+      "market": "KRW-SOMI",
+      "name": "Somnia",
+      "koreanName": "솜니아",
+      "listingDate": "2025-09-30",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-09-29",
+          "entryHours": 0,
+          "entryPrice": 0.7236,
+          "exitPrice": 0.7003,
+          "returnPct": 3.22
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-09-30",
+          "entryHours": 12,
+          "entryPrice": 0.7325,
+          "exitPrice": 0.6819,
+          "returnPct": 6.91
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-09-30",
+          "entryHours": 24,
+          "entryPrice": 0.704,
+          "exitPrice": 1.0554,
+          "returnPct": -49.91
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-10-02",
+          "entryHours": 72,
+          "entryPrice": 0.8212,
+          "exitPrice": 0.833,
+          "returnPct": -1.44
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-10-04",
+          "entryHours": 120,
+          "entryPrice": 0.9292,
+          "exitPrice": 0.9131,
+          "returnPct": 1.73
+        }
+      ]
+    },
+    {
+      "symbol": "YGG",
+      "market": "KRW-YGG",
+      "name": "Yield Guild Games",
+      "koreanName": "일드길드게임즈",
+      "listingDate": "2025-10-14",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-10-13",
+          "entryHours": 0,
+          "entryPrice": 0.1461,
+          "exitPrice": 0.1441,
+          "returnPct": 1.37
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-10-14",
+          "entryHours": 12,
+          "entryPrice": 0.1481,
+          "exitPrice": 0.1436,
+          "returnPct": 3.04
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-10-14",
+          "entryHours": 24,
+          "entryPrice": 0.1408,
+          "exitPrice": 0.1725,
+          "returnPct": -22.51
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-10-16",
+          "entryHours": 72,
+          "entryPrice": 0.1654,
+          "exitPrice": 0.144,
+          "returnPct": 12.94
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-10-18",
+          "entryHours": 120,
+          "entryPrice": 0.1454,
+          "exitPrice": 0.1445,
+          "returnPct": 0.62
+        }
+      ]
+    },
+    {
+      "symbol": "OP",
+      "market": "KRW-OP",
+      "name": "Optimism",
+      "koreanName": "옵티미즘",
+      "listingDate": "2025-07-27",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-07-26",
+          "entryHours": 0,
+          "entryPrice": 0.7218,
+          "exitPrice": 0.7276,
+          "returnPct": -0.8
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-07-27",
+          "entryHours": 12,
+          "entryPrice": 0.7359,
+          "exitPrice": 0.7451,
+          "returnPct": -1.25
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-07-27",
+          "entryHours": 24,
+          "entryPrice": 0.7261,
+          "exitPrice": 0.7911,
+          "returnPct": -8.95
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-07-29",
+          "entryHours": 72,
+          "entryPrice": 0.7276,
+          "exitPrice": 0.6972,
+          "returnPct": 4.18
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-07-31",
+          "entryHours": 120,
+          "entryPrice": 0.6839,
+          "exitPrice": 0.6588,
+          "returnPct": 3.67
+        }
+      ]
+    },
+    {
+      "symbol": "AERO",
+      "market": "KRW-AERO",
+      "name": "Aerodrome Finance",
+      "koreanName": "에어로드롬파이낸스",
+      "listingDate": "2025-08-21",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-08-20",
+          "entryHours": 0,
+          "entryPrice": 1.3104,
+          "exitPrice": 1.3179,
+          "returnPct": -0.57
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-08-21",
+          "entryHours": 12,
+          "entryPrice": 1.3618,
+          "exitPrice": 1.3724,
+          "returnPct": -0.78
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-08-21",
+          "entryHours": 24,
+          "entryPrice": 1.3403,
+          "exitPrice": 1.5192,
+          "returnPct": -13.35
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-08-23",
+          "entryHours": 72,
+          "entryPrice": 1.4602,
+          "exitPrice": 1.4401,
+          "returnPct": 1.38
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-08-25",
+          "entryHours": 120,
+          "entryPrice": 1.3437,
+          "exitPrice": 1.3359,
+          "returnPct": 0.58
+        }
+      ]
+    },
+    {
+      "symbol": "API3",
+      "market": "KRW-API3",
+      "name": "API3",
+      "koreanName": "에이피아이쓰리",
+      "listingDate": "2025-08-18",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-08-17",
+          "entryHours": 0,
+          "entryPrice": 0.7891,
+          "exitPrice": 0.8461,
+          "returnPct": -7.22
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-08-18",
+          "entryHours": 12,
+          "entryPrice": 0.7565,
+          "exitPrice": 0.8424,
+          "returnPct": -11.35
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-08-18",
+          "entryHours": 24,
+          "entryPrice": 0.8358,
+          "exitPrice": 1.3489,
+          "returnPct": -61.39
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-08-20",
+          "entryHours": 72,
+          "entryPrice": 1.3434,
+          "exitPrice": 1.5422,
+          "returnPct": -14.8
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-08-22",
+          "entryHours": 120,
+          "entryPrice": 1.4932,
+          "exitPrice": 1.4607,
+          "returnPct": 2.18
+        }
+      ]
+    },
+    {
+      "symbol": "ZORA",
+      "market": "KRW-ZORA",
+      "name": "Zora",
+      "koreanName": "조라",
+      "listingDate": "2025-10-16",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-10-15",
+          "entryHours": 0,
+          "entryPrice": 0.101379,
+          "exitPrice": 0.087587,
+          "returnPct": 13.6
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-10-16",
+          "entryHours": 12,
+          "entryPrice": 0.093329,
+          "exitPrice": 0.112809,
+          "returnPct": -20.87
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-10-16",
+          "entryHours": 24,
+          "entryPrice": 0.089349,
+          "exitPrice": 0.096015,
+          "returnPct": -7.46
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-10-18",
+          "entryHours": 72,
+          "entryPrice": 0.095428,
+          "exitPrice": 0.092524,
+          "returnPct": 3.04
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-10-20",
+          "entryHours": 120,
+          "entryPrice": 0.091784,
+          "exitPrice": 0.109727,
+          "returnPct": -19.55
+        }
+      ]
+    },
+    {
+      "symbol": "CYBER",
+      "market": "KRW-CYBER",
+      "name": "Cyber",
+      "koreanName": "사이버",
+      "listingDate": "2025-08-11",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-08-10",
+          "entryHours": 0,
+          "entryPrice": 1.821,
+          "exitPrice": 1.922,
+          "returnPct": -5.55
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-08-11",
+          "entryHours": 12,
+          "entryPrice": 1.999,
+          "exitPrice": 1.899,
+          "returnPct": 5
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-08-11",
+          "entryHours": 24,
+          "entryPrice": 1.908,
+          "exitPrice": 3.059,
+          "returnPct": -60.32
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-08-13",
+          "entryHours": 72,
+          "entryPrice": 2.838,
+          "exitPrice": 2.548,
+          "returnPct": 10.22
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-08-15",
+          "entryHours": 120,
+          "entryPrice": 2.402,
+          "exitPrice": 2.384,
+          "returnPct": 0.75
+        }
+      ]
+    },
+    {
+      "symbol": "HYPER",
+      "market": "KRW-HYPER",
+      "name": "Hyperlane",
+      "koreanName": "하이퍼레인",
+      "listingDate": "2025-07-09",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-07-08",
+          "entryHours": 0,
+          "entryPrice": 0.1029,
+          "exitPrice": 0.1131,
+          "returnPct": -9.91
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-07-09",
+          "entryHours": 12,
+          "entryPrice": 0.112,
+          "exitPrice": 0.2882,
+          "returnPct": -157.32
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-07-09",
+          "entryHours": 24,
+          "entryPrice": 0.1147,
+          "exitPrice": 0.4284,
+          "returnPct": -273.5
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-07-11",
+          "entryHours": 72,
+          "entryPrice": 0.5317,
+          "exitPrice": 0.4602,
+          "returnPct": 13.45
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-07-13",
+          "entryHours": 120,
+          "entryPrice": 0.4469,
+          "exitPrice": 0.4084,
+          "returnPct": 8.61
+        }
+      ]
+    },
+    {
+      "symbol": "AXL",
+      "market": "KRW-AXL",
+      "name": "Axelar",
+      "koreanName": "엑셀라",
+      "listingDate": "2025-06-09",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN",
+          "label": "상장 직후 숏",
+          "date": "2025-06-08",
+          "entryHours": 0,
+          "entryPrice": 0.3273,
+          "exitPrice": 0.3269,
+          "returnPct": 0.12
+        },
+        {
+          "scenarioId": "D0_12H",
+          "label": "상장 +12시간 숏",
+          "date": "2025-06-09",
+          "entryHours": 12,
+          "entryPrice": 0.3205,
+          "exitPrice": 0.3346,
+          "returnPct": -4.4
+        },
+        {
+          "scenarioId": "D1_OPEN",
+          "label": "상장 +1일 숏",
+          "date": "2025-06-09",
+          "entryHours": 24,
+          "entryPrice": 0.3263,
+          "exitPrice": 0.5354,
+          "returnPct": -64.08
+        },
+        {
+          "scenarioId": "D3_OPEN",
+          "label": "상장 +3일 숏",
+          "date": "2025-06-11",
+          "entryHours": 72,
+          "entryPrice": 0.4878,
+          "exitPrice": 0.4669,
+          "returnPct": 4.28
+        },
+        {
+          "scenarioId": "D5_OPEN",
+          "label": "상장 +5일 숏",
+          "date": "2025-06-13",
+          "entryHours": 120,
+          "entryPrice": 0.4165,
+          "exitPrice": 0.426,
+          "returnPct": -2.28
         }
       ]
     }

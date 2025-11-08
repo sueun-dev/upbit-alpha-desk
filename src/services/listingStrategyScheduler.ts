@@ -6,8 +6,11 @@ import {
   buildListingStrategyReport,
   LISTING_SCENARIOS
 } from './listingStrategyService';
+import { getRedisClient } from '../clients/redisClient';
 
 type SchedulerStatus = 'idle' | 'running' | 'error';
+
+const LISTING_STRATEGY_REDIS_KEY = 'listing-strategy:report';
 
 export interface ListingStrategySnapshot {
   status: SchedulerStatus;
@@ -26,18 +29,21 @@ export class ListingStrategyScheduler {
   private readonly intervalMs: number;
   private readonly months: number;
   private readonly persistPath?: string;
+  private readonly maxCoins: number;
 
   constructor(
     private readonly dataManager: DataManager,
-    options?: { intervalMs?: number; months?: number; persistPath?: string }
+    options?: { intervalMs?: number; months?: number; persistPath?: string; maxCoins?: number }
   ) {
     this.intervalMs = options?.intervalMs ?? 1000 * 60 * 60 * 3; // default 3 hours
     this.months = options?.months ?? 6;
     this.persistPath = options?.persistPath;
+    this.maxCoins = options?.maxCoins ?? 150;
   }
 
   async start(): Promise<void> {
-    if (this.persistPath) {
+    const warmed = await this.loadFromRedis();
+    if (!warmed && this.persistPath) {
       await this.loadFromDisk();
     }
     void this.triggerRun();
@@ -90,10 +96,11 @@ export class ListingStrategyScheduler {
     this.lastError = undefined;
 
     try {
-      const report = await buildListingStrategyReport(coins, this.months);
+      const report = await buildListingStrategyReport(coins, this.months, this.maxCoins);
       this.report = report;
       this.lastUpdated = new Date();
       await this.saveToDisk(report);
+      await this.saveToRedis(report);
       this.status = 'idle';
     } catch (error: any) {
       console.error('ListingStrategyScheduler: analysis failed', error);
@@ -123,6 +130,33 @@ export class ListingStrategyScheduler {
       await fs.writeFile(this.persistPath, JSON.stringify(report, null, 2));
     } catch (error) {
       console.error('ListingStrategyScheduler: failed to persist report', error);
+    }
+  }
+
+  private async loadFromRedis(): Promise<boolean> {
+    const client = getRedisClient();
+    if (!client) return false;
+    try {
+      const raw = await client.get(LISTING_STRATEGY_REDIS_KEY);
+      if (!raw) return false;
+      const parsed = JSON.parse(raw) as ListingStrategyReport;
+      this.report = parsed;
+      this.lastUpdated = parsed.generatedAt ? new Date(parsed.generatedAt) : new Date();
+      console.log('ListingStrategyScheduler: loaded report from Redis');
+      return true;
+    } catch (error) {
+      console.warn('ListingStrategyScheduler: failed to load report from Redis', error);
+      return false;
+    }
+  }
+
+  private async saveToRedis(report: ListingStrategyReport): Promise<void> {
+    const client = getRedisClient();
+    if (!client) return;
+    try {
+      await client.set(LISTING_STRATEGY_REDIS_KEY, JSON.stringify(report));
+    } catch (error) {
+      console.warn('ListingStrategyScheduler: failed to persist report to Redis', error);
     }
   }
 }

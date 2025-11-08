@@ -1,139 +1,139 @@
 # Upbit Alpha Desk
 
-**Upbit Alpha Desk** is a realtime intelligence board for the KRW market.  
-It combines Upbit day candles, cached ticker prices, saved market-volume data,  
-and Bybit-based listing strategy analytics into a single dashboard optimized for speed and low API usage.
+Upbit Alpha Desk is a full-stack trading-intel console for the KRW market.  
+It blends Upbit day-candles, cached tickers, saved trading-value files, and Bybit-based listing strategies into one React frontend backed by an Express + Redis API layer.
 
-## ✨ Key Features
-- **Live Ticker Cache (1‑minute TTL)** – frontend polls every minute while the server shares a disk-backed cache so restarts don’t hammer Upbit.
-- **Day-Candle Analytics** – historical candles/statistics are served from an in-memory map (via `DataManager`) with incremental updates at 00:05 KST.
-- **Market Data Overlay** – saved JSON files are parsed once and cached based on file `mtime`, exposing trading-value statistics per coin.
-- **Listing Calendar & Strategy Lab** – schedulers run every 3 hours, pulling Upbit listing dates and Bybit 1h klines to compute post-listing short scenarios. Results are cached to disk for instant responses.
-- **Platform-Friendly Security** – configurable CORS allowlist, optional API key check (`x-api-key`), and rate limiting protect every `/api/*` route.
-
-## 🏗 Architecture at a Glance
-- **Backend**: Node.js, Express, TypeScript
-- **Frontend**: Vanilla HTML + Chart.js, optimized for a single-page dashboard
-- **Schedulers**: Listing calendar + strategy report (3h cadence), ticker cache persistence, saved-data cache
+## 🔧 Tech Stack
+- **Backend**: Node.js, Express, TypeScript, Redis (market-data cache), Axios schedulers
+- **Frontend**: React (Vite + TypeScript), React Query, Chart.js, date-fns
+- **Scheduling**: Listing calendar & listing strategy analyzers (3h), ticker cache persistence, saved_data parsing, midnight candle refresh
 - **Package Manager**: pnpm
 
+## 📁 Repository Layout
 ```
-src/
-├── server.ts                 # Express entrypoint
-├── config.ts                 # Security / rate-limit settings
-├── services/
-│   ├── dataManager.ts        # Candle store & incremental updater
-│   ├── listingStrategyService.ts
-│   ├── listingStrategyScheduler.ts
-│   └── listingCalendarScheduler.ts
+src/                    # Express server + schedulers
+├── server.ts           # API & static serving entry
+├── config.ts           # CORS / API key / rate-limit config
 ├── clients/
-│   └── bybitClient.ts
-public/
-└── index.html                # Dashboard UI + inline logic
-cache/                        # Disk snapshots for schedulers & ticker cache
-saved_data/                   # Market data JSON (trading values)
+│   ├── redisClient.ts  # Lazy Redis connector
+│   └── bybitClient.ts  # Bybit hourly candle fetcher
+├── services/           # DataManager + schedulers
+frontend/               # React/Vite SPA (served as static build)
+├── src/components/...  # Sidebar, analytics, listing lab, insights
+├── src/api/            # Typed API client + DTOs
+public/                 # Legacy static assets (still served)
+cache/                  # JSON snapshots for schedulers & ticker cache
+saved_data/             # Trading-value JSON files parsed into Redis
 ```
 
-## 🚀 Getting Started
-```bash
-pnpm install          # install dependencies
-pnpm run dev          # start dev server (tsx + nodemon)
-pnpm run build        # compile TypeScript
-pnpm start            # run compiled server
-```
+## 🚀 Local Development
+1. **Backend**
+   ```bash
+   pnpm install
+   pnpm dev           # tsx + nodemon
+   ```
+2. **Frontend**
+   ```bash
+   cd frontend
+   pnpm install
+   pnpm dev           # http://localhost:5173 (uses VITE_API_BASE_URL)
+   ```
+3. **Production build**
+   ```bash
+   pnpm build        # compiles backend + frontend
+   pnpm start        # serves /api and the built SPA
+   ```
+   The Express server automatically serves `frontend/dist` (set `SERVE_FRONTEND=false` to disable).
+4. **Tests**
+   ```bash
+   pnpm test         # vitest unit tests (rate limiter, etc.)
+   ```
 
-Set environment variables (create `.env`) before running in production:
+## 🔐 Environment
+Copy `.env.example` (backend root):
 ```env
-CORS_ORIGINS=https://your-domain.example
-API_KEY=your-secure-key
+CORS_ORIGINS=https://app.your-domain.com
+API_KEY=optional-x-api-key
 RATE_LIMIT_WINDOW_MS=60000
 RATE_LIMIT_MAX=120
+REDIS_URL=redis://default:password@host:11219
+SERVE_FRONTEND=true
+PORT=3000
+```
+For the React dev server, copy `frontend/.env.example` and adjust:
+```env
+VITE_API_BASE_URL=http://localhost:3000
 ```
 
-## 🔌 Important API Endpoints
+## 🔌 Core API Endpoints
 | Route | Description |
 | --- | --- |
-| `GET /api/coins` | Supported KRW markets (sorted by volume). |
-| `GET /api/data/:coin/latest?days=30` | Latest N-day candle slice for a coin. |
-| `GET /api/data/:coin/statistics` | Min/Max/Range stats for a coin. |
-| `GET /api/market-data/:coin` | Cached trading-value overlay from `saved_data`. |
-| `GET /api/coins/listing-dates` | Cached listing calendar (3h updates). |
-| `GET /api/coins/listing-strategies` | Cached listing strategy report (3h updates). |
-| `GET /api/ticker` / `:coins` | 1-minute cached Upbit tickers (requires API key if configured). |
+| `GET /api/coins` | Supported KRW markets (volume sorted). |
+| `GET /api/data/:coin/latest?days=30` | Latest day-candle slice. |
+| `GET /api/data/:coin/statistics` | Min/Max/Range per coin. |
+| `GET /api/market-data/:coin` | Redis-backed trading-value overlay (falls back to saved files). |
+| `GET /api/coins/listing-dates` | Cached listing calendar snapshot (3h cadence). |
+| `GET /api/coins/listing-strategies` | Cached Bybit short-scenario lab (3h cadence). |
+| `GET /api/ticker` / `GET /api/ticker/:coins` | 1-minute cached Upbit tickers (API-key protected if set). |
 
 ## 🔄 Data Refresh Cadence
-- **Ticker Cache**: 1-minute TTL; disk snapshot used on restart.
-- **Saved Candles**: `DataManager` updates at startup and 00:05 KST daily.
-- **Market Data**: re-parsed only when `saved_data/*.json` changes.
-- **Listing Calendar & Strategy Lab**: schedulers run every 3 hours and persist JSON snapshots.
+- **Ticker cache**: 60s TTL + persisted JSON (restored on restart).
+- **Day candles**: Loaded on-demand and updated daily at 00:05 KST.
+- **Market data overlay**: Parsed once per `saved_data` mtime, then cached in Redis for 6h per coin.
+- **Listing calendar & lab**: Every 3 hours; results saved to `cache/` and, after restart, to Redis for warm responses.
 
 ---
 
 # 업비트 알파 데스크 (Korean)
 
-Upbit Alpha Desk는 KRW 마켓을 위한 실시간 인텔리전스 보드입니다.  
-Upbit 일봉, 캐시된 티커, 저장된 거래대금, Bybit 기반 상장 전략 통계를 한 화면에서 보여 주면서 API 호출을 최소화하도록 설계되었습니다.
+Upbit Alpha Desk는 KRW 마켓용 리액트 기반 대시보드입니다.  
+Upbit 일봉, 1분 캐시 티커, `saved_data` 거래대금, Bybit 상장 숏 전략 통계를 Redis가 뒷단에서 캐싱하고 Express API로 제공합니다.
 
-## ✨ 핵심 기능
-- **1분 캐시 티커** – 서버가 디스크 캐시를 유지해 재시작 후에도 즉시 티커를 제공하고, 프론트는 1분 간격으로 갱신합니다.
-- **일봉/통계 즉시 응답** – `DataManager`가 메모리에 적재한 캔들 데이터를 바로 반환합니다 (00:05 KST 자동 업데이트).
-- **거래대금 오버레이** – `saved_data` JSON을 `mtime` 기준으로 캐시해 반복 파싱 없이 거래대금 그래프를 렌더링합니다.
-- **상장 캘린더 & 숏 패턴** – 3시간 주기로 Upbit/Bybit 데이터를 조합해 상장 관련 인사이트를 계산하고, 디스크에 스냅샷을 저장합니다.
-- **플랫폼 보안 옵션** – CORS 허용 목록, API Key(`x-api-key`), Rate Limit 설정으로 무단 호출을 차단합니다.
+## 🔧 기술 스택
+- **백엔드**: Node.js, Express, TypeScript, Redis 캐시, Axios 스케줄러
+- **프런트엔드**: React (Vite), React Query, Chart.js, date-fns
+- **스케줄러**: 상장 캘린더 / 상장 전략(3시간), 티커 캐시, saved_data 파서, 자정 데이터 갱신
 
-## 🏗 아키텍처 요약
-- **백엔드**: Node.js, Express, TypeScript  
-- **프런트엔드**: HTML + Chart.js  
-- **스케줄러**: 상장 캘린더 / 상장 전략 / 티커 캐시 / saved_data 캐시  
-- **패키지 매니저**: pnpm
-
+## 📁 구조
 ```
-src/
-├── server.ts
-├── config.ts
-├── services/
-│   ├── dataManager.ts
-│   ├── listingStrategyService.ts
-│   ├── listingStrategyScheduler.ts
-│   └── listingCalendarScheduler.ts
-├── clients/bybitClient.ts
-public/index.html
-cache/ (스냅샷)
-saved_data/ (거래대금 JSON)
+src/                  # Express API + 스케줄러
+frontend/             # React/Vite SPA
+public/               # 기존 정적 자원
+cache/, saved_data/   # 운영 캐시/데이터
 ```
 
-## 🚀 시작 방법
-```bash
-pnpm install
-pnpm run dev     # 개발 서버
-pnpm run build   # TypeScript 빌드
-pnpm start       # 프로덕션 서버
-```
+## 🚀 개발 방법
+1. 루트에서 `pnpm install`, `pnpm dev` (API 서버).
+2. `frontend/`에서 `pnpm install`, `pnpm dev` (Vite). `.env`에 `VITE_API_BASE_URL`을 백엔드 주소로 지정.
+3. 배포 시 `pnpm build` (백/프런트 동시 빌드) 후 `pnpm start` 실행 → Express가 `frontend/dist`(SPA)와 `/api/*`를 함께 서비스합니다.
+4. `pnpm test` 명령으로 기본 유닛 테스트(레이트 리미터)를 돌릴 수 있습니다.
 
-`.env` 예시:
+## 🔐 환경 변수
 ```env
-CORS_ORIGINS=https://your-domain.example
-API_KEY=your-secure-key
+CORS_ORIGINS=https://app.example.com
+API_KEY=선택적 인증 키
 RATE_LIMIT_WINDOW_MS=60000
 RATE_LIMIT_MAX=120
+REDIS_URL=redis://default:password@host:11219
+SERVE_FRONTEND=true
 ```
+프런트는 `frontend/.env` 안에 `VITE_API_BASE_URL`을 설정하세요.
 
 ## 🔌 주요 API
 | 경로 | 설명 |
 | --- | --- |
-| `GET /api/coins` | 지원하는 KRW 마켓 목록 (거래대금 순). |
-| `GET /api/data/:coin/latest?days=N` | 최근 N일 일봉 데이터. |
-| `GET /api/data/:coin/statistics` | 최고/최저/기간 통계. |
-| `GET /api/market-data/:coin` | 저장된 거래대금(캘린더 기반) 데이터. |
-| `GET /api/coins/listing-dates` | 3시간마다 갱신되는 상장 캘린더. |
-| `GET /api/coins/listing-strategies` | 3시간마다 갱신되는 상장 숏 전략 리포트. |
-| `GET /api/ticker` / `:coins` | 1분 캐시 티커 (API 키 필요 시 `x-api-key`). |
+| `/api/coins` | 지원 KRW 마켓 목록 |
+| `/api/data/:coin/latest?days=N` | 최근 N일 일봉 데이터 |
+| `/api/data/:coin/statistics` | 통계 (최고/최저 등) |
+| `/api/market-data/:coin` | Redis 캐시된 거래대금/거래량 |
+| `/api/coins/listing-dates` | 3시간마다 갱신되는 상장 캘린더 |
+| `/api/coins/listing-strategies` | 3시간마다 계산되는 상장 숏 전략 보고서 |
+| `/api/ticker` / `/api/ticker/:coins` | 1분 캐시 Upbit 티커 |
 
-## 🔄 데이터 갱신 주기
-- **티커**: 1분 TTL, 재시작 시 캐시 파일 로드.
-- **일봉 데이터**: 서버 시작 및 매일 00:05에 자동 갱신.
-- **거래대금**: `saved_data` 파일이 변경될 때만 다시 파싱.
-- **상장 캘린더/전략**: 3시간마다 스케줄링 후 JSON 스냅샷 저장.
+## 🔄 갱신 주기
+- 티커: 1분 TTL + 디스크 백업
+- 일봉 데이터: 자정(00:05) 자동 업데이트
+- 거래대금: `saved_data` 파일 변경 시 재파싱 → Redis 6시간 캐시
+- 상장 캘린더/전략: 3시간마다 재계산 + 디스크/Redis 스냅샷
 
-이 README는 영어/한국어 두 버전을 함께 제공합니다. 플랫폼 배포 시 참고해 주세요.
-# upbit-alpha-desk
+영어/한국어 설명을 함께 제공하니 플랫폼화 작업 시 참고하세요.
