@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { format } from 'date-fns';
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -68,6 +69,16 @@ const ListingLabPanel = () => {
     return recentCoins.find(c => c.symbol === selectedSymbol) ?? null;
   }, [recentCoins, selectedSymbol]);
 
+  const metaCards = useMemo(() => {
+    if (!strategyQuery.data) return [];
+    const { generatedAt, months, coinsAnalyzed } = strategyQuery.data;
+    return [
+      { label: '관측 기간', value: `${months}개월` },
+      { label: '분석 코인', value: `${coinsAnalyzed}개` },
+      { label: '생성 시각', value: format(new Date(generatedAt), 'MM.dd HH:mm') }
+    ];
+  }, [strategyQuery.data]);
+
   return (
     <section className="panel">
       <div>
@@ -83,45 +94,70 @@ const ListingLabPanel = () => {
       )}
       {strategyQuery.data && (
         <>
-          {bestScenario && (
-            <div className="stat-card" style={{ background: 'rgba(22, 199, 132, 0.12)' }}>
-              <p className="stat-title">가장 높은 평균 수익 시나리오 (24h)</p>
-              <p className="stat-value">
-                {bestScenario.label} ·{' '}
-                {bestScenario.averageReturn !== null && bestScenario.averageReturn !== undefined
-                  ? `${bestScenario.averageReturn.toFixed(2)}%`
-                  : '-'}
-              </p>
-              <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                성공률{' '}
-                {bestScenario.successRate !== null && bestScenario.successRate !== undefined
-                  ? `${bestScenario.successRate.toFixed(1)}%`
-                  : '-'}{' '}
-                · 표본 {bestScenario.sampleSize}
-              </p>
-            </div>
-          )}
+          <div className="listing-top-grid">
+            <div className="listing-summary-card">
+              {bestScenario && (
+                <div className="stat-card" style={{ background: 'rgba(22, 199, 132, 0.12)' }}>
+                  <p className="stat-title">가장 높은 평균 수익 시나리오 (24h)</p>
+                  <p className="stat-value">
+                    {bestScenario.label} ·{' '}
+                    {bestScenario.averageReturn !== null && bestScenario.averageReturn !== undefined
+                      ? `${bestScenario.averageReturn.toFixed(2)}%`
+                      : '-'}
+                  </p>
+                  <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                    성공률{' '}
+                    {bestScenario.successRate !== null && bestScenario.successRate !== undefined
+                      ? `${bestScenario.successRate.toFixed(1)}%`
+                      : '-'}{' '}
+                    · 표본 {bestScenario.sampleSize}
+                  </p>
+                </div>
+              )}
 
-          <table className="scenario-table">
-            <thead>
-              <tr>
-                <th>시나리오</th>
-                <th>24시간 평균</th>
-                <th>성공률</th>
-                <th>표본</th>
-              </tr>
-            </thead>
-            <tbody>
-              {summaryRows.map(row => (
-                <tr key={row.scenarioId}>
-                  <td>{row.label}</td>
-                  <td>{row.averageReturn !== null ? `${row.averageReturn.toFixed(2)}%` : '-'}</td>
-                  <td>{row.successRate !== null ? `${row.successRate.toFixed(1)}%` : '-'}</td>
-                  <td>{row.sampleSize}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              {metaCards.length > 0 && (
+                <div className="listing-meta-grid">
+                  {metaCards.map(card => (
+                    <div key={card.label} className="meta-card">
+                      <p className="meta-label">{card.label}</p>
+                      <p className="meta-value">{card.value}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="listing-table-panel">
+              <div className="panel-header">
+                <p className="eyebrow">시나리오 통계</p>
+                <p className="subtitle" style={{ fontSize: '0.8rem' }}>
+                  24h 기준 수익률/성공률을 빠르게 비교하세요.
+                </p>
+              </div>
+              <div className="table-scroll">
+                <table className="scenario-table compact">
+                  <thead>
+                    <tr>
+                      <th>시나리오</th>
+                      <th>24h 평균</th>
+                      <th>성공률</th>
+                      <th>표본</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {summaryRows.map(row => (
+                      <tr key={row.scenarioId}>
+                        <td>{row.label}</td>
+                        <td>{row.averageReturn !== null ? `${row.averageReturn.toFixed(2)}%` : '-'}</td>
+                        <td>{row.successRate !== null ? `${row.successRate.toFixed(1)}%` : '-'}</td>
+                        <td>{row.sampleSize}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
 
           <CoinScenarioGallery
             coins={recentCoins}
@@ -149,25 +185,38 @@ const CoinScenarioGallery = ({
   selectedCoin
 }: CoinScenarioGalleryProps) => {
   return (
-    <div style={{ marginTop: 24 }}>
-      <p style={{ fontWeight: 600, marginBottom: 12 }}>샘플 코인 (최근 상장 3개월)</p>
-      <div className="coin-gallery">
-        {coins.length === 0 && <span className="loading">최근 3개월 상장 데이터가 없습니다.</span>}
-        {coins.map(coin => (
-          <button
-            key={coin.symbol}
-            type="button"
-            className={`coin-gallery-item ${selectedSymbol === coin.symbol ? 'active' : ''}`}
-            onClick={() => onSelect(coin.symbol)}
-          >
-            <div className="coin-symbol">{coin.symbol}</div>
-            <div className="coin-name">{coin.koreanName}</div>
-            <div className="coin-listing-date">상장 {coin.listingDate}</div>
-          </button>
-        ))}
+    <div className="listing-gallery">
+      <div className="gallery-list">
+        <div className="gallery-header">
+          <p className="eyebrow">샘플 코인</p>
+          <p className="subtitle" style={{ fontSize: '0.85rem' }}>최근 3개월 상장</p>
+        </div>
+        <div className="coin-gallery">
+          {coins.length === 0 && (
+            <span className="loading">최근 3개월 상장 데이터가 없습니다.</span>
+          )}
+          {coins.map(coin => (
+            <button
+              key={coin.symbol}
+              type="button"
+              className={`coin-gallery-item ${selectedSymbol === coin.symbol ? 'active' : ''}`}
+              onClick={() => onSelect(coin.symbol)}
+            >
+              <div className="coin-symbol">{coin.symbol}</div>
+              <div className="coin-name">{coin.koreanName}</div>
+              <div className="coin-listing-date">상장 {coin.listingDate}</div>
+            </button>
+          ))}
+        </div>
       </div>
 
-      {selectedCoin && <CoinScenarioDetail coin={selectedCoin} />}
+      <div className="gallery-detail">
+        {selectedCoin ? (
+          <CoinScenarioDetail coin={selectedCoin} />
+        ) : (
+          <div className="loading">샘플 코인을 선택하세요.</div>
+        )}
+      </div>
     </div>
   );
 };
