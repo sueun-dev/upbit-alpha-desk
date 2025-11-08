@@ -16,14 +16,15 @@ export interface BybitKline {
 export async function fetchBybitHourlyKlines(
   symbol: string,
   start: number,
-  end: number
+  end: number,
+  interval: '60' | '240' = '240'
 ): Promise<BybitKline[]> {
   try {
     const response = await axios.get('https://api.bybit.com/v5/market/kline', {
       params: {
         category: 'linear',
         symbol,
-        interval: '60',
+        interval,
         start,
         end,
         limit: 200
@@ -50,4 +51,3 @@ export async function fetchBybitHourlyKlines(
     return [];
   }
 }
-

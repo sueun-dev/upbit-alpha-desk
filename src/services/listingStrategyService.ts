@@ -12,11 +12,14 @@ interface UpbitDailyCandle {
   trade_price: number;
 }
 
+type PriceProfile = 'HIGH' | 'MID' | 'LOW';
+
 export interface ListingScenarioDefinition {
   id: string;
   label: string;
   description: string;
   entryHours: number;
+  priceProfile: PriceProfile;
 }
 
 export interface ScenarioResult {
@@ -27,6 +30,8 @@ export interface ScenarioResult {
   entryPrice: number;
   exitPrice: number;
   returnPct: number;
+  priceProfile: PriceProfile;
+  liquidated: boolean;
 }
 
 export interface CoinListingAnalysis {
@@ -57,13 +62,35 @@ export interface ListingStrategyReport {
   coins: CoinListingAnalysis[];
 }
 
-export const LISTING_SCENARIOS: ListingScenarioDefinition[] = [
-  { id: 'D0_OPEN', label: '상장 직후 숏', description: '상장 순간에 진입 후 24시간 보유', entryHours: 0 },
-  { id: 'D0_12H', label: '상장 +12시간 숏', description: '상장 12시간 뒤 진입 후 24시간 보유', entryHours: 12 },
-  { id: 'D1_OPEN', label: '상장 +1일 숏', description: '상장 다음날 진입 후 24시간 보유', entryHours: 24 },
-  { id: 'D3_OPEN', label: '상장 +3일 숏', description: '상장 3일 뒤 진입 후 24시간 보유', entryHours: 72 },
-  { id: 'D5_OPEN', label: '상장 +5일 숏', description: '상장 5일 뒤 진입 후 24시간 보유', entryHours: 120 }
+const BASE_SCENARIOS: Array<{ id: string; label: string; description: string; entryHours: number }> =
+  [
+    { id: 'D0_OPEN', label: '상장 직후 숏', description: '상장 순간에 진입 후 24시간 보유', entryHours: 0 },
+    {
+      id: 'D0_12H',
+      label: '상장 +12시간 숏',
+      description: '상장 12시간 뒤 진입 후 24시간 보유',
+      entryHours: 12
+    },
+    { id: 'D1_OPEN', label: '상장 +1일 숏', description: '상장 다음날 진입 후 24시간 보유', entryHours: 24 },
+    { id: 'D3_OPEN', label: '상장 +3일 숏', description: '상장 3일 뒤 진입 후 24시간 보유', entryHours: 72 },
+    { id: 'D5_OPEN', label: '상장 +5일 숏', description: '상장 5일 뒤 진입 후 24시간 보유', entryHours: 120 }
+  ];
+
+const PRICE_PROFILES: Array<{ id: PriceProfile; label: string }> = [
+  { id: 'HIGH', label: '최고가' },
+  { id: 'MID', label: '중간값' },
+  { id: 'LOW', label: '최저가' }
 ];
+
+export const LISTING_SCENARIOS: ListingScenarioDefinition[] = BASE_SCENARIOS.flatMap(base =>
+  PRICE_PROFILES.map(profile => ({
+    id: `${base.id}_${profile.id}`,
+    label: `${base.label} · ${profile.label}`,
+    description: `${base.description} (${profile.label} 진입)`,
+    entryHours: base.entryHours,
+    priceProfile: profile.id
+  }))
+);
 
 const HOLD_HOURS = 24;
 const MS_PER_HOUR = 60 * 60 * 1000;
@@ -85,14 +112,16 @@ function isRecentListing(date: string, cutoff: Date): boolean {
 
 export async function buildListingStrategyReport(
   coins: CoinInfo[],
-  months: number = 6,
+  months: number = 3,
   maxCoins: number = DEFAULT_MAX_COINS
 ): Promise<ListingStrategyReport> {
-  const sixMonthsAgo = new Date();
-  sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - months);
+  const cutoffDate = new Date();
+  cutoffDate.setMonth(cutoffDate.getMonth() - months);
 
   const summaryMap = new Map<string, { totalReturn: number; wins: number; count: number }>();
   LISTING_SCENARIOS.forEach(s => summaryMap.set(s.id, { totalReturn: 0, wins: 0, count: 0 }));
+  const scenarioDefinitionMap = new Map<string, ListingScenarioDefinition>();
+  LISTING_SCENARIOS.forEach(def => scenarioDefinitionMap.set(def.id, def));
 
   const analyzedCoins: CoinListingAnalysis[] = [];
 
@@ -110,7 +139,7 @@ export async function buildListingStrategyReport(
       const earliest = orderedCandles[0];
       const listingDate = adjustListingDate(earliest.candle_date_time_kst);
 
-      if (!isRecentListing(listingDate, sixMonthsAgo)) {
+      if (!isRecentListing(listingDate, cutoffDate)) {
         continue;
       }
 
@@ -118,7 +147,7 @@ export async function buildListingStrategyReport(
       const bybitSymbol = `${coin.symbol}USDT`;
       const fetchStart = listingDateObj.getTime() - MS_PER_HOUR;
       const fetchEnd = listingDateObj.getTime() + (MAX_ENTRY_HOURS + HOLD_HOURS + 12) * MS_PER_HOUR;
-      const bybitKlines = await fetchBybitHourlyKlines(bybitSymbol, fetchStart, fetchEnd);
+      const bybitKlines = await fetchBybitHourlyKlines(bybitSymbol, fetchStart, fetchEnd, '240');
 
       if (bybitKlines.length === 0) {
         continue;
@@ -126,8 +155,8 @@ export async function buildListingStrategyReport(
 
       const scenarioResults: ScenarioResult[] = [];
 
-      for (const scenario of LISTING_SCENARIOS) {
-        const entryTime = listingDateObj.getTime() + scenario.entryHours * MS_PER_HOUR;
+      for (const baseScenario of BASE_SCENARIOS) {
+        const entryTime = listingDateObj.getTime() + baseScenario.entryHours * MS_PER_HOUR;
         const exitTime = entryTime + HOLD_HOURS * MS_PER_HOUR;
 
         const entryCandle = bybitKlines.find(k => k.start >= entryTime);
@@ -137,30 +166,40 @@ export async function buildListingStrategyReport(
           continue;
         }
 
-        const entryPrice = entryCandle.open;
         const exitPrice = exitCandle.close;
+        if (!exitPrice) continue;
 
-        if (!entryPrice || !exitPrice) {
-          continue;
-        }
+        const windowKlines = bybitKlines.filter(k => k.start >= entryTime && k.start < exitTime);
+        if (windowKlines.length === 0) continue;
 
-        const returnPct = ((entryPrice - exitPrice) / entryPrice) * 100;
+        const profilePrices = buildProfilePrices(windowKlines);
 
-        scenarioResults.push({
-          scenarioId: scenario.id,
-          label: scenario.label,
-          date: new Date(entryTime).toISOString().substring(0, 10),
-          entryHours: scenario.entryHours,
-          entryPrice,
-          exitPrice,
-          returnPct: Number(returnPct.toFixed(2))
-        });
+        for (const profile of PRICE_PROFILES) {
+          const entryPrice = profilePrices[profile.id];
+          if (!entryPrice) continue;
+          const returnPct = ((entryPrice - exitPrice) / entryPrice) * 100;
+          const scenarioId = `${baseScenario.id}_${profile.id}`;
+          const scenarioDef = scenarioDefinitionMap.get(scenarioId);
+          if (!scenarioDef) continue;
 
-        const summary = summaryMap.get(scenario.id);
-        if (summary) {
-          summary.totalReturn += returnPct;
-          if (returnPct > 0) summary.wins += 1;
-          summary.count += 1;
+          scenarioResults.push({
+            scenarioId,
+            label: scenarioDef.label,
+            date: new Date(entryTime).toISOString().substring(0, 10),
+            entryHours: baseScenario.entryHours,
+            entryPrice,
+            exitPrice,
+            returnPct: Number(returnPct.toFixed(2)),
+            priceProfile: profile.id,
+            liquidated: returnPct <= -90
+          });
+
+          const summary = summaryMap.get(scenarioId);
+          if (summary) {
+            summary.totalReturn += returnPct;
+            if (returnPct > 0) summary.wins += 1;
+            summary.count += 1;
+          }
         }
       }
 
@@ -211,4 +250,25 @@ function adjustListingDate(kstTimestamp: string): string {
   const base = new Date(`${kstTimestamp}+09:00`);
   base.setDate(base.getDate() - 1);
   return base.toISOString().substring(0, 10);
+}
+
+function buildProfilePrices(klines: Array<{ high: number; low: number }>): Record<PriceProfile, number | null> {
+  if (!klines.length) {
+    return { HIGH: null, MID: null, LOW: null };
+  }
+  const highs = klines.map(k => k.high).filter(v => Number.isFinite(v));
+  const lows = klines.map(k => k.low).filter(v => Number.isFinite(v));
+  if (!highs.length || !lows.length) {
+    return { HIGH: null, MID: null, LOW: null };
+  }
+  const maxHigh = Math.max(...highs);
+  const minLow = Math.min(...lows);
+  if (!Number.isFinite(maxHigh) || !Number.isFinite(minLow)) {
+    return { HIGH: null, MID: null, LOW: null };
+  }
+  return {
+    HIGH: maxHigh,
+    LOW: minLow,
+    MID: (maxHigh + minLow) / 2
+  };
 }

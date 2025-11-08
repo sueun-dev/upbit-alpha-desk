@@ -33,7 +33,7 @@ const ListingLabPanel = () => {
     const summary = strategyQuery.data?.summary || [];
     return summary.reduce(
       (best, current) => {
-        if (!current.averageReturn) return best;
+        if (current.averageReturn === null || current.averageReturn === undefined) return best;
         if (!best || (best.averageReturn || 0) < (current.averageReturn || 0)) {
           return current;
         }
@@ -48,7 +48,7 @@ const ListingLabPanel = () => {
   const recentCoins = useMemo(() => {
     if (!strategyQuery.data?.coins) return [];
     const cutoff = new Date();
-    cutoff.setMonth(cutoff.getMonth() - (strategyQuery.data.months ?? 6));
+    cutoff.setMonth(cutoff.getMonth() - (strategyQuery.data?.months ?? 3));
     return strategyQuery.data.coins
       .filter(coin => new Date(`${coin.listingDate}T00:00:00Z`) >= cutoff)
       .sort((a, b) => b.listingDate.localeCompare(a.listingDate));
@@ -72,9 +72,9 @@ const ListingLabPanel = () => {
     <section className="panel">
       <div>
         <p className="eyebrow">Listing Lab</p>
-        <h3 style={{ margin: '6px 0' }}>최근 6개월 상장 코인 통계</h3>
+        <h3 style={{ margin: '6px 0' }}>최근 3개월 상장 코인 통계</h3>
         <p className="subtitle" style={{ fontSize: '0.9rem' }}>
-          Bybit USDT 선물 1시간 캔들 기준 · 각 시나리오는 지정 시점에 진입해 24시간 보유 후 수익률을 계산합니다.
+          Bybit USDT 선물 4시간 캔들 기준 · 각 시나리오는 지정 시점에 진입해 24시간 동안 최고·중간·최저 진입가를 가정한 수익률을 계산합니다.
         </p>
       </div>
       {strategyQuery.isLoading && <div className="loading">Listing Lab 보고서를 계산 중...</div>}
@@ -85,12 +85,19 @@ const ListingLabPanel = () => {
         <>
           {bestScenario && (
             <div className="stat-card" style={{ background: 'rgba(22, 199, 132, 0.12)' }}>
-              <p className="stat-title">가장 높은 평균 수익 시나리오</p>
+              <p className="stat-title">가장 높은 평균 수익 시나리오 (24h)</p>
               <p className="stat-value">
-                {bestScenario.label} · {bestScenario.averageReturn?.toFixed(2)}%
+                {bestScenario.label} ·{' '}
+                {bestScenario.averageReturn !== null && bestScenario.averageReturn !== undefined
+                  ? `${bestScenario.averageReturn.toFixed(2)}%`
+                  : '-'}
               </p>
               <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                성공률 {bestScenario.successRate ?? 0}% · 표본 {bestScenario.sampleSize}개
+                성공률{' '}
+                {bestScenario.successRate !== null && bestScenario.successRate !== undefined
+                  ? `${bestScenario.successRate.toFixed(1)}%`
+                  : '-'}{' '}
+                · 표본 {bestScenario.sampleSize}
               </p>
             </div>
           )}
@@ -99,9 +106,9 @@ const ListingLabPanel = () => {
             <thead>
               <tr>
                 <th>시나리오</th>
-                <th>평균 수익률</th>
+                <th>24시간 평균</th>
                 <th>성공률</th>
-                <th>샘플</th>
+                <th>표본</th>
               </tr>
             </thead>
             <tbody>
@@ -143,9 +150,9 @@ const CoinScenarioGallery = ({
 }: CoinScenarioGalleryProps) => {
   return (
     <div style={{ marginTop: 24 }}>
-      <p style={{ fontWeight: 600, marginBottom: 12 }}>샘플 코인 (최근 상장 6개월)</p>
+      <p style={{ fontWeight: 600, marginBottom: 12 }}>샘플 코인 (최근 상장 3개월)</p>
       <div className="coin-gallery">
-        {coins.length === 0 && <span className="loading">최근 6개월 상장 데이터가 없습니다.</span>}
+        {coins.length === 0 && <span className="loading">최근 3개월 상장 데이터가 없습니다.</span>}
         {coins.map(coin => (
           <button
             key={coin.symbol}
@@ -206,6 +213,7 @@ const CoinScenarioDetail = ({ coin }: CoinScenarioDetailProps) => {
               <th>수익률</th>
               <th>진입가</th>
               <th>청산가</th>
+              <th>상태</th>
             </tr>
           </thead>
           <tbody>
@@ -216,6 +224,7 @@ const CoinScenarioDetail = ({ coin }: CoinScenarioDetailProps) => {
                 <td>{scenario.returnPct.toFixed(2)}%</td>
                 <td>{scenario.entryPrice.toFixed(4)}</td>
                 <td>{scenario.exitPrice.toFixed(4)}</td>
+                <td>{scenario.liquidated ? '청산' : scenario.returnPct >= 0 ? '이익' : '손실'}</td>
               </tr>
             ))}
           </tbody>

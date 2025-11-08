@@ -42,11 +42,14 @@ export interface ListingCalendarResponse {
   error?: string;
 }
 
+export type PriceProfile = 'HIGH' | 'MID' | 'LOW';
+
 export interface ListingScenarioDefinition {
   id: string;
   label: string;
   description: string;
   entryHours: number;
+  priceProfile: PriceProfile;
 }
 
 export interface ScenarioSummary {
@@ -67,6 +70,8 @@ export interface ScenarioResult {
   entryPrice: number;
   exitPrice: number;
   returnPct: number;
+  priceProfile: PriceProfile;
+  liquidated: boolean;
 }
 
 export interface CoinListingAnalysis {

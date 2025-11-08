@@ -36,7 +36,7 @@ export class ListingStrategyScheduler {
     options?: { intervalMs?: number; months?: number; persistPath?: string; maxCoins?: number }
   ) {
     this.intervalMs = options?.intervalMs ?? 1000 * 60 * 60 * 3; // default 3 hours
-    this.months = options?.months ?? 6;
+    this.months = options?.months ?? 3;
     this.persistPath = options?.persistPath;
     this.maxCoins = options?.maxCoins ?? 150;
   }

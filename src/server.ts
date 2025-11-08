@@ -452,12 +452,14 @@ async function start() {
     await loadTickerCacheFromDisk();
     listingStrategyScheduler = new ListingStrategyScheduler(dataManager, {
       persistPath: STRATEGY_CACHE_PATH,
-      maxCoins: 200
+      maxCoins: 200,
+      months: 3
     });
     await listingStrategyScheduler.start();
     listingCalendarScheduler = new ListingCalendarScheduler(dataManager, {
       persistPath: CALENDAR_CACHE_PATH,
-      maxCoins: 150
+      maxCoins: 150,
+      months: 3
     });
     await listingCalendarScheduler.start();
 
