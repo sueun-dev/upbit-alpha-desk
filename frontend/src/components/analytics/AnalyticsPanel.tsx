@@ -193,7 +193,7 @@ function buildStats(data: DailyCandle[], marketData?: MarketDataResponse | null)
   return [
     {
       title: '종가',
-      value: `${last.close.toLocaleString('ko-KR')}₩`,
+      value: `₩${last.close.toLocaleString('ko-KR')}`,
       sub: last.date
     },
     {
@@ -208,7 +208,7 @@ function buildStats(data: DailyCandle[], marketData?: MarketDataResponse | null)
     },
     {
       title: '최대 거래대금 (6M)',
-      value: highestTrading ? `${Math.round(highestTrading.value).toLocaleString('ko-KR')}₩` : '-',
+      value: highestTrading ? `₩${Math.round(highestTrading.value).toLocaleString('ko-KR')}` : '-',
       sub: highestTrading ? highestTrading.date : 'market data'
     }
   ];

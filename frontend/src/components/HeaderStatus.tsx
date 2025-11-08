@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import { api } from '../api/client';
-import { RecentListings } from './Sidebar';
 import type { ListingCalendarResponse } from '../api/types';
 
 const HeaderStatus = () => {
@@ -15,12 +14,11 @@ const HeaderStatus = () => {
 
   return (
     <div className="header-status">
-      <div>
+      <div className="status-copy">
         <p className="eyebrow">최근 상장 캘린더</p>
         <p className="status-text">{statusText || '캘린더를 준비 중입니다.'}</p>
       </div>
-      <div className="status-pill">6개월</div>
-      <RecentListings onSelectCoin={() => {}} compact />
+      <div className="status-pill">3개월</div>
     </div>
   );
 };

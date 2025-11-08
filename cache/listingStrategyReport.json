@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2025-11-08T17:11:02.977Z",
+  "generatedAt": "2025-11-08T18:26:25.073Z",
   "months": 3,
-  "coinsAnalyzed": 32,
+  "coinsAnalyzed": 33,
   "scenarioDefinitions": [
     {
       "id": "D0_OPEN_HIGH",
@@ -115,135 +115,135 @@
       "label": "상장 직후 숏 · 최고가",
       "description": "상장 순간에 진입 후 24시간 보유 (최고가 진입)",
       "entryHours": 0,
-      "sampleSize": 26,
-      "averageReturn": 6.81,
-      "successRate": 84.6
+      "sampleSize": 27,
+      "averageReturn": 6.76,
+      "successRate": 85.2
     },
     {
       "scenarioId": "D0_OPEN_MID",
       "label": "상장 직후 숏 · 중간값",
       "description": "상장 순간에 진입 후 24시간 보유 (중간값 진입)",
       "entryHours": 0,
-      "sampleSize": 26,
-      "averageReturn": -4.39,
-      "successRate": 57.7
+      "sampleSize": 27,
+      "averageReturn": -4.78,
+      "successRate": 55.6
     },
     {
       "scenarioId": "D0_OPEN_LOW",
       "label": "상장 직후 숏 · 최저가",
       "description": "상장 순간에 진입 후 24시간 보유 (최저가 진입)",
       "entryHours": 0,
-      "sampleSize": 26,
-      "averageReturn": -25.49,
-      "successRate": 11.5
+      "sampleSize": 27,
+      "averageReturn": -26.27,
+      "successRate": 11.1
     },
     {
       "scenarioId": "D0_12H_HIGH",
       "label": "상장 +12시간 숏 · 최고가",
       "description": "상장 12시간 뒤 진입 후 24시간 보유 (최고가 진입)",
       "entryHours": 12,
-      "sampleSize": 26,
-      "averageReturn": -12.17,
-      "successRate": 46.2
+      "sampleSize": 27,
+      "averageReturn": -11.65,
+      "successRate": 48.1
     },
     {
       "scenarioId": "D0_12H_MID",
       "label": "상장 +12시간 숏 · 중간값",
       "description": "상장 12시간 뒤 진입 후 24시간 보유 (중간값 진입)",
       "entryHours": 12,
-      "sampleSize": 26,
-      "averageReturn": -22.79,
-      "successRate": 30.8
+      "sampleSize": 27,
+      "averageReturn": -22.78,
+      "successRate": 29.6
     },
     {
       "scenarioId": "D0_12H_LOW",
       "label": "상장 +12시간 숏 · 최저가",
       "description": "상장 12시간 뒤 진입 후 24시간 보유 (최저가 진입)",
       "entryHours": 12,
-      "sampleSize": 26,
-      "averageReturn": -51.94,
-      "successRate": 3.8
+      "sampleSize": 27,
+      "averageReturn": -52.33,
+      "successRate": 3.7
     },
     {
       "scenarioId": "D1_OPEN_HIGH",
       "label": "상장 +1일 숏 · 최고가",
       "description": "상장 다음날 진입 후 24시간 보유 (최고가 진입)",
       "entryHours": 24,
-      "sampleSize": 32,
-      "averageReturn": 27.54,
-      "successRate": 96.9
+      "sampleSize": 33,
+      "averageReturn": 27.29,
+      "successRate": 97
     },
     {
       "scenarioId": "D1_OPEN_MID",
       "label": "상장 +1일 숏 · 중간값",
       "description": "상장 다음날 진입 후 24시간 보유 (중간값 진입)",
       "entryHours": 24,
-      "sampleSize": 32,
-      "averageReturn": 9.94,
-      "successRate": 75
+      "sampleSize": 33,
+      "averageReturn": 9.67,
+      "successRate": 75.8
     },
     {
       "scenarioId": "D1_OPEN_LOW",
       "label": "상장 +1일 숏 · 최저가",
       "description": "상장 다음날 진입 후 24시간 보유 (최저가 진입)",
       "entryHours": 24,
-      "sampleSize": 32,
-      "averageReturn": -27.38,
-      "successRate": 12.5
+      "sampleSize": 33,
+      "averageReturn": -27.37,
+      "successRate": 12.1
     },
     {
       "scenarioId": "D3_OPEN_HIGH",
       "label": "상장 +3일 숏 · 최고가",
       "description": "상장 3일 뒤 진입 후 24시간 보유 (최고가 진입)",
       "entryHours": 72,
-      "sampleSize": 32,
-      "averageReturn": 9.52,
-      "successRate": 96.9
+      "sampleSize": 33,
+      "averageReturn": 9.66,
+      "successRate": 97
     },
     {
       "scenarioId": "D3_OPEN_MID",
       "label": "상장 +3일 숏 · 중간값",
       "description": "상장 3일 뒤 진입 후 24시간 보유 (중간값 진입)",
       "entryHours": 72,
-      "sampleSize": 32,
-      "averageReturn": 1.86,
-      "successRate": 65.6
+      "sampleSize": 33,
+      "averageReturn": 2.01,
+      "successRate": 66.7
     },
     {
       "scenarioId": "D3_OPEN_LOW",
       "label": "상장 +3일 숏 · 최저가",
       "description": "상장 3일 뒤 진입 후 24시간 보유 (최저가 진입)",
       "entryHours": 72,
-      "sampleSize": 32,
-      "averageReturn": -7.73,
-      "successRate": 15.6
+      "sampleSize": 33,
+      "averageReturn": -7.54,
+      "successRate": 15.2
     },
     {
       "scenarioId": "D5_OPEN_HIGH",
       "label": "상장 +5일 숏 · 최고가",
       "description": "상장 5일 뒤 진입 후 24시간 보유 (최고가 진입)",
       "entryHours": 120,
-      "sampleSize": 31,
-      "averageReturn": 11.11,
-      "successRate": 90.3
+      "sampleSize": 32,
+      "averageReturn": 10.97,
+      "successRate": 90.6
     },
     {
       "scenarioId": "D5_OPEN_MID",
       "label": "상장 +5일 숏 · 중간값",
       "description": "상장 5일 뒤 진입 후 24시간 보유 (중간값 진입)",
       "entryHours": 120,
-      "sampleSize": 31,
-      "averageReturn": 3.55,
-      "successRate": 71
+      "sampleSize": 32,
+      "averageReturn": 3.5,
+      "successRate": 71.9
     },
     {
       "scenarioId": "D5_OPEN_LOW",
       "label": "상장 +5일 숏 · 최저가",
       "description": "상장 5일 뒤 진입 후 24시간 보유 (최저가 진입)",
       "entryHours": 120,
-      "sampleSize": 31,
-      "averageReturn": -6.7,
-      "successRate": 9.7
+      "sampleSize": 32,
+      "averageReturn": -6.59,
+      "successRate": 9.4
     }
   ],
   "coins": [
@@ -1649,6 +1649,180 @@
       ]
     },
     {
+      "symbol": "BARD",
+      "market": "KRW-BARD",
+      "name": "Lombard",
+      "koreanName": "롬바드",
+      "listingDate": "2025-09-17",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN_HIGH",
+          "label": "상장 직후 숏 · 최고가",
+          "date": "2025-09-16",
+          "entryHours": 0,
+          "entryPrice": 1.19,
+          "exitPrice": 0.99,
+          "returnPct": 16.81,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_OPEN_MID",
+          "label": "상장 직후 숏 · 중간값",
+          "date": "2025-09-16",
+          "entryHours": 0,
+          "entryPrice": 1.0672,
+          "exitPrice": 0.99,
+          "returnPct": 7.23,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_OPEN_LOW",
+          "label": "상장 직후 숏 · 최저가",
+          "date": "2025-09-16",
+          "entryHours": 0,
+          "entryPrice": 0.9444,
+          "exitPrice": 0.99,
+          "returnPct": -4.83,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_12H_HIGH",
+          "label": "상장 +12시간 숏 · 최고가",
+          "date": "2025-09-17",
+          "entryHours": 12,
+          "entryPrice": 1.19,
+          "exitPrice": 1.0329,
+          "returnPct": 13.2,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_12H_MID",
+          "label": "상장 +12시간 숏 · 중간값",
+          "date": "2025-09-17",
+          "entryHours": 12,
+          "entryPrice": 1.07715,
+          "exitPrice": 1.0329,
+          "returnPct": 4.11,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_12H_LOW",
+          "label": "상장 +12시간 숏 · 최저가",
+          "date": "2025-09-17",
+          "entryHours": 12,
+          "entryPrice": 0.9643,
+          "exitPrice": 1.0329,
+          "returnPct": -7.11,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D1_OPEN_HIGH",
+          "label": "상장 +1일 숏 · 최고가",
+          "date": "2025-09-17",
+          "entryHours": 24,
+          "entryPrice": 1.27,
+          "exitPrice": 1.05176,
+          "returnPct": 17.18,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D1_OPEN_MID",
+          "label": "상장 +1일 숏 · 중간값",
+          "date": "2025-09-17",
+          "entryHours": 24,
+          "entryPrice": 1.0867499999999999,
+          "exitPrice": 1.05176,
+          "returnPct": 3.22,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D1_OPEN_LOW",
+          "label": "상장 +1일 숏 · 최저가",
+          "date": "2025-09-17",
+          "entryHours": 24,
+          "entryPrice": 0.9035,
+          "exitPrice": 1.05176,
+          "returnPct": -16.41,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D3_OPEN_HIGH",
+          "label": "상장 +3일 숏 · 최고가",
+          "date": "2025-09-19",
+          "entryHours": 72,
+          "entryPrice": 1.03637,
+          "exitPrice": 0.999,
+          "returnPct": 3.61,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D3_OPEN_MID",
+          "label": "상장 +3일 숏 · 중간값",
+          "date": "2025-09-19",
+          "entryHours": 72,
+          "entryPrice": 0.960035,
+          "exitPrice": 0.999,
+          "returnPct": -4.06,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D3_OPEN_LOW",
+          "label": "상장 +3일 숏 · 최저가",
+          "date": "2025-09-19",
+          "entryHours": 72,
+          "entryPrice": 0.8837,
+          "exitPrice": 0.999,
+          "returnPct": -13.05,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D5_OPEN_HIGH",
+          "label": "상장 +5일 숏 · 최고가",
+          "date": "2025-09-21",
+          "entryHours": 120,
+          "entryPrice": 1.10846,
+          "exitPrice": 0.93722,
+          "returnPct": 15.45,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D5_OPEN_MID",
+          "label": "상장 +5일 숏 · 중간값",
+          "date": "2025-09-21",
+          "entryHours": 120,
+          "entryPrice": 0.98853,
+          "exitPrice": 0.93722,
+          "returnPct": 5.19,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D5_OPEN_LOW",
+          "label": "상장 +5일 숏 · 최저가",
+          "date": "2025-09-21",
+          "entryHours": 120,
+          "entryPrice": 0.8686,
+          "exitPrice": 0.93722,
+          "returnPct": -7.9,
+          "priceProfile": "LOW",
+          "liquidated": false
+        }
+      ]
+    },
+    {
       "symbol": "2Z",
       "market": "KRW-2Z",
       "name": "DoubleZero",
@@ -1751,6 +1925,180 @@
           "entryPrice": 0.4754,
           "exitPrice": 0.4921,
           "returnPct": -3.51,
+          "priceProfile": "LOW",
+          "liquidated": false
+        }
+      ]
+    },
+    {
+      "symbol": "WLD",
+      "market": "KRW-WLD",
+      "name": "Worldcoin",
+      "koreanName": "월드코인",
+      "listingDate": "2025-09-08",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN_HIGH",
+          "label": "상장 직후 숏 · 최고가",
+          "date": "2025-09-07",
+          "entryHours": 0,
+          "entryPrice": 1.589,
+          "exitPrice": 1.5031,
+          "returnPct": 5.41,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_OPEN_MID",
+          "label": "상장 직후 숏 · 중간값",
+          "date": "2025-09-07",
+          "entryHours": 0,
+          "entryPrice": 1.30725,
+          "exitPrice": 1.5031,
+          "returnPct": -14.98,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_OPEN_LOW",
+          "label": "상장 직후 숏 · 최저가",
+          "date": "2025-09-07",
+          "entryHours": 0,
+          "entryPrice": 1.0255,
+          "exitPrice": 1.5031,
+          "returnPct": -46.57,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_12H_HIGH",
+          "label": "상장 +12시간 숏 · 최고가",
+          "date": "2025-09-08",
+          "entryHours": 12,
+          "entryPrice": 1.94,
+          "exitPrice": 1.9031,
+          "returnPct": 1.9,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_12H_MID",
+          "label": "상장 +12시간 숏 · 중간값",
+          "date": "2025-09-08",
+          "entryHours": 12,
+          "entryPrice": 1.556,
+          "exitPrice": 1.9031,
+          "returnPct": -22.31,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_12H_LOW",
+          "label": "상장 +12시간 숏 · 최저가",
+          "date": "2025-09-08",
+          "entryHours": 12,
+          "entryPrice": 1.172,
+          "exitPrice": 1.9031,
+          "returnPct": -62.38,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D1_OPEN_HIGH",
+          "label": "상장 +1일 숏 · 최고가",
+          "date": "2025-09-08",
+          "entryHours": 24,
+          "entryPrice": 2.2338,
+          "exitPrice": 1.8045,
+          "returnPct": 19.22,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D1_OPEN_MID",
+          "label": "상장 +1일 숏 · 중간값",
+          "date": "2025-09-08",
+          "entryHours": 24,
+          "entryPrice": 1.8256999999999999,
+          "exitPrice": 1.8045,
+          "returnPct": 1.16,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D1_OPEN_LOW",
+          "label": "상장 +1일 숏 · 최저가",
+          "date": "2025-09-08",
+          "entryHours": 24,
+          "entryPrice": 1.4176,
+          "exitPrice": 1.8045,
+          "returnPct": -27.29,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D3_OPEN_HIGH",
+          "label": "상장 +3일 숏 · 최고가",
+          "date": "2025-09-10",
+          "entryHours": 72,
+          "entryPrice": 1.8979,
+          "exitPrice": 1.63,
+          "returnPct": 14.12,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D3_OPEN_MID",
+          "label": "상장 +3일 숏 · 중간값",
+          "date": "2025-09-10",
+          "entryHours": 72,
+          "entryPrice": 1.75195,
+          "exitPrice": 1.63,
+          "returnPct": 6.96,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D3_OPEN_LOW",
+          "label": "상장 +3일 숏 · 최저가",
+          "date": "2025-09-10",
+          "entryHours": 72,
+          "entryPrice": 1.606,
+          "exitPrice": 1.63,
+          "returnPct": -1.49,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D5_OPEN_HIGH",
+          "label": "상장 +5일 숏 · 최고가",
+          "date": "2025-09-12",
+          "entryHours": 120,
+          "entryPrice": 1.7312,
+          "exitPrice": 1.619,
+          "returnPct": 6.48,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D5_OPEN_MID",
+          "label": "상장 +5일 숏 · 중간값",
+          "date": "2025-09-12",
+          "entryHours": 120,
+          "entryPrice": 1.6487,
+          "exitPrice": 1.619,
+          "returnPct": 1.8,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D5_OPEN_LOW",
+          "label": "상장 +5일 숏 · 최저가",
+          "date": "2025-09-12",
+          "entryHours": 120,
+          "entryPrice": 1.5662,
+          "exitPrice": 1.619,
+          "returnPct": -3.37,
           "priceProfile": "LOW",
           "liquidated": false
         }
@@ -1925,180 +2273,6 @@
           "entryPrice": 0.172,
           "exitPrice": 0.1814,
           "returnPct": -5.47,
-          "priceProfile": "LOW",
-          "liquidated": false
-        }
-      ]
-    },
-    {
-      "symbol": "BARD",
-      "market": "KRW-BARD",
-      "name": "Lombard",
-      "koreanName": "롬바드",
-      "listingDate": "2025-09-17",
-      "scenarios": [
-        {
-          "scenarioId": "D0_OPEN_HIGH",
-          "label": "상장 직후 숏 · 최고가",
-          "date": "2025-09-16",
-          "entryHours": 0,
-          "entryPrice": 1.19,
-          "exitPrice": 0.99,
-          "returnPct": 16.81,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_OPEN_MID",
-          "label": "상장 직후 숏 · 중간값",
-          "date": "2025-09-16",
-          "entryHours": 0,
-          "entryPrice": 1.0672,
-          "exitPrice": 0.99,
-          "returnPct": 7.23,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_OPEN_LOW",
-          "label": "상장 직후 숏 · 최저가",
-          "date": "2025-09-16",
-          "entryHours": 0,
-          "entryPrice": 0.9444,
-          "exitPrice": 0.99,
-          "returnPct": -4.83,
-          "priceProfile": "LOW",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_12H_HIGH",
-          "label": "상장 +12시간 숏 · 최고가",
-          "date": "2025-09-17",
-          "entryHours": 12,
-          "entryPrice": 1.19,
-          "exitPrice": 1.0329,
-          "returnPct": 13.2,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_12H_MID",
-          "label": "상장 +12시간 숏 · 중간값",
-          "date": "2025-09-17",
-          "entryHours": 12,
-          "entryPrice": 1.07715,
-          "exitPrice": 1.0329,
-          "returnPct": 4.11,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_12H_LOW",
-          "label": "상장 +12시간 숏 · 최저가",
-          "date": "2025-09-17",
-          "entryHours": 12,
-          "entryPrice": 0.9643,
-          "exitPrice": 1.0329,
-          "returnPct": -7.11,
-          "priceProfile": "LOW",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D1_OPEN_HIGH",
-          "label": "상장 +1일 숏 · 최고가",
-          "date": "2025-09-17",
-          "entryHours": 24,
-          "entryPrice": 1.27,
-          "exitPrice": 1.05176,
-          "returnPct": 17.18,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D1_OPEN_MID",
-          "label": "상장 +1일 숏 · 중간값",
-          "date": "2025-09-17",
-          "entryHours": 24,
-          "entryPrice": 1.0867499999999999,
-          "exitPrice": 1.05176,
-          "returnPct": 3.22,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D1_OPEN_LOW",
-          "label": "상장 +1일 숏 · 최저가",
-          "date": "2025-09-17",
-          "entryHours": 24,
-          "entryPrice": 0.9035,
-          "exitPrice": 1.05176,
-          "returnPct": -16.41,
-          "priceProfile": "LOW",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D3_OPEN_HIGH",
-          "label": "상장 +3일 숏 · 최고가",
-          "date": "2025-09-19",
-          "entryHours": 72,
-          "entryPrice": 1.03637,
-          "exitPrice": 0.999,
-          "returnPct": 3.61,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D3_OPEN_MID",
-          "label": "상장 +3일 숏 · 중간값",
-          "date": "2025-09-19",
-          "entryHours": 72,
-          "entryPrice": 0.960035,
-          "exitPrice": 0.999,
-          "returnPct": -4.06,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D3_OPEN_LOW",
-          "label": "상장 +3일 숏 · 최저가",
-          "date": "2025-09-19",
-          "entryHours": 72,
-          "entryPrice": 0.8837,
-          "exitPrice": 0.999,
-          "returnPct": -13.05,
-          "priceProfile": "LOW",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D5_OPEN_HIGH",
-          "label": "상장 +5일 숏 · 최고가",
-          "date": "2025-09-21",
-          "entryHours": 120,
-          "entryPrice": 1.10846,
-          "exitPrice": 0.93722,
-          "returnPct": 15.45,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D5_OPEN_MID",
-          "label": "상장 +5일 숏 · 중간값",
-          "date": "2025-09-21",
-          "entryHours": 120,
-          "entryPrice": 0.98853,
-          "exitPrice": 0.93722,
-          "returnPct": 5.19,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D5_OPEN_LOW",
-          "label": "상장 +5일 숏 · 최저가",
-          "date": "2025-09-21",
-          "entryHours": 120,
-          "entryPrice": 0.8686,
-          "exitPrice": 0.93722,
-          "returnPct": -7.9,
           "priceProfile": "LOW",
           "liquidated": false
         }
@@ -3821,180 +3995,6 @@
       ]
     },
     {
-      "symbol": "TREE",
-      "market": "KRW-TREE",
-      "name": "Treehouse",
-      "koreanName": "트리하우스",
-      "listingDate": "2025-08-27",
-      "scenarios": [
-        {
-          "scenarioId": "D0_OPEN_HIGH",
-          "label": "상장 직후 숏 · 최고가",
-          "date": "2025-08-26",
-          "entryHours": 0,
-          "entryPrice": 0.32441,
-          "exitPrice": 0.30336,
-          "returnPct": 6.49,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_OPEN_MID",
-          "label": "상장 직후 숏 · 중간값",
-          "date": "2025-08-26",
-          "entryHours": 0,
-          "entryPrice": 0.30844499999999997,
-          "exitPrice": 0.30336,
-          "returnPct": 1.65,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_OPEN_LOW",
-          "label": "상장 직후 숏 · 최저가",
-          "date": "2025-08-26",
-          "entryHours": 0,
-          "entryPrice": 0.29248,
-          "exitPrice": 0.30336,
-          "returnPct": -3.72,
-          "priceProfile": "LOW",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_12H_HIGH",
-          "label": "상장 +12시간 숏 · 최고가",
-          "date": "2025-08-27",
-          "entryHours": 12,
-          "entryPrice": 0.32441,
-          "exitPrice": 0.46176,
-          "returnPct": -42.34,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_12H_MID",
-          "label": "상장 +12시간 숏 · 중간값",
-          "date": "2025-08-27",
-          "entryHours": 12,
-          "entryPrice": 0.31245999999999996,
-          "exitPrice": 0.46176,
-          "returnPct": -47.78,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_12H_LOW",
-          "label": "상장 +12시간 숏 · 최저가",
-          "date": "2025-08-27",
-          "entryHours": 12,
-          "entryPrice": 0.30051,
-          "exitPrice": 0.46176,
-          "returnPct": -53.66,
-          "priceProfile": "LOW",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D1_OPEN_HIGH",
-          "label": "상장 +1일 숏 · 최고가",
-          "date": "2025-08-27",
-          "entryHours": 24,
-          "entryPrice": 0.60054,
-          "exitPrice": 0.39032,
-          "returnPct": 35.01,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D1_OPEN_MID",
-          "label": "상장 +1일 숏 · 중간값",
-          "date": "2025-08-27",
-          "entryHours": 24,
-          "entryPrice": 0.451045,
-          "exitPrice": 0.39032,
-          "returnPct": 13.46,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D1_OPEN_LOW",
-          "label": "상장 +1일 숏 · 최저가",
-          "date": "2025-08-27",
-          "entryHours": 24,
-          "entryPrice": 0.30155,
-          "exitPrice": 0.39032,
-          "returnPct": -29.44,
-          "priceProfile": "LOW",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D3_OPEN_HIGH",
-          "label": "상장 +3일 숏 · 최고가",
-          "date": "2025-08-29",
-          "entryHours": 72,
-          "entryPrice": 0.3662,
-          "exitPrice": 0.34071,
-          "returnPct": 6.96,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D3_OPEN_MID",
-          "label": "상장 +3일 숏 · 중간값",
-          "date": "2025-08-29",
-          "entryHours": 72,
-          "entryPrice": 0.353905,
-          "exitPrice": 0.34071,
-          "returnPct": 3.73,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D3_OPEN_LOW",
-          "label": "상장 +3일 숏 · 최저가",
-          "date": "2025-08-29",
-          "entryHours": 72,
-          "entryPrice": 0.34161,
-          "exitPrice": 0.34071,
-          "returnPct": 0.26,
-          "priceProfile": "LOW",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D5_OPEN_HIGH",
-          "label": "상장 +5일 숏 · 최고가",
-          "date": "2025-08-31",
-          "entryHours": 120,
-          "entryPrice": 0.34779,
-          "exitPrice": 0.31172,
-          "returnPct": 10.37,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D5_OPEN_MID",
-          "label": "상장 +5일 숏 · 중간값",
-          "date": "2025-08-31",
-          "entryHours": 120,
-          "entryPrice": 0.330555,
-          "exitPrice": 0.31172,
-          "returnPct": 5.7,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D5_OPEN_LOW",
-          "label": "상장 +5일 숏 · 최저가",
-          "date": "2025-08-31",
-          "entryHours": 120,
-          "entryPrice": 0.31332,
-          "exitPrice": 0.31172,
-          "returnPct": 0.51,
-          "priceProfile": "LOW",
-          "liquidated": false
-        }
-      ]
-    },
-    {
       "symbol": "BIO",
       "market": "KRW-BIO",
       "name": "Bio Protocol",
@@ -4337,6 +4337,180 @@
           "entryPrice": 0.886,
           "exitPrice": 0.9009,
           "returnPct": -1.68,
+          "priceProfile": "LOW",
+          "liquidated": false
+        }
+      ]
+    },
+    {
+      "symbol": "TREE",
+      "market": "KRW-TREE",
+      "name": "Treehouse",
+      "koreanName": "트리하우스",
+      "listingDate": "2025-08-27",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN_HIGH",
+          "label": "상장 직후 숏 · 최고가",
+          "date": "2025-08-26",
+          "entryHours": 0,
+          "entryPrice": 0.32441,
+          "exitPrice": 0.30336,
+          "returnPct": 6.49,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_OPEN_MID",
+          "label": "상장 직후 숏 · 중간값",
+          "date": "2025-08-26",
+          "entryHours": 0,
+          "entryPrice": 0.30844499999999997,
+          "exitPrice": 0.30336,
+          "returnPct": 1.65,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_OPEN_LOW",
+          "label": "상장 직후 숏 · 최저가",
+          "date": "2025-08-26",
+          "entryHours": 0,
+          "entryPrice": 0.29248,
+          "exitPrice": 0.30336,
+          "returnPct": -3.72,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_12H_HIGH",
+          "label": "상장 +12시간 숏 · 최고가",
+          "date": "2025-08-27",
+          "entryHours": 12,
+          "entryPrice": 0.32441,
+          "exitPrice": 0.46176,
+          "returnPct": -42.34,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_12H_MID",
+          "label": "상장 +12시간 숏 · 중간값",
+          "date": "2025-08-27",
+          "entryHours": 12,
+          "entryPrice": 0.31245999999999996,
+          "exitPrice": 0.46176,
+          "returnPct": -47.78,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_12H_LOW",
+          "label": "상장 +12시간 숏 · 최저가",
+          "date": "2025-08-27",
+          "entryHours": 12,
+          "entryPrice": 0.30051,
+          "exitPrice": 0.46176,
+          "returnPct": -53.66,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D1_OPEN_HIGH",
+          "label": "상장 +1일 숏 · 최고가",
+          "date": "2025-08-27",
+          "entryHours": 24,
+          "entryPrice": 0.60054,
+          "exitPrice": 0.39032,
+          "returnPct": 35.01,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D1_OPEN_MID",
+          "label": "상장 +1일 숏 · 중간값",
+          "date": "2025-08-27",
+          "entryHours": 24,
+          "entryPrice": 0.451045,
+          "exitPrice": 0.39032,
+          "returnPct": 13.46,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D1_OPEN_LOW",
+          "label": "상장 +1일 숏 · 최저가",
+          "date": "2025-08-27",
+          "entryHours": 24,
+          "entryPrice": 0.30155,
+          "exitPrice": 0.39032,
+          "returnPct": -29.44,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D3_OPEN_HIGH",
+          "label": "상장 +3일 숏 · 최고가",
+          "date": "2025-08-29",
+          "entryHours": 72,
+          "entryPrice": 0.3662,
+          "exitPrice": 0.34071,
+          "returnPct": 6.96,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D3_OPEN_MID",
+          "label": "상장 +3일 숏 · 중간값",
+          "date": "2025-08-29",
+          "entryHours": 72,
+          "entryPrice": 0.353905,
+          "exitPrice": 0.34071,
+          "returnPct": 3.73,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D3_OPEN_LOW",
+          "label": "상장 +3일 숏 · 최저가",
+          "date": "2025-08-29",
+          "entryHours": 72,
+          "entryPrice": 0.34161,
+          "exitPrice": 0.34071,
+          "returnPct": 0.26,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D5_OPEN_HIGH",
+          "label": "상장 +5일 숏 · 최고가",
+          "date": "2025-08-31",
+          "entryHours": 120,
+          "entryPrice": 0.34779,
+          "exitPrice": 0.31172,
+          "returnPct": 10.37,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D5_OPEN_MID",
+          "label": "상장 +5일 숏 · 중간값",
+          "date": "2025-08-31",
+          "entryHours": 120,
+          "entryPrice": 0.330555,
+          "exitPrice": 0.31172,
+          "returnPct": 5.7,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D5_OPEN_LOW",
+          "label": "상장 +5일 숏 · 최저가",
+          "date": "2025-08-31",
+          "entryHours": 120,
+          "entryPrice": 0.31332,
+          "exitPrice": 0.31172,
+          "returnPct": 0.51,
           "priceProfile": "LOW",
           "liquidated": false
         }
@@ -4691,180 +4865,6 @@
       ]
     },
     {
-      "symbol": "ORDER",
-      "market": "KRW-ORDER",
-      "name": "Orderly",
-      "koreanName": "오덜리",
-      "listingDate": "2025-10-23",
-      "scenarios": [
-        {
-          "scenarioId": "D0_OPEN_HIGH",
-          "label": "상장 직후 숏 · 최고가",
-          "date": "2025-10-22",
-          "entryHours": 0,
-          "entryPrice": 0.2139,
-          "exitPrice": 0.2159,
-          "returnPct": -0.94,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_OPEN_MID",
-          "label": "상장 직후 숏 · 중간값",
-          "date": "2025-10-22",
-          "entryHours": 0,
-          "entryPrice": 0.20505,
-          "exitPrice": 0.2159,
-          "returnPct": -5.29,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_OPEN_LOW",
-          "label": "상장 직후 숏 · 최저가",
-          "date": "2025-10-22",
-          "entryHours": 0,
-          "entryPrice": 0.1962,
-          "exitPrice": 0.2159,
-          "returnPct": -10.04,
-          "priceProfile": "LOW",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_12H_HIGH",
-          "label": "상장 +12시간 숏 · 최고가",
-          "date": "2025-10-23",
-          "entryHours": 12,
-          "entryPrice": 0.225,
-          "exitPrice": 0.3075,
-          "returnPct": -36.67,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_12H_MID",
-          "label": "상장 +12시간 숏 · 중간값",
-          "date": "2025-10-23",
-          "entryHours": 12,
-          "entryPrice": 0.2143,
-          "exitPrice": 0.3075,
-          "returnPct": -43.49,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D0_12H_LOW",
-          "label": "상장 +12시간 숏 · 최저가",
-          "date": "2025-10-23",
-          "entryHours": 12,
-          "entryPrice": 0.2036,
-          "exitPrice": 0.3075,
-          "returnPct": -51.03,
-          "priceProfile": "LOW",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D1_OPEN_HIGH",
-          "label": "상장 +1일 숏 · 최고가",
-          "date": "2025-10-23",
-          "entryHours": 24,
-          "entryPrice": 0.3976,
-          "exitPrice": 0.2986,
-          "returnPct": 24.9,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D1_OPEN_MID",
-          "label": "상장 +1일 숏 · 중간값",
-          "date": "2025-10-23",
-          "entryHours": 24,
-          "entryPrice": 0.3036,
-          "exitPrice": 0.2986,
-          "returnPct": 1.65,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D1_OPEN_LOW",
-          "label": "상장 +1일 숏 · 최저가",
-          "date": "2025-10-23",
-          "entryHours": 24,
-          "entryPrice": 0.2096,
-          "exitPrice": 0.2986,
-          "returnPct": -42.46,
-          "priceProfile": "LOW",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D3_OPEN_HIGH",
-          "label": "상장 +3일 숏 · 최고가",
-          "date": "2025-10-25",
-          "entryHours": 72,
-          "entryPrice": 0.33,
-          "exitPrice": 0.2769,
-          "returnPct": 16.09,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D3_OPEN_MID",
-          "label": "상장 +3일 숏 · 중간값",
-          "date": "2025-10-25",
-          "entryHours": 72,
-          "entryPrice": 0.30375,
-          "exitPrice": 0.2769,
-          "returnPct": 8.84,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D3_OPEN_LOW",
-          "label": "상장 +3일 숏 · 최저가",
-          "date": "2025-10-25",
-          "entryHours": 72,
-          "entryPrice": 0.2775,
-          "exitPrice": 0.2769,
-          "returnPct": 0.22,
-          "priceProfile": "LOW",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D5_OPEN_HIGH",
-          "label": "상장 +5일 숏 · 최고가",
-          "date": "2025-10-27",
-          "entryHours": 120,
-          "entryPrice": 0.2536,
-          "exitPrice": 0.2502,
-          "returnPct": 1.34,
-          "priceProfile": "HIGH",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D5_OPEN_MID",
-          "label": "상장 +5일 숏 · 중간값",
-          "date": "2025-10-27",
-          "entryHours": 120,
-          "entryPrice": 0.2444,
-          "exitPrice": 0.2502,
-          "returnPct": -2.37,
-          "priceProfile": "MID",
-          "liquidated": false
-        },
-        {
-          "scenarioId": "D5_OPEN_LOW",
-          "label": "상장 +5일 숏 · 최저가",
-          "date": "2025-10-27",
-          "entryHours": 120,
-          "entryPrice": 0.2352,
-          "exitPrice": 0.2502,
-          "returnPct": -6.38,
-          "priceProfile": "LOW",
-          "liquidated": false
-        }
-      ]
-    },
-    {
       "symbol": "ZORA",
       "market": "KRW-ZORA",
       "name": "Zora",
@@ -5033,6 +5033,180 @@
           "entryPrice": 0.089656,
           "exitPrice": 0.105477,
           "returnPct": -17.65,
+          "priceProfile": "LOW",
+          "liquidated": false
+        }
+      ]
+    },
+    {
+      "symbol": "ORDER",
+      "market": "KRW-ORDER",
+      "name": "Orderly",
+      "koreanName": "오덜리",
+      "listingDate": "2025-10-23",
+      "scenarios": [
+        {
+          "scenarioId": "D0_OPEN_HIGH",
+          "label": "상장 직후 숏 · 최고가",
+          "date": "2025-10-22",
+          "entryHours": 0,
+          "entryPrice": 0.2139,
+          "exitPrice": 0.2159,
+          "returnPct": -0.94,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_OPEN_MID",
+          "label": "상장 직후 숏 · 중간값",
+          "date": "2025-10-22",
+          "entryHours": 0,
+          "entryPrice": 0.20505,
+          "exitPrice": 0.2159,
+          "returnPct": -5.29,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_OPEN_LOW",
+          "label": "상장 직후 숏 · 최저가",
+          "date": "2025-10-22",
+          "entryHours": 0,
+          "entryPrice": 0.1962,
+          "exitPrice": 0.2159,
+          "returnPct": -10.04,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_12H_HIGH",
+          "label": "상장 +12시간 숏 · 최고가",
+          "date": "2025-10-23",
+          "entryHours": 12,
+          "entryPrice": 0.225,
+          "exitPrice": 0.3075,
+          "returnPct": -36.67,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_12H_MID",
+          "label": "상장 +12시간 숏 · 중간값",
+          "date": "2025-10-23",
+          "entryHours": 12,
+          "entryPrice": 0.2143,
+          "exitPrice": 0.3075,
+          "returnPct": -43.49,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D0_12H_LOW",
+          "label": "상장 +12시간 숏 · 최저가",
+          "date": "2025-10-23",
+          "entryHours": 12,
+          "entryPrice": 0.2036,
+          "exitPrice": 0.3075,
+          "returnPct": -51.03,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D1_OPEN_HIGH",
+          "label": "상장 +1일 숏 · 최고가",
+          "date": "2025-10-23",
+          "entryHours": 24,
+          "entryPrice": 0.3976,
+          "exitPrice": 0.2986,
+          "returnPct": 24.9,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D1_OPEN_MID",
+          "label": "상장 +1일 숏 · 중간값",
+          "date": "2025-10-23",
+          "entryHours": 24,
+          "entryPrice": 0.3036,
+          "exitPrice": 0.2986,
+          "returnPct": 1.65,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D1_OPEN_LOW",
+          "label": "상장 +1일 숏 · 최저가",
+          "date": "2025-10-23",
+          "entryHours": 24,
+          "entryPrice": 0.2096,
+          "exitPrice": 0.2986,
+          "returnPct": -42.46,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D3_OPEN_HIGH",
+          "label": "상장 +3일 숏 · 최고가",
+          "date": "2025-10-25",
+          "entryHours": 72,
+          "entryPrice": 0.33,
+          "exitPrice": 0.2769,
+          "returnPct": 16.09,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D3_OPEN_MID",
+          "label": "상장 +3일 숏 · 중간값",
+          "date": "2025-10-25",
+          "entryHours": 72,
+          "entryPrice": 0.30375,
+          "exitPrice": 0.2769,
+          "returnPct": 8.84,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D3_OPEN_LOW",
+          "label": "상장 +3일 숏 · 최저가",
+          "date": "2025-10-25",
+          "entryHours": 72,
+          "entryPrice": 0.2775,
+          "exitPrice": 0.2769,
+          "returnPct": 0.22,
+          "priceProfile": "LOW",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D5_OPEN_HIGH",
+          "label": "상장 +5일 숏 · 최고가",
+          "date": "2025-10-27",
+          "entryHours": 120,
+          "entryPrice": 0.2536,
+          "exitPrice": 0.2502,
+          "returnPct": 1.34,
+          "priceProfile": "HIGH",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D5_OPEN_MID",
+          "label": "상장 +5일 숏 · 중간값",
+          "date": "2025-10-27",
+          "entryHours": 120,
+          "entryPrice": 0.2444,
+          "exitPrice": 0.2502,
+          "returnPct": -2.37,
+          "priceProfile": "MID",
+          "liquidated": false
+        },
+        {
+          "scenarioId": "D5_OPEN_LOW",
+          "label": "상장 +5일 숏 · 최저가",
+          "date": "2025-10-27",
+          "entryHours": 120,
+          "entryPrice": 0.2352,
+          "exitPrice": 0.2502,
+          "returnPct": -6.38,
           "priceProfile": "LOW",
           "liquidated": false
         }

@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import { api } from '../api/client';
-import type { ListingCalendarResponse, Ticker } from '../api/types';
+import type { ListingCalendarResponse, ListingStrategyResponse, Ticker } from '../api/types';
 
 type SidebarProps = {
   selectedCoin: string;
@@ -56,7 +56,7 @@ const Sidebar = ({ selectedCoin, onSelectCoin }: SidebarProps) => {
   const tickerMap = useMemo(() => buildTickerMap(tickerQuery.data), [tickerQuery.data]);
 
   return (
-    <aside className="sidebar panel">
+    <aside className="sidebar panel finder-sidebar">
       <div>
         <p className="eyebrow">Finder</p>
         <h3 style={{ margin: '6px 0' }}>코인 탐색</h3>
@@ -78,7 +78,6 @@ const Sidebar = ({ selectedCoin, onSelectCoin }: SidebarProps) => {
 
       <div className="section-heading">
         <span>라이브 워치리스트</span>
-        <span className="pill">TOP</span>
       </div>
       <div className="coin-list">
         {(coinsQuery.isLoading || tickerQuery.isLoading) && (
@@ -108,7 +107,7 @@ const Sidebar = ({ selectedCoin, onSelectCoin }: SidebarProps) => {
                 <div className={`coin-change ${changeClass}`}>{formatChangeRate(changeRate)}</div>
               </div>
               <div className="coin-price">
-                {ticker ? ticker.trade_price.toLocaleString('ko-KR') + '₩' : '-'}
+                {ticker ? `₩${ticker.trade_price.toLocaleString('ko-KR')}` : '-'}
               </div>
             </button>
           );
@@ -123,12 +122,16 @@ type RecentListingsProps = {
   onSelectCoin: (symbol: string) => void;
   compact?: boolean;
   limit?: number;
+  showStatus?: boolean;
+  showLimitInfo?: boolean;
 };
 
 export const RecentListings = ({
   onSelectCoin,
   compact = false,
-  limit
+  limit,
+  showStatus = false,
+  showLimitInfo = false
 }: RecentListingsProps) => {
   const calendarQuery = useQuery<ListingCalendarResponse>({
     queryKey: ['listingCalendar'],
@@ -136,14 +139,29 @@ export const RecentListings = ({
     refetchInterval: 1000 * 60 * 30 // 30 minutes
   });
 
+  const strategyQuery = useQuery<ListingStrategyResponse>({
+    queryKey: ['listingStrategies'],
+    queryFn: api.getListingStrategies,
+    refetchInterval: 1000 * 60 * 30
+  });
+
   const recentCoins =
-    calendarQuery.data?.coins
-      .filter(entry => entry.isRecent)
+    strategyQuery.data?.coins
+      .slice()
+      .sort((a, b) => b.listingDate.localeCompare(a.listingDate))
       .slice(0, limit ?? Number.MAX_SAFE_INTEGER) ?? [];
 
   const statusText = calendarQuery.data
     ? buildSchedulerStatus(calendarQuery.data)
     : '상장 캘린더를 준비 중입니다.';
+
+  const isLoading = calendarQuery.isLoading || strategyQuery.isLoading;
+
+  const limitInfo = showLimitInfo
+    ? limit
+      ? `최대 ${limit}개 카드만 표시됩니다.`
+      : '전체 리스트를 모두 표시합니다.'
+    : null;
 
   return (
     <section className={compact ? 'compact-calendar' : undefined}>
@@ -151,15 +169,25 @@ export const RecentListings = ({
         <>
           <div className="section-heading">
             <span>최근 상장 캘린더</span>
-            <span className="pill">6개월</span>
+            <span className="pill">3개월</span>
           </div>
           <p className="scenario-note">{statusText}</p>
         </>
       )}
-      {calendarQuery.isLoading && <div className="loading">최근 상장 코인을 불러오는 중...</div>}
-      {!calendarQuery.isLoading && recentCoins.length === 0 && (
+      {compact && showStatus && (
+        <p className="scenario-note" style={{ marginTop: 0 }}>
+          {statusText}
+        </p>
+      )}
+      {limitInfo && (
+        <p className="scenario-note limit-note" style={{ marginTop: compact ? 0 : 4 }}>
+          {limitInfo}
+        </p>
+      )}
+      {isLoading && <div className="loading">최근 상장 코인을 불러오는 중...</div>}
+      {!isLoading && recentCoins.length === 0 && (
         <div className="no-results" style={{ padding: '12px 0' }}>
-          최근 6개월 내 상장 코인이 없습니다.
+          최근 기간 내 상장 코인이 없습니다.
         </div>
       )}
       <div className={`recent-grid ${compact ? 'compact' : ''}`}>
